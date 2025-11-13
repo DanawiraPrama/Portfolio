@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umroh Campaign Analysis (Q3 2025)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F5F5F5;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-blue': '#0B2D48',
+                        'bright-orange': '#FF6B00',
+                        'bright-yellow': '#FFC700',
+                        'light-blue': '#48A9A6',
+                        'teal-green': '#036666',
+                        'light-gray': '#F5F5F5',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-light-gray text-dark-blue">
+
+    <div class="max-w-4xl mx-auto p-4 md:p-8">
+
+        <header class="bg-dark-blue text-white rounded-lg shadow-xl p-8 md:p-12 text-center my-8">
+            <h1 class="font-heading text-3xl md:text-5xl font-extrabold text-bright-yellow">494 Qualified Leads</h1>
+            <p class="font-heading text-2xl md:text-3xl mt-2 text-white">at $0.38 Average Cost Per Lead</p>
+            <p class="text-base md:text-lg mt-4 text-light-blue italic">
+                (Indonesian Market Case Study: Costs reflect regional ad pricing.)
+            </p>
+            <p class="text-lg md:text-xl mt-2 text-gray-300">Meta Ads & Funnel Strategy for a Travel Agent Client (Q3 2025)</p>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="font-heading text-2xl font-bold mb-3 text-bright-orange">🎯 The Challenge</h2>
+                <p class="text-base">A specialist travel agent needed to generate a high volume of cost-effective leads for two upcoming Umroh packages ('Thaif Nov 2025' & 'Muamalah Dec 2025') from a limited budget.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="font-heading text-2xl font-bold mb-3 text-light-blue">📈 The Goal</h2>
+                <p class="text-base">The primary KPI was to maximize high-intent leads (direct WhatsApp inquiries) while keeping the Cost Per Lead (CPL) as low as possible and benchmarking performance against Meta's standards.</p>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="font-heading text-2xl font-bold mb-4 text-center">💡 Strategy & Tools</h2>
+            <p class="text-center text-lg mb-6">A "High-Intent Direct Response Funnel" was designed to capture users actively considering an Umroh trip and funnel them directly to the sales team.</p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="bg-light-blue text-white font-medium px-4 py-2 rounded-full text-sm">Meta Ads</span>
+                <span class="bg-light-blue text-white font-medium px-4 py-2 rounded-full text-sm">WhatsApp Business</span>
+                <span class="bg-light-blue text-white font-medium px-4 py-2 rounded-full text-sm">Custom Landing Pages</span>
+                <span class="bg-light-blue text-white font-medium px-4 py-2 rounded-full text-sm">Canva</span>
+                <span class="bg-light-blue text-white font-medium px-4 py-2 rounded-full text-sm">Capcut</span>
+                <span class="bg-light-blue text-white font-medium px-4 py-2 rounded-full text-sm">GitHub</span>
+                <span class="bg-light-blue text-white font-medium px-4 py-2 rounded-full text-sm">Copywriting</span>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="font-heading text-2xl font-bold mb-6 text-center">⚙️ The Execution Funnel</h2>
+            <div class="flex flex-col items-center space-y-4">
+
+                <div class="w-full max-w-lg p-4 bg-gray-100 rounded-lg shadow text-center">
+                    <h3 class="font-heading text-lg font-semibold">1. Acquisition</h3>
+                    <p class="text-sm">Meta Ads (Video & Carousel) targeted audiences interested in Umroh, travel, and Islamic spirituality.</p>
+                </div>
+                
+                <div class="text-dark-blue text-3xl font-bold">⬇️</div>
+
+                <div class="w-full max-w-lg p-4 bg-gray-100 rounded-lg shadow text-center">
+                    <h3 class="font-heading text-lg font-semibold">2. Engagement</h3>
+                    <p class="text-sm">Users click the ad and are directed to a mobile-first Landing Page with clear package details and benefits.</p>
+                </div>
+
+                <div class="text-dark-blue text-3xl font-bold">⬇️</div>
+
+                <div class="w-full max-w-lg p-4 bg-gray-100 rounded-lg shadow text-center">
+                    <h3 class="font-heading text-lg font-semibold">3. Qualification</h3>
+                    <p class="text-sm">A prominent "Contact Us via WhatsApp" CTA button qualifies user intent. Only those genuinely interested will click.</p>
+                </div>
+
+                <div class="text-dark-blue text-3xl font-bold">⬇️</div>
+
+                <div class="w-full max-w-lg p-4 bg-teal-green text-white rounded-lg shadow text-center">
+                    <h3 class="font-heading text-lg font-semibold">4. Conversion</h3>
+                    <p class="text-sm">The CTA opens a pre-filled WhatsApp message, instantly converting the user into a high-intent lead for the sales team.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <h2 class="font-heading text-3xl font-bold text-center mt-8 mb-4">📊 Data Analysis & Results</h2>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="font-heading text-xl font-bold mb-3 text-center">Performance & Cost Efficiency</h3>
+                <p class="text-center mb-4 max-w-2xl mx-auto">The 'Thaif' campaign was the clear winner. It drove <strong>99% more leads</strong> for the same ad spend. Its CPL was <strong>50% lower</strong> and CPM was <strong>56% lower</strong>, indicating massively superior targeting and ad relevance.</p>
+                <div class="chart-container h-80 md:h-96 max-w-3xl">
+                    <canvas id="kpiChart"></canvas>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="font-heading text-xl font-bold mb-3 text-center">Lead Volume Contribution</h3>
+                    <p class="text-center mb-4 text-sm">The efficient 'Thaif' campaign was the engine of this quarter's success, generating 67% of all leads.</p>
+                    <div class="chart-container h-64 md:h-80 max-w-sm">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+                            <span class="font-heading text-3xl font-bold text-dark-blue">494</span>
+                            <span class="text-lg text-gray-600">Total Leads</span>
+                        </div>
+                        <canvas id="donutChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="font-heading text-xl font-bold mb-3 text-center">Engagement vs. Benchmark</h3>
+                    <p class="text-center mb-4 text-sm">The 'Muamalah' creative was highly engaging (2.65% CTR All), beating the 2% benchmark. However, both campaigns need to improve their Link Click CTR.</p>
+                    <div class="chart-container h-64 md:h-80">
+                        <canvas id="ctrChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="font-heading text-xl font-bold mb-3 text-bright-orange">Key Lessons Learned</h3>
+                <p>The 'Thaif' campaign's targeting was far more efficient (56% lower CPM), proving it reached the right audience at a better price. While the 'Muamalah' creative had a higher engagement rate (2.65% CTR All), its inefficient targeting made it ineffective for driving leads.
+                <br><br>
+                <strong>Future Strategy:</strong> Combine the highly engaging creative style of the 'Muamalah' campaign with the efficient targeting model of the 'Thaif' campaign. A primary focus will be on optimizing ad copy and CTAs to increase the Link Click CTR above the 1% industry benchmark.</p>
+            </div>
+        </section>
+
+        <footer class="bg-bright-yellow text-dark-blue rounded-lg shadow-xl p-8 text-center mt-8">
+            <h2 class="font-heading text-2xl font-extrabold">PRAMA DANAWIRA</h2>
+            <p class="font-medium text-lg">Data-Driven Digital Marketing Strategist</p>
+            <p class="text-xl mt-4">Ready to build your next successful lead funnel? <br class="hidden sm:block"> <strong>Let's talk.</strong></p>
+        </footer>
+
+    </div>
+
+    <script>
+        window.onload = function () {
+            
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        },
+                        backgroundColor: '#0B2D48',
+                        titleFont: { family: 'Inter', weight: 'bold', size: 14 },
+                        bodyFont: { family: 'Poppins', size: 12 },
+                        padding: 12,
+                        cornerRadius: 4,
+                        displayColors: true,
+                        boxPadding: 4
+                    },
+                    legend: {
+                        labels: {
+                            font: {
+                                family: 'Poppins',
+                                size: 12
+                            },
+                            color: '#0B2D48'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                family: 'Poppins',
+                                size: 12
+                            },
+                            color: '#0B2D48'
+                        },
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                family: 'Poppins',
+                                size: 12
+                            },
+                            color: '#0B2D48'
+                        },
+                        grid: {
+                            color: '#E0E0E0',
+                            borderDash: [5, 5]
+                        }
+                    }
+                }
+            };
+
+            const kpiCtx = document.getElementById('kpiChart').getContext('2d');
+            new Chart(kpiCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Ad Spend (USD)', 'Link Clicks', 'Cost Per Lead (CPL)', 'Cost Per 1k Impr. (CPM)'],
+                    datasets: [
+                        {
+                            label: 'Thaif Nov 2025',
+                            data: [93.02, 329, 0.28, 1.97],
+                            backgroundColor: '#48A9A6',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Muamalah Dec 2025',
+                            data: [92.73, 165, 0.56, 4.47],
+                            backgroundColor: '#FF6B00',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        ...commonOptions.scales,
+                        y: {
+                            ...commonOptions.scales.y,
+                            type: 'logarithmic',
+                            ticks: {
+                                ...commonOptions.scales.y.ticks,
+                                callback: function(value, index, values) {
+                                    if (value === 1000 || value === 100 || value === 10 || value === 1 || value === 0.1) {
+                                        return '$' + value.toFixed(2);
+                                    } else if (value > 100) {
+                                        return '$' + value.toFixed(0);
+                                    } else if (value < 2 && value > 0) {
+                                        return '$' + value.toFixed(2);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const ctrCtx = document.getElementById('ctrChart').getContext('2d');
+            new Chart(ctrCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['CTR (All)', ['CTR (Link', 'Click-Through)']],
+                    datasets: [
+                        {
+                            label: 'Thaif Nov 2025',
+                            data: [1.91, 0.696],
+                            backgroundColor: '#48A9A6',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Muamalah Dec 2025',
+                            data: [2.65, 0.796],
+                            backgroundColor: '#036666',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Meta Benchmark',
+                            data: [2.0, 1.0],
+                            backgroundColor: '#FFC700',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        ...commonOptions.scales,
+                        y: {
+                            ...commonOptions.scales.y,
+                            ticks: {
+                                ...commonOptions.scales.y.ticks,
+                                callback: value => value + '%'
+                            }
+                        }
+                    }
+                }
+            });
+
+            const donutCtx = document.getElementById('donutChart').getContext('2d');
+            new Chart(donutCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Thaif Leads (329)', 'Muamalah Leads (165)'],
+                    datasets: [{
+                        data: [329, 165],
+                        backgroundColor: ['#48A9A6', '#FF6B00'],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        tooltip: {
+                            ...commonOptions.plugins.tooltip
+                        },
+                        legend: {
+                            ...commonOptions.plugins.legend,
+                            position: 'bottom',
+                            align: 'center'
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
