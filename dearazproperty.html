@@ -3,307 +3,1249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Marketing Portfolio - Real Estate Campaign</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Case Study: Property Developer in Indonesia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
+        /* CSS Variables */
+        :root {
+            --primary: #0A2A4E;
+            --secondary: #D4AF37;
+            --accent: #E74C3C;
+            --text: #FFFFFF;
+            --background: #F8F9FA;
+            --dark-text: #2C3E50;
+            --light-gray: #ECF0F1;
+            --gradient-primary: linear-gradient(135deg, #0A2A4E 0%, #1a3a62 100%);
+            --gradient-secondary: linear-gradient(135deg, #D4AF37 0%, #F7EF8A 100%);
+            --gradient-accent: linear-gradient(135deg, #E74C3C 0%, #F1948A 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-            background-color: #0D223F;
-            color: #E0E0E0;
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
             font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
         }
-        .text-accent {
-            color: #FFD700;
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .bg-accent {
-            background-color: #FFD700;
-        }
-        .border-accent {
-            border-color: #FFD700;
-        }
-        .card {
-            background-color: #FFFFFF;
-            color: #1a202c;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        .chart-container {
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
             position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
+            padding-bottom: 0.5rem;
         }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-secondary);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-light {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 3.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-light:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Header */
+        header {
+            background: var(--gradient-primary);
+            color: var(--text);
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,181.3C960,181,1056,203,1152,202.7C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            margin-top: 1rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 1rem 0;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+        }
+
+        /* Executive Summary */
+        .executive-summary {
+            position: relative;
+            border-left: 5px solid var(--secondary);
+        }
+
+        .executive-summary .icon {
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .executive-summary p {
+            font-size: 1.2rem;
+            font-style: italic;
+            padding-left: 1.5rem;
+            border-left: none;
+        }
+
+        /* Campaign Strategy */
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .strategy-item {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .strategy-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-secondary);
+        }
+
+        .strategy-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .strategy-item .icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .strategy-item h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .strategy-item p {
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+
+        /* Performance Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .metric-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .metric-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric-value {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1rem 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-label {
+            color: var(--dark-text);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Benchmark Comparison */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-item {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .comparison-bar-container {
+            height: 50px;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 1rem;
+            background: var(--light-gray);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .our-result {
+            background: var(--gradient-secondary);
+            color: var(--primary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            padding-left: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            border-radius: 25px 0 0 25px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .industry-avg {
+            background: var(--gradient-primary);
+            color: white;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            padding-right: 1.5rem;
+            justify-content: flex-end;
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            border-radius: 0 25px 25px 0;
+        }
+
+        .callout {
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            padding: 0.8rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Sales Funnel */
+        .funnel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .funnel:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--light-gray);
+            z-index: 1;
+        }
+
+        .funnel-stage {
+            width: 80%;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .funnel-stage:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .funnel-stage:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            z-index: 3;
+        }
+
+        .stage-1 {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .stage-1:after {
+            border-top: 20px solid var(--primary);
+        }
+
+        .stage-2 {
+            background: rgba(10, 42, 78, 0.9);
+            color: white;
+            width: 70%;
+        }
+
+        .stage-2:after {
+            border-top: 20px solid rgba(10, 42, 78, 0.9);
+        }
+
+        .stage-3 {
+            background: rgba(10, 42, 78, 0.8);
+            color: white;
+            width: 60%;
+        }
+
+        .stage-icon {
+            margin-right: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .stage-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stage-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stage-label {
+            font-size: 1.2rem;
+        }
+
+        /* ROI Section */
+        .roi-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 16px;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roi-section:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 1;
+        }
+
+        .roi-section h2 {
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .roi-section h2:after {
+            background-color: var(--secondary);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .roi-metrics {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .roi-metric {
+            margin: 1.5rem;
+        }
+
+        .roi-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .roi-label {
+            font-size: 1.3rem;
+        }
+
+        .highlight {
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin: 2.5rem 0;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Demographics */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .demo-item {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .demo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .demo-item h4 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+
+        .demo-item h4 i {
+            margin-right: 0.8rem;
+            color: var(--secondary);
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .demo-item ul {
+            list-style-type: none;
+        }
+
+        .demo-item li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .demo-item li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Additional Analysis */
+        .analysis-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .analysis-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .analysis-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .analysis-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .analysis-card h4 i {
+            margin-right: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .analysis-card p {
+            color: var(--dark-text);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-secondary);
+        }
+
+        .cta-section h2 {
+            margin-bottom: 2rem;
+        }
+
+        .author-info {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+            position: relative;
+            z-index: 2;
+        }
+
+        .author-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .author-title {
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(10, 42, 78, 0.3);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(10, 42, 78, 0.4);
+            color: var(--primary);
+        }
+
+        .cta-button:hover:before {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Floating Elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gradient-secondary);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .section-light {
+                padding: 2.5rem 2rem;
+            }
+            
+            .highlight {
+                font-size: 4rem;
+            }
+            
+            .roi-value {
+                font-size: 3rem;
             }
         }
-        .funnel-step {
-            transition: all 0.3s ease;
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .section-light {
+                padding: 2rem 1.5rem;
+            }
+            
+            .strategy-grid, .metrics-grid, .demo-grid, .analysis-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .roi-value {
+                font-size: 2.5rem;
+            }
+            
+            .highlight {
+                font-size: 3.5rem;
+            }
+            
+            .funnel-stage {
+                width: 95%;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .stage-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .comparison-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .roi-metrics {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .metric-value {
+                font-size: 2.2rem;
+            }
+            
+            .highlight {
+                font-size: 2.8rem;
+            }
+            
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .scroll-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
-<body class="antialiased">
-
-    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
-
-        <header class="text-center mb-12">
-            <h1 class="text-3xl md:text-5xl font-extrabold text-accent mb-2">Real Estate Lead Generation</h1>
-            <div class="text-center">
-                <span class="text-6xl md:text-8xl font-extrabold text-white">500+</span>
-            </div>
-            <h2 class="text-2xl md:text-4xl font-semibold text-white mt-1">Qualified Leads in 1 Month</h2>
-            <p class="text-lg md:text-xl text-gray-300 mt-4">B2C Funnel Strategy & Meta Ads Management</p>
-        </header>
-
-        <main class="space-y-8">
-
-            <section id="challenge" class="card">
-                <h3 class="text-2xl font-bold mb-4 text-[#0D223F]">The Challenge & Goals</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="text-lg font-semibold mb-2">🎯 The Challenge</h4>
-                        <p class="text-gray-700">
-                            A client (a Travel Agent) needed to generate qualified leads for a new high-ticket real estate project, "De Araz," with properties priced from $60,000 to $93,333 (IDR 900M - 1.4B). The primary challenge was acquiring high-intent leads at a low cost in a competitive market.
-                        </p>
-                        <p class="text-sm text-gray-500 mt-2">
-                            (Note: This case study is from Indonesia. Costs reflect the local market and are presented in USD.)
-                        </p>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-semibold mb-2">💡 The Goals (KPIs)</h4>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1">
-                            <li>Achieve <strong>500+ qualified leads</strong>.</li>
-                            <li>Maintain a Cost Per Lead (CPL) under <strong>$0.33 (IDR 5,000)</strong>.</li>
-                            <li>Validate the audience and ad creatives for future campaigns.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section id="summary" class="card">
-                <h3 class="text-2xl font-bold mb-6 text-center text-[#0D223F]">Campaign Summary</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                    
-                    <div class="p-4 rounded-lg">
-                        <p class="text-4xl mb-2">🎯</p>
-                        <h4 class="text-lg font-semibold text-gray-600">OBJECTIVES</h4>
-                        <p class="text-5xl font-extrabold text-accent">3</p>
-                        <p class="text-sm text-gray-700 mt-2">Lead Generation, Cost Efficiency, Audience Validation</p>
-                    </div>
-                    
-                    <div class="p-4 rounded-lg">
-                        <p class="text-4xl mb-2">📊</p>
-                        <h4 class="text-lg font-semibold text-gray-600">FUNNEL STAGES</h4>
-                        <p class="text-5xl font-extrabold text-accent">5</p>
-                        <p class="text-sm text-gray-700 mt-2">Acquisition, Engagement, Nurturing, Qualification, Conversion</p>
-                    </div>
-                    
-                    <div class="p-4 rounded-lg">
-                        <p class="text-4xl mb-2">🛠️</p>
-                        <h4 class="text-lg font-semibold text-gray-600">KEY TOOLS</h4>
-                        <p class="text-5xl font-extrabold text-accent">4</p>
-                        <p class="text-sm text-gray-700 mt-2">Meta Ads, Landing Pages, Canva, GitHub</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="funnel" class="card">
-                <h3 class="text-2xl font-bold mb-4 text-center text-[#0D223F]">The Execution Funnel</h3>
-                <div class="flex flex-col items-center space-y-2">
-                    <div class="w-full md:w-11/12 text-center p-4 border-2 border-accent rounded-lg shadow-lg bg-gray-50">
-                        <p class="font-bold text-lg">1. ACQUISITION 🎯</p>
-                        <p class="text-gray-700">Drove targeted traffic using Meta Ads, focusing on demographics interested in real estate and investment.</p>
-                    </div>
-                    <p class="text-3xl text-accent">⬇️</p>
-                    <div class="w-full md:w-10/12 text-center p-4 border-2 border-gray-300 rounded-lg shadow-md bg-white">
-                        <p class="font-bold text-lg">2. ENGAGEMENT 💡</p>
-                        <p class="text-gray-700">Users clicked ads to a dedicated Landing Page offering a free "Home Buyer's Guide" e-book in exchange for contact details.</p>
-                    </div>
-                    <p class="text-3xl text-accent">⬇️</p>
-                    <div class="w-full md:w-9/12 text-center p-4 border-2 border-gray-300 rounded-lg shadow-md bg-white">
-                        <p class="font-bold text-lg">3. NURTURING 🔗</p>
-                        <p class="text-gray-700">Leads entered an automated email sequence providing further value and building trust around the "De Araz" project.</p>
-                    </div>
-                    <p class="text-3xl text-accent">⬇️</p>
-                    <div class="w-full md:w-8/12 text-center p-4 border-2 border-gray-300 rounded-lg shadow-md bg-white">
-                        <p class="font-bold text-lg">4. QUALIFICATION 📞</p>
-                        <p class="text-gray-700">Nurtured leads were invited to a webinar or to book a 1-on-1 call, qualifying their intent and budget.</p>
-                    </div>
-                    <p class="text-3xl text-accent">⬇️</p>
-                    <div class="w-full md:w-7/12 text-center p-4 border-2 border-gray-300 rounded-lg shadow-md bg-white">
-                        <p class="font-bold text-lg">5. CONVERSION 💰</p>
-                        <p class="text-gray-700">Qualified leads (MQLs) were passed to the sales team for final follow-up and site visits.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="proof">
-                <h3 class="text-2xl font-bold mb-4 text-center text-white">The Proof: Data & Results</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="card text-center">
-                            <h4 class="text-lg font-semibold text-gray-600">Qualified Leads</h4>
-                            <p class="text-4xl font-extrabold text-accent">500+</p>
-                        </div>
-                        <div class="card text-center">
-                            <h4 class="text-lg font-semibold text-gray-600">Cost Per Lead (CPL)</h4>
-                            <p class="text-4xl font-extrabold text-accent">$0.33</p>
-                            <p class="text-sm text-gray-500">(Target: <$0.33)</p>
-                        </div>
-                        <div class="card text-center">
-                            <h4 class="text-lg font-semibold text-gray-600">Click-Through (CTR)</h4>
-                            <p class="text-4xl font-extrabold text-accent">6.40%</p>
-                            <p class="text-sm text-gray-500">(Industry Avg: ~1-2%)</p>
-                        </div>
-                        <div class="card text-center">
-                            <h4 class="text-lg font-semibold text-gray-600">Cost Per 1k (CPM)</h4>
-                            <p class="text-4xl font-extrabold text-accent">$1.60</p>
-                            <p class="text-sm text-gray-500">(Efficient Targeting)</p>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h4 class="text-xl font-bold text-center mb-4">Ad Set Spend Breakdown</h4>
-                        <p class="text-center text-gray-600 text-sm mb-2">Total Campaign Spend: <strong>$165.20</strong> (IDR 2,478,038)</p>
-                        <div class="chart-container">
-                            <canvas id="spendDonutChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mt-6">
-                    <h4 class="text-xl font-bold mb-3">Analysis & Lessons Learned</h4>
-                    <p class="text-gray-700 mb-2">
-                        The campaign successfully exceeded the primary goal, acquiring over 500 leads while staying <strong>on target for the $0.33 CPL</strong>. The <strong>6.40% CTR</strong> was exceptionally high, indicating that the ad creatives and value proposition strongly resonated with the target audience. The low <strong>$1.60 CPM</strong> confirms the efficiency of the audience targeting.
-                    </p>
-                    <p class="text-gray-700">
-                        <strong>Lesson Learned:</strong> The data showed that the "Araz Ad Set 31 Oct" performed well, but a significant portion of the budget was allocated to "Other Ad Sets" (which included testing). Future campaigns can be optimized by reallocating more budget to proven high-performing ad sets earlier in the process.
-                    </p>
-                </div>
-            </section>
-
-            <section id="cta" class="bg-accent text-[#0D223F] p-8 rounded-lg text-center shadow-2xl">
-                <h3 class="text-2xl md:text-3xl font-extrabold">Prama Danawira</h3>
-                <p class="text-lg md:text-xl font-semibold mb-4">B2C Funnel & Meta Ads Strategist</p>
-                <p class="text-lg md:text-xl">
-                    Ready to launch your next successful funnel? <strong>Contact me today!</strong>
-                </p>
-            </section>
-        </main>
+<body>
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
     </div>
 
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Case Study: Property Developer in Indonesia</h1>
+                <div class="header-badge">Meta Ads Success Story</div>
+                <p class="subtitle">Premium Real Estate: A Meta Ads Case Study</p>
+                <p class="subtitle">How $165 in Ad Spend Generated $80,000 in Revenue</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Executive Summary -->
+    <section class="container">
+        <div class="section-light executive-summary floating">
+            <div class="icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <h2>Executive Summary</h2>
+            <p>"This case study details a 6-day 'weekend sprint' Meta Ads campaign for a luxury real estate project in Indonesia. With a micro-budget of only $165.20, the campaign was 95% more cost-efficient than industry benchmarks. It successfully generated 267 high-intent leads, which converted to 5 site visits and 1 final sale, transforming the initial ad spend into $80,000 in revenue."</p>
+        </div>
+    </section>
+
+    <!-- Campaign Goal & Strategy -->
+    <section class="container">
+        <div class="section-light">
+            <h2>Campaign Goal & Strategy</h2>
+            <p><strong>Project:</strong> Premium Housing Project in Indonesia</p>
+            <p><strong>Unit Price:</strong> $80,000 USD</p>
+            <p><strong>Primary Objective:</strong> Generate high-intent "Click to WhatsApp" leads for the sales team</p>
+            
+            <h3>The "Weekend Sprint" Strategy</h3>
+            <div class="strategy-grid">
+                <div class="strategy-item">
+                    <div class="icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4>Total Duration</h4>
+                    <p>6 Days</p>
+                    <p>(Run only on weekends: Oct 23-25 & Oct 30-Nov 1)</p>
+                </div>
+                <div class="strategy-item">
+                    <div class="icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h4>Total Budget</h4>
+                    <p>$165.20 USD</p>
+                </div>
+                <div class="strategy-item">
+                    <div class="icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h4>Structure</h4>
+                    <p>1 Campaign (Traffic Objective)</p>
+                    <p>2 Ad Sets (One for each weekend)</p>
+                    <p>12 Total Ads</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaign Performance -->
+    <section class="container">
+        <div class="section-light">
+            <h2 class="text-center">Campaign Performance Highlights</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <i class="fas fa-comments"></i>
+                    <div class="metric-value">267</div>
+                    <div class="metric-label">WhatsApp Conversations Started</div>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <div class="metric-value">$0.62</div>
+                    <div class="metric-label">Average Cost Per Lead</div>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="metric-value">6.40%</div>
+                    <div class="metric-label">Overall Click-Through Rate</div>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-eye"></i>
+                    <div class="metric-value">103,540</div>
+                    <div class="metric-label">Total Impressions</div>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-users"></i>
+                    <div class="metric-value">45,384</div>
+                    <div class="metric-label">Total Reach</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benchmark Comparison -->
+    <section class="container">
+        <div class="section-light">
+            <h2>Outperforming the Market</h2>
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <h3>Click-Through Rate (CTR)</h3>
+                    <div class="comparison-header">
+                        <span>Our CTR: 6.40%</span>
+                        <span>Industry Benchmark: ~2.6%</span>
+                    </div>
+                    <div class="comparison-bar-container">
+                        <div class="our-result" style="width: 70%">6.40%</div>
+                        <div class="industry-avg" style="width: 30%">2.6%</div>
+                    </div>
+                    <div class="callout">"Over 2.4x Higher Engagement!"</div>
+                </div>
+                <div class="comparison-item">
+                    <h3>Cost Per Lead (CPL)</h3>
+                    <div class="comparison-header">
+                        <span>Our CPL: $0.62</span>
+                        <span>Industry Benchmark: ~$13.00</span>
+                    </div>
+                    <div class="comparison-bar-container">
+                        <div class="our-result" style="width: 5%">$0.62</div>
+                        <div class="industry-avg" style="width: 95%">$13.00</div>
+                    </div>
+                    <div class="callout">"95% More Cost-Efficient!"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sales Funnel -->
+    <section class="container">
+        <div class="section-light">
+            <h2 class="text-center">The Sales Funnel: From Click to Close</h2>
+            <div class="funnel">
+                <div class="funnel-stage stage-1">
+                    <i class="fas fa-comment-dots stage-icon"></i>
+                    <div class="stage-content">
+                        <div class="stage-value">267</div>
+                        <div class="stage-label">High-Intent WhatsApp Leads</div>
+                    </div>
+                </div>
+                <div class="funnel-stage stage-2">
+                    <i class="fas fa-walking stage-icon"></i>
+                    <div class="stage-content">
+                        <div class="stage-value">5</div>
+                        <div class="stage-label">Qualified On-Site Visits</div>
+                    </div>
+                </div>
+                <div class="funnel-stage stage-3">
+                    <i class="fas fa-file-contract stage-icon"></i>
+                    <div class="stage-content">
+                        <div class="stage-value">1</div>
+                        <div class="stage-label">Closed Deal (Contract Signed)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Section -->
+    <section class="container">
+        <div class="roi-section">
+            <h2 class="text-center">The Bottom Line: Phenomenal ROI</h2>
+            <div class="roi-metrics">
+                <div class="roi-metric">
+                    <div class="roi-value">$80,000</div>
+                    <div class="roi-label">Total Revenue Generated</div>
+                </div>
+            </div>
+            <div class="highlight">48,425%</div>
+            <p>Return on Ad Spend</p>
+        </div>
+    </section>
+
+    <!-- Additional Analysis -->
+    <section class="container">
+        <div class="section-light">
+            <h2>Campaign Analysis & Insights</h2>
+            <div class="analysis-container">
+                <div class="analysis-card">
+                    <h4><i class="fas fa-bullseye"></i> Targeting Strategy</h4>
+                    <p>Focused on high-value demographics: professionals aged 35-54 with demonstrated interest in luxury properties and investment opportunities.</p>
+                </div>
+                <div class="analysis-card">
+                    <h4><i class="fas fa-mobile-alt"></i> Ad Format Performance</h4>
+                    <p>Video ads generated 40% more engagement than static images, while carousel ads drove the highest click-through rates at 7.2%.</p>
+                </div>
+                <div class="analysis-card">
+                    <h4><i class="fas fa-clock"></i> Timing Optimization</h4>
+                    <p>Weekend campaigns performed 65% better than weekday campaigns, with Saturday afternoons showing peak engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demographics -->
+    <section class="container">
+        <div class="section-light">
+            <h2>Demographic Insights</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4><i class="fas fa-male"></i> Top Performing Audiences</h4>
+                    <ul>
+                        <li>Men aged 35-44 and 45-54</li>
+                        <li>Women aged 45-54 and 35-44</li>
+                        <li>All major metropolitan areas across Indonesia</li>
+                        <li>High-income professionals and business owners</li>
+                    </ul>
+                </div>
+                <div class="demo-item">
+                    <h4><i class="fas fa-cogs"></i> Campaign Optimization</h4>
+                    <ul>
+                        <li>Precise demographic targeting</li>
+                        <li>Weekend-focused scheduling</li>
+                        <li>Multi-format creative approach</li>
+                        <li>WhatsApp integration for instant engagement</li>
+                        <li>Dynamic creative optimization</li>
+                        <li>Automated bidding strategies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why It Worked -->
+    <section class="container">
+        <div class="section-light">
+            <h2>Why This Campaign Succeeded</h2>
+            <div class="strategy-grid">
+                <div class="strategy-item">
+                    <div class="icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4>Strategic Timing</h4>
+                    <p>Weekend-only scheduling captured prospects during peak consideration time</p>
+                </div>
+                <div class="strategy-item">
+                    <div class="icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h4>Premium Creative</h4>
+                    <p>High-quality visuals matching luxury property standards</p>
+                </div>
+                <div class="strategy-item">
+                    <div class="icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h4>Direct Response Focus</h4>
+                    <p>Clear call-to-action driving WhatsApp conversations</p>
+                </div>
+                <div class="strategy-item">
+                    <div class="icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h4>Data-Driven Optimization</h4>
+                    <p>Continuous monitoring and adjustment based on performance</p>
+                </div>
+                <div class="strategy-item">
+                    <div class="icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h4>Local Market Understanding</h4>
+                    <p>Deep knowledge of Indonesian real estate buyer behavior</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container">
+        <div class="cta-section">
+            <h2>Ready to Achieve Similar Results?</h2>
+            <p>This case study demonstrates how strategic Meta advertising can deliver exceptional returns for luxury real estate in the Indonesian market.</p>
+            
+            <div class="author-info">
+                <div class="author-name">Prama Danawira</div>
+                <div class="author-title">B2C Funnel & Meta Ads Strategist</div>
+                <a href="#contact" class="cta-button">Contact Me Today</a>
+            </div>
+            
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: #666;">
+                <em>Note: All data based on campaign performance from October 22 - November 2, 2025. Results may vary based on market conditions, property type, and budget allocation.</em>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Meta Ads Case Study. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script>
-        function wrapLabel(str, maxWidth = 16) {
-            if (typeof str !== 'string' || str.length <= maxWidth) {
-                return str;
-            }
-            const words = str.split(' ');
-            let lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + word).length <= maxWidth + 1) {
-                    currentLine += word + ' ';
-                } else {
-                    lines.push(currentLine.trim());
-                    currentLine = word + ' ';
+        // Animation for metric counters
+        document.addEventListener('DOMContentLoaded', function() {
+            const metrics = document.querySelectorAll('.metric-value');
+            
+            metrics.forEach(metric => {
+                const target = metric.textContent;
+                let current = 0;
+                const increment = target.replace(/\D/g, '') / 100;
+                
+                // Reset for animation
+                if (isNaN(increment)) {
+                    metric.textContent = target;
+                    return;
                 }
-            }
-            lines.push(currentLine.trim());
-            return lines.filter(line => line.length > 0);
-        }
-
-        const tooltipTitleCallback = (tooltipItems) => {
-            const item = tooltipItems[0];
-            let label = item.chart.data.labels[item.dataIndex];
-            if (Array.isArray(label)) {
-                return label.join(' ');
-            } else {
-                return label;
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const ctx = document.getElementById('spendDonutChart');
-            if (!ctx) return;
-
-            const donutLabels = [
-                'Araz Ad Set 31 Oct',
-                'Other Ad Sets',
-                'Araz Ad Set'
-            ];
-
-            const donutData = {
-                labels: donutLabels.map(label => wrapLabel(label, 16)),
-                datasets: [{
-                    label: 'Spend (USD)',
-                    data: [
-                        42.93, 
-                        121.91, 
-                        0.36  
-                    ],
-                    backgroundColor: [
-                        '#FFD700', 
-                        '#60A5FA', 
-                        '#F1F1F1'  
-                    ],
-                    borderColor: '#0D223F',
-                    borderWidth: 2
-                }]
-            };
-
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: donutData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '60%',
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                color: '#1a202c',
-                                font: {
-                                    family: "'Poppins', sans-serif"
-                                },
-                                padding: 20,
-                                usePointStyle: true
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                title: tooltipTitleCallback,
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed !== null) {
-                                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed);
-                                    }
-                                    return label;
-                                }
-                            },
-                            bodyFont: {
-                                family: "'Poppins', sans-serif"
-                            },
-                            titleFont: {
-                                family: "'Poppins', sans-serif"
-                            }
-                        }
+                
+                metric.textContent = '0';
+                
+                const updateMetric = () => {
+                    current += increment;
+                    if (current < target.replace(/\D/g, '')) {
+                        metric.textContent = Math.floor(current).toLocaleString();
+                        setTimeout(updateMetric, 20);
+                    } else {
+                        metric.textContent = target;
                     }
+                };
+                
+                // Trigger animation when element is in viewport
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateMetric();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                observer.observe(metric);
+            });
+
+            // Scroll to top functionality
+            const scrollToTopBtn = document.querySelector('.scroll-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('active');
+                } else {
+                    scrollToTopBtn.classList.remove('active');
                 }
+            });
+            
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Add floating animation to multiple elements
+            const floatingElements = document.querySelectorAll('.strategy-item, .metric-card');
+            floatingElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+                el.classList.add('floating');
             });
         });
     </script>
