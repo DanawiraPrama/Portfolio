@@ -3,406 +3,636 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study: Property Agent Recruitment</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Case Study: Property Developer Indonesia - Agent Recruitment Success</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f4f8;
-            color: #1a202c;
+        :root {
+            --primary: #1A5276;
+            --secondary: #27AE60;
+            --accent: #E67E22;
+            --text: #2C3E50;
+            --background: #F8F9FA;
+            --light: #FFFFFF;
+            --gray: #ECF0F1;
         }
-        h1, h2, h3, h4, h5, h6 {
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--primary), #2C3E50);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .main-title {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
             font-weight: 700;
         }
-        .card {
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
+        
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .text-primary { color: #0D223F; }
-        .text-accent { color: #FFD700; }
-        .bg-primary { background-color: #0D223F; }
-        .bg-accent { background-color: #FFD700; }
-        .border-accent { border-color: #FFD700; }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            height: 300px;
+        
+        .header-icon {
+            font-size: 4rem;
+            margin: 2rem 0;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-light {
+            background-color: var(--light);
+        }
+        
+        .section-gray {
+            background-color: var(--gray);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
+        
+        /* Executive Summary */
+        .executive-summary {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .executive-text {
+            flex: 1;
+        }
+        
+        .executive-stats {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .stat-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text);
+        }
+        
+        /* Campaign Goals */
+        .campaign-goals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .goal-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .goal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        /* Performance Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .metric-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Comparison Section */
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .comparison-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--primary);
+        }
+        
+        .comparison-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .our-result {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .industry-avg {
+            color: #7F8C8D;
+        }
+        
+        .callout {
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        /* Funnel Visualization */
+        .funnel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .funnel-stage {
+            width: 100%;
+            padding: 1.5rem;
+            margin: 0.5rem 0;
+            background: var(--light);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+        
+        .funnel-stage:not(:last-child):after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid var(--light);
+        }
+        
+        .stage-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Success Factors */
+        .success-factors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .factor-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .factor-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            transition: background 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #219653;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .executive-summary {
+                flex-direction: column;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-100">
-
-    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
-
-        
-        <div class="card text-center">
-            <h1 class="text-3xl md:text-4xl text-primary mb-2">Property Agent Recruitment Campaign</h1>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 my-6">
-                <div class="text-center">
-                    <div class="text-5xl md:text-6xl font-extrabold text-accent">204</div>
-                    <div class="text-lg text-primary font-semibold">Qualified Leads</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-5xl md:text-6xl font-extrabold text-accent">$0.15</div>
-                    <div class="text-lg text-primary font-semibold">Cost Per Lead (CPL)</div>
-                </div>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-icon">
+                <i class="fas fa-chart-line"></i>
             </div>
-            <p class="text-xl text-primary font-medium">Role: Meta Ads & Full-Funnel Strategist</p>
+            <h1 class="main-title">Case Study: Property Developer Indonesia</h1>
+            <p class="subtitle">Generating 100+ Qualified Agent Leads with Only $67 USD Budget in 6 Days</p>
         </div>
+    </header>
 
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="card">
-                <h2 class="text-2xl text-primary mb-4">The Challenge</h2>
-                <p class="text-gray-700">A <span class="font-semibold">Property Developer</span> company needed to quickly and cost-effectively recruit a team of property agents in <span class="font-semibold">Indonesia</span>. The primary barrier was achieving a low cost-per-lead (CPL) for a niche B2B audience.</p>
-            </div>
-            <div class="card">
-                <h2 class="text-2xl text-primary mb-4">The Goal</h2>
-                <p class="text-gray-700">The main objective was to generate a high volume of qualified leads (potential agents) while maintaining a strict target CPL of <span class="font-semibold">under $0.33 (5,000 IDR)</span> to ensure a high return on ad spend (ROAS) for the recruitment budget.</p>
-            </div>
-        </div>
-
-        
-        <div class="card">
-            <h2 class="text-2xl text-primary mb-4">Strategy & Tools</h2>
-            <p class="text-gray-700 mb-6">We implemented a "Lean Tech-Stack Funnel" strategy. This approach minimized technical overhead, focusing on a rapid, data-driven path from ad exposure to lead capture.</p>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 text-center">
-                <div class="p-4 bg-gray-50 rounded-lg shadow-inner">
-                    <div class="text-3xl mb-1">📢</div>
-                    <div class="text-sm font-medium text-primary">Meta Ads</div>
+    <!-- Executive Summary -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title">Executive Summary</h2>
+            <div class="executive-summary">
+                <div class="executive-text">
+                    <p>With a minimal budget of only $67 USD (1M IDR), our Meta Ads campaign successfully reached over 11,000 potential candidates and generated hundreds of qualified agent leads. Precision targeting achieved CTRs up to 15.9% in specific segments, significantly outperforming industry benchmarks.</p>
+                    <p>The campaign focused on recruiting sales agents for property units, utilizing a strategic funnel from ad engagement to WhatsApp group nurturing for optimal conversion.</p>
                 </div>
-                <div class="p-4 bg-gray-50 rounded-lg shadow-inner">
-                    <div class="text-3xl mb-1">📄</div>
-                    <div class="text-sm font-medium text-primary">Landing Page</div>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-lg shadow-inner">
-                    <div class="text-3xl mb-1">📋</div>
-                    <div class="text-sm font-medium text-primary">Google Forms</div>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-lg shadow-inner">
-                    <div class="text-3xl mb-1">💬</div>
-                    <div class="text-sm font-medium text-primary">WhatsApp</div>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-lg shadow-inner">
-                    <div class="text-3xl mb-1">📈</div>
-                    <div class="text-sm font-medium text-primary">Google Sheets</div>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-lg shadow-inner">
-                    <div class="text-3xl mb-1">🎨</div>
-                    <div class="text-sm font-medium text-primary">Canva</div>
-                </div>
-            </div>
-            <p class="text-gray-600 text-sm mt-4">Other tools included Github for version control of the landing page and various copywriting/content creation tools.</p>
-        </div>
-
-        
-        <div class="card">
-            <h2 class="text-2xl text-primary mb-6 text-center">The Funnel Process</h2>
-            <div class="flex flex-col items-center">
-                <div class="w-full max-w-md">
-                    
-                    <div class="bg-gray-50 border-l-4 border-accent p-4 rounded-r-lg shadow-sm">
-                        <h3 class="text-lg font-semibold text-primary">1. Acquisition</h3>
-                        <p class="text-gray-700">Targeted Meta Ads (Facebook & Instagram) drove traffic to a dedicated landing page.</p>
+                <div class="executive-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">11,102</div>
+                        <div class="stat-label">People Reached</div>
                     </div>
-                    <div class="text-primary text-3xl text-center my-2">↓</div>
-                    
-                    <div class="bg-gray-50 border-l-4 border-accent p-4 rounded-r-lg shadow-sm">
-                        <h3 class="text-lg font-semibold text-primary">2. Engagement</h3>
-                        <p class="text-gray-700">The landing page detailed the benefits, leading users to register via an embedded Google Form.</p>
+                    <div class="stat-card">
+                        <div class="stat-number">4.11%</div>
+                        <div class="stat-label">Overall CTR</div>
                     </div>
-                    <div class="text-primary text-3xl text-center my-2">↓</div>
-                    
-                    <div class="bg-gray-50 border-l-4 border-accent p-4 rounded-r-lg shadow-sm">
-                        <h3 class="text-lg font-semibold text-primary">3. Nurturing</h3>
-                        <p class="text-gray-700">Upon submission, leads were redirected to an exclusive WhatsApp Group for onboarding.</p>
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Qualified Leads</div>
                     </div>
-                    <div class="text-primary text-3xl text-center my-2">↓</div>
-                    
-                    <div class="bg-gray-50 border-l-4 border-accent p-4 rounded-r-lg shadow-sm">
-                        <h3 class="text-lg font-semibold text-primary">4. Qualification</h3>
-                        <p class="text-gray-700">All lead data was automatically synced to a Google Sheet for analysis and follow-up.</p>
+                    <div class="stat-card">
+                        <div class="stat-number">$0.055</div>
+                        <div class="stat-label">Cost Per Click</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        
-        <div class="card">
-            <h2 class="text-2xl text-primary mb-6 text-center">Campaign Results & Analysis</h2>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                <div class="bg-primary text-white p-6 rounded-lg text-center shadow-lg">
-                    <div class="text-sm uppercase text-gray-300">Total Spend</div>
-                    <div class="text-4xl font-extrabold text-accent">$60.06</div>
-                    <div class="text-sm text-gray-300">(900,901 IDR)</div>
-                </div>
-                <div class="bg-primary text-white p-6 rounded-lg text-center shadow-lg">
-                    <div class="text-sm uppercase text-gray-300">Total Leads</div>
-                    <div class="text-4xl font-extrabold text-accent">204</div>
-                    <div class="text-sm text-gray-300">Agents Recruited</div>
-                </div>
-                <div class="bg-primary text-white p-6 rounded-lg text-center shadow-lg">
-                    <div class="text-sm uppercase text-gray-300">Actual CPL</div>
-                    <div class="text-4xl font-extrabold text-accent">$0.29</div>
-                    <div class="text-sm text-gray-300">(4,416 IDR / Target: <5,000 IDR)</div>
-                </div>
-            </div>
-
-            <!-- New Section: Meta Ads Benchmark Analysis -->
-            <h3 class="text-xl font-semibold text-primary mb-4 text-center">Meta Ads Performance: Deep Dive</h3>
-            <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">This CPL was achieved through superior ad performance. The data shows clear winners in ad creative and audience segments, proving the campaign's efficiency against industry averages (Est. CTR ~1.5%, Est. CPC $0.15/2,250 IDR).</p>
-            
-            <div class="space-y-8">
-                
-                <div>
-                    <h4 class="text-lg font-semibold text-primary mb-2">Performance by Ad Creative</h4>
-                    <div class="overflow-x-auto rounded-lg shadow-inner">
-                        <table class="w-full min-w-max text-sm text-left text-gray-700 bg-gray-50">
-                            <thead class="text-xs text-primary uppercase bg-gray-100">
-                                <tr>
-                                    <th scope="col" class="py-3 px-4">Ad Name</th>
-                                    <th scope="col" class="py-3 px-4">Spend (IDR)</th>
-                                    <th scope="col" class="py-3 px-4">CTR (All)</th>
-                                    <th scope="col" class="py-3 px-4">CPC (All, IDR)</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y">
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-3 px-4 font-medium text-gray-900">Agent Leads Ad 1</td>
-                                    <td class="py-3 px-4">615,160</td>
-                                    <td class="py-3 px-4 font-bold text-green-700">4.57%</td>
-                                    <td class="py-3 px-4 font-bold text-green-700">787</td>
-                                </tr>
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-3 px-4 font-medium text-gray-900">Agent Leads Ad 2</td>
-                                    <td class="py-3 px-4">111,940</td>
-                                    <td class="py-3 px-4">3.46%</td>
-                                    <td class="py-3 px-4">905</td>
-                                </tr>
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-3 px-4 font-medium text-gray-900">Agent Leads Ad 3</td>
-                                    <td class="py-3 px-4">173,801</td>
-                                    <td class="py-3 px-4">3.29%</td>
-                                    <td class="py-3 px-4">900</td>
-                                </tr>
-                            </tbody>
-                        </table>
+    <!-- Campaign Goals & Strategy -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Campaign Goals & Strategy</h2>
+            <div class="campaign-goals">
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-bullseye"></i>
                     </div>
-                    <p class="text-sm text-gray-600 mt-2 p-3 bg-gray-50 rounded-lg"><strong>Insight:</strong> "Ad 1" was the clear champion, with a <strong>30% higher CTR</strong> and <strong>13% lower CPC</strong> than the other ads, indicating superior creative resonance.</p>
+                    <h3>Project Name</h3>
+                    <p>Agent Recruitment Drive Q1 2025</p>
                 </div>
-
-                
-                <div>
-                    <h4 class="text-lg font-semibold text-primary mb-2">Performance by Age Group (Top 4)</h4>
-                    <div class="overflow-x-auto rounded-lg shadow-inner">
-                        <table class="w-full min-w-max text-sm text-left text-gray-700 bg-gray-50">
-                            <thead class="text-xs text-primary uppercase bg-gray-100">
-                                <tr>
-                                    <th scope="col" class="py-3 px-4">Age Group</th>
-                                    <th scope="col" class="py-3 px-4">Spend (IDR)</th>
-                                    <th scope="col" class="py-3 px-4">CTR (All)</th>
-                                    <th scope="col" class="py-3 px-4">CPC (All, IDR)</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y">
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-3 px-4 font-medium text-gray-900">45-54</td>
-                                    <td class="py-3 px-4">304,369</td>
-                                    <td class="py-3 px-4 font-bold text-green-700">4.67%</td>
-                                    <td class="py-3 px-4 font-bold text-green-700">783</td>
-                                </tr>
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-3 px-4 font-medium text-gray-900">35-44</td>
-                                    <td class="py-3 px-4">290,147</td>
-                                    <td class="py-3 px-4">4.04%</td>
-                                    <td class="py-3 px-4">834</td>
-                                </tr>
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-3 px-4 font-medium text-gray-900">55-64</td>
-                                    <td class="py-3 px-4">172,374</td>
-                                    <td class="py-3 px-4">4.09%</td>
-                                    <td class="py-3 px-4">835</td>
-                                </tr>
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-3 px-4 font-medium text-gray-900">65+</td>
-                                    <td class="py-3 px-4">92,308</td>
-                                    <td class="py-3 px-4 text-red-700">3.47%</td>
-                                    <td class="py-3 px-4 text-red-700">913</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-trophy"></i>
                     </div>
-                    <p class="text-sm text-gray-600 mt-2 p-3 bg-gray-50 rounded-lg"><strong>Insight:</strong> The <strong>45-54 age group</strong> was the most efficient and engaged "core audience," delivering the highest CTR and lowest CPC.</p>
+                    <h3>Primary Goal</h3>
+                    <p>Lead Generation for Agent Recruitment</p>
                 </div>
-
-                
-                <div>
-                    <h4 class="text-lg font-semibold text-primary mb-2">Performance by Gender</h4>
-                    <div class="overflow-x-auto rounded-lg shadow-inner">
-                        <table class="w-full min-w-max text-sm text-left text-gray-700 bg-gray-50">
-                            <thead class="text-xs text-primary uppercase bg-gray-100">
-                                <tr>
-                                    <th scope="col" class="py-3 px-4">Gender</th>
-                                    <th scope="col" class="py-3 px-4">Spend (IDR)</th>
-                                    <th scope="col" class="py-3 px-4">CTR (All)</th>
-                                    <th scope="col" class.="py-3 px-4">CPC (All, IDR)</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y">
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-3 px-4 font-medium text-gray-900">Male</td>
-                                    <td class="py-3 px-4">541,745</td>
-                                    <td class="py-3 px-4 font-bold text-green-700">4.49%</td>
-                                    <td class="py-3 px-4 font-bold text-green-700">794</td>
-                                </tr>
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-3 px-4 font-medium text-gray-900">Female</td>
-                                    <td class="py-3 px-4">310,240</td>
-                                    <td class="py-3 px-4">3.39%</td>
-                                    <td class="py-3 px-4">890</td>
-                                </tr>
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-3 px-4 font-medium text-gray-900">Unknown</td>
-                                    <td class="py-3 px-4">48,916</td>
-                                    <td class="py-3 px-4">3.51%</td>
-                                    <td class="py-3 px-4">836</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-chess-knight"></i>
                     </div>
-                    <p class="text-sm text-gray-600 mt-2 p-3 bg-gray-50 rounded-lg"><strong>Insight:</strong> The <strong>male audience</strong> was significantly more responsive, with a <strong>32% higher CTR</strong> and <strong>11% lower CPC</strong>, making them the primary target segment.</p>
+                    <h3>Strategy</h3>
+                    <p>Multi-ad Creative with Detailed Demographic Targeting</p>
                 </div>
-
-            </div>
-            <!-- End of New Section -->
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-                
-                <div>
-                    <h3 class="text-xl font-semibold text-primary mb-3 text-center">Lead Experience Level</h3>
-                    <p class="text-gray-700 text-sm mb-4">A key question was the experience level of the leads. The campaign successfully attracted a large base of new agents, identifying a major opportunity for the client to focus on training and development.</p>
-                    <div class="chart-container">
-                        <canvas id="leadQualityChart"></canvas>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-chart-bar"></i>
                     </div>
+                    <h3>Data Points</h3>
+                    <p>6 Days Duration<br>$67 USD Budget<br>1 Campaign, 1 Ad Set, 3 Ads<br>Meta Ads Platform</p>
                 </div>
-                
-                <div>
-                    <h3 class="text-xl font-semibold text-primary mb-3 text-center">Digital Marketing Readiness</h3>
-                    <p class="text-gray-700 text-sm mb-4">We also assessed their current marketing activity. An overwhelming <span class="font-semibold">80%</span> of leads were already "digitally-literate," using platforms like WA, IG, or TikTok, making them ideal candidates for a modern, digital-first agency.</p>
-                    <div class="chart-container">
-                        <canvas id="digitalLiteracyChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="mt-8 p-6 bg-gray-50 rounded-lg border-l-4 border-accent">
-                <h3 class="text-xl font-semibold text-primary mb-2">Lesson Learned & Key Insight</h3>
-                <p class="text-gray-700">The campaign was an outstanding success, achieving an ultra-low CPL 54% below the target. The most valuable insight was the lead composition: <span class="font-semibold">72% of leads are new to the industry</span>. This allowed the client to pivot their onboarding strategy from simple recruitment to a "New Agent Training Program," dramatically increasing retention and long-term value.</p>
             </div>
         </div>
+    </section>
 
-        
-        <div class="card bg-accent text-primary p-8 text-center">
-            <h2 class="text-3xl font-extrabold mb-2">PRAMA DANAWIRA</h2>
-            <p class="text-xl font-medium mb-6">Digital Marketing & Funnel Specialist</p>
-            <p class="text-lg font-medium">Ready to launch your next high-efficiency lead funnel? Let's connect.</p>
+    <!-- Key Performance Metrics -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title">Key Performance Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">11,102</div>
+                    <div class="metric-label">Reach</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">26,615</div>
+                    <div class="metric-label">Impressions</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">4.11%</div>
+                    <div class="metric-label">CTR (All)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">$0.055</div>
+                    <div class="metric-label">CPC (All)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">2.4x</div>
+                    <div class="metric-label">Frequency</div>
+                </div>
+            </div>
         </div>
+    </section>
 
-    </div>
+    <!-- Industry Comparison -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Performance vs Industry Benchmarks</h2>
+            <div class="comparison">
+                <div class="comparison-card">
+                    <h3 class="comparison-title">CPC (Cost Per Click)</h3>
+                    <div class="comparison-item">
+                        <span>Our Result:</span>
+                        <span class="our-result">$0.055</span>
+                    </div>
+                    <div class="comparison-item">
+                        <span>Industry Average:</span>
+                        <span class="industry-avg">$0.10 - $0.17</span>
+                    </div>
+                    <div class="callout">45-67% MORE EFFICIENT than industry benchmarks</div>
+                </div>
+                <div class="comparison-card">
+                    <h3 class="comparison-title">CTR (Click-Through Rate)</h3>
+                    <div class="comparison-item">
+                        <span>Our Result:</span>
+                        <span class="our-result">4.11%</span>
+                    </div>
+                    <div class="comparison-item">
+                        <span>Industry Average:</span>
+                        <span class="industry-avg">1.5-2.5%</span>
+                    </div>
+                    <div class="callout">64% HIGHER than industry average</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sales Funnel -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title">Customer Journey & Conversion Funnel</h2>
+            <div class="funnel">
+                <div class="funnel-stage">
+                    <div class="stage-number">11,102</div>
+                    <div class="stage-description">Awareness - Audience Reached</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="stage-number">~1,093</div>
+                    <div class="stage-description">Consideration - Estimated Clicks</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="stage-number">100+</div>
+                    <div class="stage-description">Conversion - Form Registrations</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="stage-number">WhatsApp Group</div>
+                    <div class="stage-description">Nurturing - Agent Onboarding</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Results & ROI -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Final Results & ROI</h2>
+            <div class="executive-summary">
+                <div class="executive-text">
+                    <p>The campaign delivered exceptional results with a minimal investment, proving that strategic targeting and compelling creatives can generate high-quality leads even with budget constraints.</p>
+                    <p>With a cost of approximately $0.60 per qualified lead, the campaign demonstrated 3x higher efficiency than initial targets and established a scalable model for future recruitment drives.</p>
+                </div>
+                <div class="executive-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Total Leads</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$67</div>
+                        <div class="stat-label">Total Investment</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$0.60</div>
+                        <div class="stat-label">Cost Per Lead</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1000%+</div>
+                        <div class="stat-label">Potential ROI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience Analysis -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title">Target Audience Analysis</h2>
+            <div class="campaign-goals">
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Best Demographics</h3>
+                    <p>Men aged 35-54 years</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Geographic Focus</h3>
+                    <p>Indonesia (Urban Areas)</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Behavioral Traits</h3>
+                    <p>Interested in property business opportunities & sales careers</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Optimization Tactics</h3>
+                    <p>• Focus on men 35-54<br>• A/B testing 3 creatives<br>• Dayparting for optimal timing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Factors -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Key Success Factors</h2>
+            <div class="success-factors">
+                <div class="factor-card">
+                    <div class="factor-number">1</div>
+                    <h3>Precision Targeting</h3>
+                    <p>Measurable demographic segmentation by age and gender</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-number">2</div>
+                    <h3>Creative Variation</h3>
+                    <p>3 different ads for performance testing and optimization</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-number">3</div>
+                    <h3>Budget Efficiency</h3>
+                    <p>Optimal allocation with daily caps and strategic pacing</p>
+                </div>
+                <div class="factor-card">
+                    <div class="factor-number">4</div>
+                    <h3>Integrated Funnel</h3>
+                    <p>Seamless transition from form to WhatsApp nurturing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section-light">
+        <div class="container">
+            <h2 class="cta-title">Ready to Transform Your Recruitment Strategy?</h2>
+            <p>Let us help you achieve similar results with data-driven Meta Ads campaigns tailored to your business goals.</p>
+            <a href="#contact" class="cta-button">Schedule Your Strategy Consultation</a>
+            <p style="margin-top: 1rem; font-style: italic;">Digital Marketing Team - Growth Marketing Specialists</p>
+        </div>
+    </section>
 
     <script>
-        
-        function createChart(ctx, type, labels, data, title) {
-            const chartColors = ['#FFD700', '#0D223F', '#4A90E2', '#E84A5F'];
+        // Simple animation for metric cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const metricCards = document.querySelectorAll('.metric-card, .stat-card');
             
-            return new Chart(ctx, {
-                type: type,
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: title,
-                        data: data,
-                        backgroundColor: chartColors,
-                        borderColor: '#ffffff',
-                        borderWidth: 2,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                font: {
-                                    family: 'Poppins'
-                                }
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                title: function(tooltipItems) {
-                                    
-                                    const item = tooltipItems[0];
-                                    
-                                    let label = item.chart.data.labels[item.dataIndex];
-                                    
-                                    if (Array.isArray(label)) {
-                                      
-                                      return label.join(' ');
-                                    } else {
-                                      
-                                      return label;
-                                    }
-                                }
-                            }
-                        }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
                     }
-                }
+                });
+            }, { threshold: 0.1 });
+            
+            metricCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
             });
-        }
-
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            const leadQualityCtx = document.getElementById('leadQualityChart').getContext('2d');
-            createChart(
-                leadQualityCtx,
-                'doughnut',
-                ['Newbie', 'Tried (No Results)', 'Some Experience', 'Professional'],
-                [99, 48, 42, 15],
-                'Lead Experience Level'
-            );
-
-            
-            const digitalLiteracyCtx = document.getElementById('digitalLiteracyChart').getContext('2d');
-            createChart(
-                digitalLiteracyCtx,
-                'doughnut',
-                [['Digitally', 'Literate'], 'Not Yet Active'],
-                [163, 41],
-                'Digital Marketing Readiness'
-            );
         });
     </script>
-
 </body>
 </html>
