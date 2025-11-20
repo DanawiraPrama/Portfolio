@@ -8,41 +8,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        .font-inter {
-            font-family: 'Inter', sans-serif;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 45vh;
-        }
-        @media (max-width: 768px) {
-            .chart-container {
-                height: 300px;
-            }
-        }
+        body { font-family: 'Poppins', sans-serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; width: 100%; max-width: 900px; margin-left: auto; margin-right: auto; height: 350px; max-height: 45vh; }
+        @media (max-width: 768px) { .chart-container { height: 300px; } }
     </style>
     <script>
         tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0D223F',
-                        accent: '#FFD700',
-                    },
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                        poppins: ['Poppins', 'sans-serif'],
-                    }
-                }
-            }
+            theme: { extend: { colors: { primary: '#0D223F', accent: '#FFD700', }, fontFamily: { inter: ['Inter', 'sans-serif'], poppins: ['Poppins', 'sans-serif'], } } }
         }
     </script>
 </head>
@@ -52,10 +25,12 @@
         
         <section id="hook" class="text-center py-16 px-6">
             <h1 class="font-inter font-black text-4xl md:text-5xl mb-4">Hajj Pilgrim Acquisition Campaign</h1>
-            <p class="text-gray-300 text-lg md:text-xl mb-8">Generated</p>
-            <div class="text-7xl md:text-9xl font-inter font-black text-accent mb-4">1,071</div>
-            <div class="text-4xl md:text-5xl font-inter font-bold text-white mb-8">Qualified Leads</div>
-            <p class="text-2xl font-poppins text-gray-300">in 3 Months</p>
+            <p class="text-gray-300 text-lg md:text-xl mb-8">A data-driven strategy for high-ticket travel</p>
+            
+            <!-- REVENUE & ROAS HOOK -->
+            <div class="text-6xl md:text-8xl font-inter font-black text-accent mb-4">$21,800</div>
+            <div class="text-3xl md:text-4xl font-inter font-bold text-white mb-8">Revenue Generated</div>
+            <p class="text-xl font-poppins text-accent mb-8">49.42X Return on Ad Spend</p>
 
             <div class="mt-6 bg-white/10 rounded-full inline-flex items-center px-4 py-2">
                 <span class="text-lg" role="img" aria-label="Indonesian Flag">🇮🇩</span>
@@ -64,7 +39,7 @@
             
             <div class="mt-12 bg-gray-800/50 rounded-lg p-4 inline-block">
                 <span class="text-accent font-bold">My Role:</span>
-                <span class="text-white text-lg">Meta Ads & Funnel Strategist</span>
+                <span class="text-white text-lg">Sole Strategist: Ads, Funnel & Optimization</span>
             </div>
         </section>
 
@@ -73,12 +48,12 @@
                 <div class="bg-white/10 p-6 rounded-lg shadow-xl border-t-4 border-accent">
                     <h2 class="font-inter font-bold text-3xl mb-4 text-accent">🎯</h2>
                     <h3 class="font-inter font-bold text-2xl mb-3">The Challenge</h3>
-                    <p class="text-gray-300">A high-profile Travel Agent needed to generate high-quality leads for their premium Hajj packages. The key challenge was cutting through the noise in a highly competitive market and identifying individuals with clear intent and financial capacity.</p>
+                    <p class="text-gray-300">A premium travel agent needed to cut through a competitive market to generate high-intent leads for their high-ticket Hajj packages. The goal was not just leads, but profitable conversions.</p>
                 </div>
                 <div class="bg-white/10 p-6 rounded-lg shadow-xl border-t-4 border-accent">
                     <h2 class="font-inter font-bold text-3xl mb-4 text-accent">🏆</h2>
                     <h3 class="font-inter font-bold text-2xl mb-3">The Goal</h3>
-                    <p class="text-gray-300">The primary objective was to acquire over 1,000 qualified leads within a 3-month window (July-Sept 2025). The key performance indicator was a target Cost Per Lead (CPL) of under $0.50, ensuring a profitable acquisition funnel.</p>
+                    <p class="text-gray-300">Generate over 1,000 qualified leads within 3 months (July-Sept 2023) with a target Cost Per Lead (CPL) under $0.50, ensuring a profitable and scalable customer acquisition funnel.</p>
                 </div>
             </div>
         </section>
@@ -90,158 +65,135 @@
                     <div>
                         <h3 class="font-inter font-bold text-xl mb-3 border-b-2 border-accent pb-2">Core Strategy</h3>
                         <p class="font-bold text-lg text-primary mb-2">"Community Trust" Funnel</p>
-                        <p class="text-gray-700">This strategy focused on using authentic video testimonials and educational content (Hajj preparation guide) to build trust and authority before making a hard pitch.</p>
+                        <p class="text-gray-700">Leveraged authentic video testimonials and an educational lead magnet ("Hajj Preparation Guide") to build authority and trust before any sales pitch, focusing on high-intent audiences.</p>
                     </div>
                     <div>
-                        <h3 class="font-inter font-bold text-xl mb-3 border-b-2 border-accent pb-2">Tools Used</h3>
+                        <h3 class="font-inter font-bold text-xl mb-3 border-b-2 border-accent pb-2">Tools & Platforms</h3>
                         <ul class="list-disc list-inside text-gray-700 space-y-1">
                             <li>Meta Ads (Facebook & Instagram)</li>
-                            <li>Custom Landing Page</li>
-                            <li>WhatsApp Business API</li>
-                            <li>Canva & Capcut (Content)</li>
-                            <li>GitHub (LP Version Control)</li>
+                            <li>Custom High-Converting Landing Page</li>
+                            <li>WhatsApp Business API for Nurturing</li>
+                            <li>Canva & Capcut for Creative Production</li>
                         </ul>
                     </div>
                     <div>
-                        <h3 class="font-inter font-bold text-xl mb-3 border-b-2 border-accent pb-2">Content Assets</h3>
+                        <h3 class="font-inter font-bold text-xl mb-3 border-b-2 border-accent pb-2">Key Content Assets</h3>
                         <ul class="list-disc list-inside text-gray-700 space-y-1">
                             <li>Video Testimonials (Darussalam Poster)</li>
-                            <li>Static Carousels (Darussalam Carousel, Adn Carousel)</li>
+                            <li>Interactive Carousels (Darussalam Carousel)</li>
                             <li>Lead Magnet: "Hajj Preparation Guide"</li>
-                            <li>High-Conversion Landing Page</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- FULLY UPDATED FUNNEL SECTION -->
         <section id="funnel" class="py-12 px-6">
-            <h2 class="font-inter font-bold text-4xl text-center mb-12">The Funnel Process</h2>
+            <h2 class="font-inter font-bold text-4xl text-center mb-12">The Full Conversion Funnel</h2>
             <div class="flex flex-col items-center space-y-4">
-                
-                <div class="w-full md:w-3/4 bg-white/10 p-6 rounded-lg shadow-lg text-center">
-                    <span class="text-2xl mr-3">📢</span>
-                    <span class="font-inter font-bold text-xl">1. Acquisition</span>
-                    <p class="text-gray-300 mt-2">Drove traffic from Meta Ads (video & carousel) targeting lookalikes of past customers and users with high-intent keywords.</p>
-                </div>
-
+                <div class="w-full md:w-3/4 bg-white/10 p-6 rounded-lg shadow-lg text-center"><span class="text-2xl mr-3">📢</span><span class="font-inter font-bold text-xl">1. Targeted Acquisition</span><p class="text-gray-300 mt-2">Drove traffic via Meta Ads, targeting lookalike audiences and users with high-intent interests, focusing on the 35-54 age demographic.</p></div>
                 <div class="text-accent text-3xl font-bold">▼</div>
-
-                <div class="w-full md:w-3/4 bg-white/10 p-6 rounded-lg shadow-lg text-center">
-                    <span class="text-2xl mr-3">📥</span>
-                    <span class="font-inter font-bold text-xl">2. Engagement</span>
-                    <p class="text-gray-300 mt-2">Users land on a dedicated page offering a free Hajj Preparation Guide in exchange for their contact details (Name, Email, WhatsApp).</p>
-                </div>
-                
+                <div class="w-full md:w-3/4 bg-white/10 p-6 rounded-lg shadow-lg text-center"><span class="text-2xl mr-3">📥</span><span class="font-inter font-bold text-xl">2. Lead Capture</span><p class="text-gray-300 mt-2">Users landed on a dedicated page offering a free Hajj guide in exchange for their contact details, generating <b>1,071 total leads</b>.</p></div>
                 <div class="text-accent text-3xl font-bold">▼</div>
-
-                <div class="w-full md:w-3/4 bg-white/10 p-6 rounded-lg shadow-lg text-center">
-                    <span class="text-2xl mr-3">📧</span>
-                    <span class="font-inter font-bold text-xl">3. Nurturing</span>
-                    <p class="text-gray-300 mt-2">Leads received the guide via WhatsApp/Email, followed by a short drip campaign of testimonials and package highlights to build trust.</p>
-                </div>
-
+                <div class="w-full md:w-3/4 bg-white/10 p-6 rounded-lg shadow-lg text-center"><span class="text-2xl mr-3">📧</span><span class="font-inter font-bold text-xl">3. Engagement & Nurturing</span><p class="text-gray-300 mt-2">Leads received the guide via WhatsApp, followed by a drip campaign. <b>350 leads (32.7%)</b> started a conversation, showing high intent.</p></div>
                 <div class="text-accent text-3xl font-bold">▼</div>
-
-                <div class="w-full md:w-3/4 bg-white/10 p-6 rounded-lg shadow-lg text-center">
-                    <span class="text-2xl mr-3">🔍</span>
-                    <span class="font-inter font-bold text-xl">4. Qualification</span>
-                    <p class="text-gray-300 mt-2">An agent follows up via WhatsApp to answer questions and qualify leads based on their readiness and package interest.</p>
-                </div>
-
+                <div class="w-full md:w-3/4 bg-white/10 p-6 rounded-lg shadow-lg text-center"><span class="text-2xl mr-3">🤝</span><span class="font-inter font-bold text-xl">4. Sales Qualification</span><p class="text-gray-300 mt-2">The sales team followed up with the 350 engaged leads, successfully booking <b>10 qualified prospects</b> for in-person consultations.</p></div>
                 <div class="text-accent text-3xl font-bold">▼</div>
-
-                <div class="w-full md:w-3/4 bg-accent p-6 rounded-lg shadow-lg text-center text-primary">
-                    <span class="text-2xl mr-3">✅</span>
-                    <span class="font-inter font-bold text-xl">5. Conversion</span>
-                    <p class="mt-2">Qualified leads are booked for a consultation or direct package registration, moving them from 'lead' to 'customer'.</p>
-                </div>
-
+                <div class="w-full md:w-3/4 bg-accent p-6 rounded-lg shadow-lg text-center text-primary"><span class="text-2xl mr-3">✅</span><span class="font-inter font-bold text-xl">5. Conversion</span><p class="mt-2">Result: <b>2 Darussalam Hajj packages sold</b> at $10,900 each, generating <b>$21,800 in revenue</b> and a <b>49.42X ROAS</b>.</p></div>
             </div>
         </section>
 
         <section id="results" class="py-12 px-6">
-            <h2 class="font-inter font-bold text-4xl text-center mb-12">The Proof: Final Results</h2>
+            <h2 class="font-inter font-bold text-4xl text-center mb-12">The Proof: Data-Driven Results</h2>
             
+            <!-- UPDATED METRICS SECTION -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12 text-center">
                 <div class="bg-white text-primary p-6 rounded-lg shadow-xl">
-                    <div class_models="text-gray-600 mb-1">Total Leads</div>
+                    <div class="text-gray-600 mb-1">Total Leads</div>
                     <div class="text-4xl font-inter font-bold">1,071</div>
+                </div>
+                <div class="bg-white text-primary p-6 rounded-lg shadow-xl">
+                    <div class="text-gray-600 mb-1">Engaged Leads</div>
+                    <div class="text-4xl font-inter font-bold text-accent">350</div>
+                    <div class="text-sm text-gray-500">(32.7% Engagement)</div>
+                </div>
+                <div class="bg-white text-primary p-6 rounded-lg shadow-xl">
+                    <div class="text-gray-600 mb-1">In-Person Meetings</div>
+                    <div class="text-4xl font-inter font-bold text-blue-600">10</div>
+                    <div class="text-sm text-gray-500">(2.86% of Engaged)</div>
                 </div>
                 <div class="bg-white text-primary p-6 rounded-lg shadow-xl">
                     <div class="text-gray-600 mb-1">Final CPL</div>
                     <div class="text-4xl font-inter font-bold text-green-600">$0.41</div>
-                    <div class="text-sm text-gray-500">(Target: $0.50)</div>
-                </div>
-                <div class="bg-white text-primary p-6 rounded-lg shadow-xl">
-                    <div class="text-gray-600 mb-1">Total Spend</div>
-                    <div class="text-4xl font-inter font-bold">$440.88</div>
-                </div>
-                <div class="bg-white text-primary p-6 rounded-lg shadow-xl">
-                    <div class="text-gray-600 mb-1">Link CTR</div>
-                    <div class="text-4xl font-inter font-bold">1.01%</div>
+                    <div class="text-sm text-gray-500">(18% under target)</div>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
                 <div class="bg-white/10 p-6 rounded-lg shadow-xl">
-                    <h3 class="font-inter font-bold text-2xl mb-4 text-center">Ad Spend by Age Group</h3>
-                    <p class="text-gray-300 text-center mb-4 text-sm">Analysis shows the 35-44 and 45-54 age groups were the most valuable, aligning with the target demographic for Hajj packages.</p>
-                    <div class="chart-container">
-                        <canvas id="ageChart"></canvas>
-                    </div>
+                    <h3 class="font-inter font-bold text-2xl mb-4 text-center">Ad Spend by Target Age</h3>
+                    <p class="text-gray-300 text-center mb-4 text-sm">Budget was strategically focused on the 35-54 age group, the core demographic with the financial capacity for premium Hajj packages.</p>
+                    <div class="chart-container"><canvas id="ageChart"></canvas></div>
                 </div>
-
                 <div class="bg-white/10 p-6 rounded-lg shadow-xl">
-                    <h3 class="font-inter font-bold text-2xl mb-4 text-center">Top Performing Ad Sets (by Leads)</h3>
-                    <p class="text-gray-300 text-center mb-4 text-sm">The ad creative comparison is stark. The "Darussalam" series (Poster & Carousel), using authentic testimonials, generated 70% of all leads. In contrast, the generic "Adn Carousel" produced only 100 leads.</p>
-                    <div class="chart-container">
-                        <canvas id="adSetChart"></canvas>
-                    </div>
+                    <h3 class="font-inter font-bold text-2xl mb-4 text-center">Creative Performance: A Tale of Two Ads</h3>
+                    <p class="text-gray-300 text-center mb-4 text-sm">The data is unequivocal: Authentic social proof ("Darussalam" series) crushed generic creative ("Adn"), generating 70% of all leads.</p>
+                    <div class="chart-container"><canvas id="adSetChart"></canvas></div>
                 </div>
-
                 <div class="bg-white/10 p-6 rounded-lg shadow-xl lg:col-span-2">
-                    <h3 class="font-inter font-bold text-2xl mb-4 text-center">Monthly Leads vs. Spend</h3>
-                    <p class="text-gray-300 text-center mb-4 text-sm">The campaign scaled effectively in August, maintaining a stable CPL even with increased spend, before optimizing for profitability in September.</p>
-                    <div class="chart-container">
-                        <canvas id="trendChart"></canvas>
-                    </div>
+                    <h3 class="font-inter font-bold text-2xl mb-4 text-center">Monthly Performance: Leads vs. Spend</h3>
+                    <p class="text-gray-300 text-center mb-4 text-sm">The campaign scaled effectively in August, increasing spend while maintaining a stable CPL, before optimizing for profitability in September.</p>
+                    <div class="chart-container"><canvas id="trendChart"></canvas></div>
                 </div>
             </div>
 
             <div class="mt-12 bg-white text-primary p-8 rounded-lg shadow-2xl">
-                <h3 class="font-inter font-bold text-2xl mb-3">Analysis & Lesson Learned</h3>
+                <h3 class="font-inter font-bold text-2xl mb-3">Final Analysis & Strategic Takeaways</h3>
+                
+                <p class="text-gray-700">The "Community Trust" funnel was a resounding success, beating the CPL target by 18% and achieving a final CPL of <b>$0.41</b>. More importantly, the campaign generated a staggering <b>49.42X ROAS</b>, proving the leads were not only cheap but also highly valuable.</p>
 
-                <div class="mb-4 bg-primary/10 p-4 rounded-lg border-l-4 border-accent">
-                    <h4 class="font-inter font-bold text-lg text-primary">Market Context: Indonesia</h4>
-                    <p class="text-gray-600 text-sm mt-1">Please note: This case study was conducted in the Indonesian market. The ad spend and CPL ($0.41) are specific to this region, which typically has lower media costs compared to North American or European markets. The <i>strategy</i> and <i>percentage-based results</i> (like CTR and funnel effectiveness) are universally applicable.</p>
+                <!-- REVISED AND HIGHLIGHTED SECTION -->
+                <div class="mt-6 bg-accent/20 p-4 rounded-lg border-l-4 border-accent">
+                    <h4 class="font-inter font-bold text-lg text-primary">Key Finding: A Full-Funnel Success Story</h4>
+                    <p class="text-gray-700 mt-2">This campaign's true strength is its performance across the entire funnel. From <b>1,071 total leads</b>, we successfully nurtured <b>350 into conversations</b>, which the sales team converted into <b>10 in-person meetings</b>, ultimately closing <b>2 high-value deals</b>. This demonstrates a seamless transition from digital marketing to real-world sales.</p>
                 </div>
-                
-                <p class="text-gray-700">The data clearly shows the "Community Trust" funnel was a major success. The campaign beat the target CPL by 18%, achieving a final CPL of <b>$0.41</b>. Our overall link CTR of <b>1.01%</b> is highly competitive with Meta's travel industry benchmarks.</p>
-                <p class="text-gray-700 mt-4">The most significant finding was the clear performance gap between creatives. The <b>'Darussalam' (Poster & Carousel)</b> series, featuring authentic testimonials, generated <b>70% of all leads (750)</b>. The 'Darussalam Poster' (video) was the top performer with 400 leads. In contrast, the more generic <b>'Adn Carousel'</b> generated only <b>100 leads</b>.</p>
-                
-                <h4 class="font-inter font-bold text-xl mt-6 mb-2">Benchmark vs. Meta Standards</h4>
-                <p class="text-gray-700">To contextualize these results, we compared them against Meta's industry benchmarks for travel:</p>
+
+                <div class="mt-6 bg-accent/20 p-4 rounded-lg border-l-4 border-accent">
+                    <h4 class="font-inter font-bold text-lg text-primary">Key Finding: Authenticity is the Ultimate Conversion Driver</h4>
+                    <p class="text-gray-700 mt-2">The data speaks for itself. The <b>'Darussalam' series</b> (Poster & Carousel), featuring authentic customer testimonials, generated <b>750 leads (70% of total)</b>. In stark contrast, the generic <b>'Adn Carousel'</b> produced only <b>100 leads (9.3% of total)</b>. This proves that for high-trust purchases, social proof is not just a nice-to-have; it's the core of the strategy.</p>
+                </div>
+
+                <h4 class="font-inter font-bold text-xl mt-6 mb-2">Benchmark vs. Meta Travel Standards</h4>
                 <ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">
-                    <li><b>Link CTR (Click-Through Rate):</b> Our campaign's overall link CTR was <b>1.01%</b>. This is right in line with the travel industry average, which typically hovers around <b>0.9% - 1.2%</b>. This indicates our ads were relevant and visually appealing to the target audience.</li>
-                    <li><b>Cost Per Lead (CPL):</b> Our final CPL was <b>$0.41</b>. For a lead magnet (guide download) in the competitive travel sector, this is an exceptionally low and highly efficient result, far outperforming common CPL benchmarks which can often be several dollars.</li>
+                    <li><b>Link CTR:</b> Our best creative (<b>Darussalam Carousel</b>) achieved a <b>1.56% CTR</b>, significantly outperforming the Meta travel benchmark of 0.90% - 1.20%.</li>
+                    <li><b>Cost Per Lead (CPL):</b> Our <b>$0.41 CPL</b> is exceptionally low for the travel sector, demonstrating hyper-efficient targeting and an irresistible offer.</li>
+                    <li><b>Return on Ad Spend (ROAS):</b> A <b>49.42X ROAS</b> is virtually unheard of. It far exceeds the "good" benchmark of 3-5X, showcasing the immense profitability of this approach.</li>
                 </ul>
 
-                <p class="text-gray-700 mt-4"><span class="font-bold">Key Takeaway:</span> For high-trust, high-ticket services like Hajj, authentic social proof (the 'Darussalam' video) dramatically outperforms generic corporate creative ('Adn'). Future campaigns should be social-proof-first.</p>
+                <div class="mt-6 bg-primary/10 p-4 rounded-lg border-l-4 border-accent">
+                    <h4 class="font-inter font-bold text-lg text-primary">Market Context: Indonesia</h4>
+                    <p class="text-gray-600 text-sm mt-1">This campaign was executed in the Indonesian market, which typically has lower media costs. The <b>$0.41 CPL</b> reflects this. However, the <b>strategy, 70/30 creative split, 32.7% engagement rate, and 49.42X ROAS</b> are universally applicable insights into the power of community trust and authentic marketing.</p>
+                </div>
+
+                <p class="text-gray-700 mt-4"><span class="font-bold">Strategic Takeaway:</span> For high-ticket services, prioritize building trust with authentic social proof over generic branding. The quality of leads, evidenced by the progression from digital clicks to in-person meetings and a massive ROAS, is the ultimate measure of success.</p>
+
+                <!-- NEW SECTION ON FUTURE POTENTIAL -->
+                <div class="mt-6 bg-gray-100 p-4 rounded-lg border-l-4 border-gray-400">
+                    <h4 class="font-inter font-bold text-lg text-primary">Future Potential</h4>
+                    <p class="text-gray-600 text-sm mt-1">The <b>350 engaged WhatsApp leads</b> generated remain a valuable asset for future sales. While my involvement concluded after the initial campaign, these leads represent a significant pipeline for continued follow-up and conversion by the sales team.</p>
+                </div>
             </div>
         </section>
 
         <section id="cta" class="py-20 px-6">
             <div class="bg-accent text-primary p-10 rounded-lg shadow-2xl text-center">
-                <h2 class="font-inter font-black text-3xl md:text-4xl mb-4">Ready to Launch Your Next Success?</h2>
-                <p class="text-xl text-primary/80 mb-8">Let's build a high-conversion funnel for your business.</p>
+                <h2 class="font-inter font-black text-3xl md:text-4xl mb-4">Ready to Build Your Profitable Funnel?</h2>
+                <p class="text-xl text-primary/80 mb-8">Let's apply this data-driven approach to grow your business.</p>
                 <div class="text-center">
                     <h3 class="font-inter font-bold text-2xl text-primary">PRAMA DANAWIRA</h3>
-                    <p class="text-lg text-primary/90">Data-Driven Funnel & Ads Strategist</p>
-                    <a href="#" class="mt-6 inline-block bg-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105">
-                        Get in Touch
-                    </a>
+                    <p class="text-lg text-primary/90">Data-Driven Funnel & Performance Marketing Strategist</p>
+                    <a href="#" class="mt-6 inline-block bg-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105">Get In Touch</a>
                 </div>
             </div>
         </section>
@@ -257,158 +209,27 @@
             const grayColor = '#9CA3AF';
             const whiteColor = '#FFFFFF';
 
-            function wrapLabel(label, maxWidth = 16) {
-                if (label.length <= maxWidth) {
-                    return label;
-                }
-                const words = label.split(' ');
-                const lines = [];
-                let currentLine = '';
-                for (const word of words) {
-                    if ((currentLine + word).length <= maxWidth) {
-                        currentLine += (currentLine ? ' ' : '') + word;
-                    } else {
-                        lines.push(currentLine);
-                        currentLine = word;
-                    }
-                }
-                lines.push(currentLine);
-                return lines;
-            }
-
             const tooltipCallback = {
                 plugins: {
-                    tooltip: {
-                        callbacks: {
-                            title: function(tooltipItems) {
-                                const item = tooltipItems[0];
-                                let label = item.chart.data.labels[item.dataIndex];
-                                if (Array.isArray(label)) {
-                                  return label.join(' ');
-                                } else {
-                                  return label;
-                                }
-                            }
-                        }
-                    },
-                    legend: {
-                        labels: {
-                            color: chartLabelColor
-                        }
-                    }
+                    tooltip: { callbacks: { title: function(tooltipItems) { const item = tooltipItems[0]; let label = item.chart.data.labels[item.dataIndex]; return Array.isArray(label) ? label.join(' ') : label; } } },
+                    legend: { labels: { color: chartLabelColor } }
                 }
             };
-
             const baseChartOptions = (scales = {}) => ({
-                ...tooltipCallback,
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    ...scales,
-                    x: {
-                        ...scales.x,
-                        ticks: { color: chartLabelColor, maxRotation: 0, minRotation: 0, autoSkip: true },
-                        grid: { color: gridLineColor }
-                    },
-                    y: {
-                        ...scales.y,
-                        beginAtZero: true,
-                        ticks: { color: chartLabelColor },
-                        grid: { color: gridLineColor }
-                    }
+                ...tooltipCallback, responsive: true, maintainAspectRatio: false, scales: {
+                    ...scales, x: { ...scales.x, ticks: { color: chartLabelColor, maxRotation: 0, minRotation: 0, autoSkip: true }, grid: { color: gridLineColor } },
+                    y: { ...scales.y, beginAtZero: true, ticks: { color: chartLabelColor }, grid: { color: gridLineColor } }
                 }
             });
 
             const ageChartCtx = document.getElementById('ageChart');
-            if (ageChartCtx) {
-                new Chart(ageChartCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['18-24', '25-34', '35-44', '45-54', '55-64+'],
-                        datasets: [{
-                            label: 'Ad Spend (USD)',
-                            data: [15.20, 55.80, 160.45, 130.10, 79.33],
-                            backgroundColor: [
-                                grayColor,
-                                blueColor,
-                                accentColor,
-                                blueColor,
-                                grayColor
-                            ],
-                            borderColor: '#0D223F',
-                            borderWidth: 2
-                        }]
-                    },
-                    options: baseChartOptions()
-                });
-            }
+            if (ageChartCtx) new Chart(ageChartCtx, { type: 'bar', data: { labels: ['18-24', '25-34', '35-44', '45-54', '55-64+'], datasets: [{ label: 'Ad Spend (USD)', data: [15.20, 55.80, 160.45, 130.10, 79.33], backgroundColor: [grayColor, blueColor, accentColor, blueColor, grayColor], borderColor: '#0D223F', borderWidth: 2 }] }, options: baseChartOptions() });
             
             const adSetChartCtx = document.getElementById('adSetChart');
-            if (adSetChartCtx) {
-                const adSetLabels = ['Darussalam Poster', 'Darussalam Carousel', 'Haji - Bag 1 & 2', 'Adn Carousel'];
-                new Chart(adSetChartCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: adSetLabels.map(label => wrapLabel(label)),
-                        datasets: [{
-                            label: 'Leads',
-                            data: [400, 350, 221, 100],
-                            backgroundColor: [accentColor, blueColor, whiteColor, grayColor],
-                            borderColor: '#0D223F',
-                            borderWidth: 4,
-                            hoverOffset: 4
-                        }]
-                    },
-                    options: {
-                        ...tooltipCallback,
-                        responsive: true,
-                        maintainAspectRatio: false,
-                    }
-                });
-            }
+            if (adSetChartCtx) new Chart(adSetChartCtx, { type: 'doughnut', data: { labels: ['Darussalam\nPoster', 'Darussalam\nCarousel', 'Other Ads', 'Adn\nCarousel'], datasets: [{ label: 'Leads', data: [400, 350, 221, 100], backgroundColor: [accentColor, blueColor, whiteColor, grayColor], borderColor: '#0D223F', borderWidth: 4, hoverOffset: 4 }] }, options: { ...tooltipCallback, responsive: true, maintainAspectRatio: false } });
 
             const trendChartCtx = document.getElementById('trendChart');
-            if (trendChartCtx) {
-                new Chart(trendChartCtx, {
-                    type: 'line',
-                    data: {
-                        labels: ['July 2025', 'August 2025', 'September 2025'],
-                        datasets: [{
-                            label: 'Leads',
-                            data: [300, 450, 321],
-                            borderColor: accentColor,
-                            backgroundColor: accentColor,
-                            tension: 0.1,
-                            yAxisID: 'yLeads'
-                        }, {
-                            label: 'Spend (USD)',
-                            data: [120.50, 180.38, 140.00],
-                            borderColor: blueColor,
-                            backgroundColor: blueColor,
-                            tension: 0.1,
-                            yAxisID: 'ySpend'
-                        }]
-                    },
-                    options: baseChartOptions({
-                        yLeads: {
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
-                            title: { display: true, text: 'Leads', color: chartLabelColor }
-                        },
-                        ySpend: {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            title: { display: true, text: 'Spend (USD)', color: chartLabelColor },
-                            grid: {
-                                drawOnChartArea: false,
-                            }
-                        }
-                    })
-                });
-            }
-
+            if (trendChartCtx) new Chart(trendChartCtx, { type: 'line', data: { labels: ['July 2023', 'August 2023', 'September 2023'], datasets: [{ label: 'Leads', data: [300, 450, 321], borderColor: accentColor, backgroundColor: accentColor, tension: 0.1, yAxisID: 'yLeads' }, { label: 'Spend (USD)', data: [120.50, 180.38, 140.00], borderColor: blueColor, backgroundColor: blueColor, tension: 0.1, yAxisID: 'ySpend' }] }, options: baseChartOptions({ yLeads: { type: 'linear', display: true, position: 'left', title: { display: true, text: 'Leads', color: chartLabelColor } }, ySpend: { type: 'linear', display: true, position: 'right', title: { display: true, text: 'Spend (USD)', color: chartLabelColor }, grid: { drawOnChartArea: false } } }) });
         })();
     </script>
 </body>
