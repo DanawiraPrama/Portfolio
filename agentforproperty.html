@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study: Property Developer Indonesia - Agent Recruitment Success</title>
+    <title>Case Study: Property Agent Recruitment Success</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #1A5276;
@@ -13,6 +15,13 @@
             --background: #F8F9FA;
             --light: #FFFFFF;
             --gray: #ECF0F1;
+            --dark: #1a1a1a;
+            --gold: #D4AF37;
+            --gradient-1: linear-gradient(135deg, #1A5276, #2C3E50);
+            --gradient-2: linear-gradient(135deg, #27AE60, #2ECC71);
+            --gradient-3: linear-gradient(135deg, #E67E22, #F39C12);
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-hover: 0 15px 35px rgba(0,0,0,0.15);
         }
         
         * {
@@ -26,6 +35,7 @@
             background-color: var(--background);
             color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -36,28 +46,177 @@
         
         /* Header Styles */
         .header {
-            background: linear-gradient(135deg, var(--primary), #2C3E50);
+            background: var(--gradient-1);
             color: white;
-            padding: 80px 0;
+            padding: 120px 0 100px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .header-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         .main-title {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 2;
+            line-height: 1.2;
         }
         
         .subtitle {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             opacity: 0.9;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+            line-height: 1.5;
         }
         
         .header-icon {
             font-size: 4rem;
-            margin: 2rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            color: var(--secondary);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, background 0.3s ease;
+            min-width: 150px;
+        }
+        
+        .header-stat:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .header-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .header-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 1;
+        }
+        
+        .decoration-1 {
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+        }
+        
+        .decoration-2 {
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+        }
+        
+        .header-cta {
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-button:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            background: var(--gold);
         }
         
         /* Section Styles */
@@ -73,11 +232,17 @@
             background-color: var(--gray);
         }
         
+        .section-dark {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             color: var(--primary);
+            font-weight: 700;
         }
         
         .section-subtitle {
@@ -87,6 +252,17 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            color: var(--text);
+            opacity: 0.8;
+        }
+        
+        .section-dark .section-title {
+            color: var(--light);
+        }
+        
+        .section-dark .section-subtitle {
+            color: var(--light);
+            opacity: 0.8;
         }
         
         /* Executive Summary */
@@ -100,6 +276,11 @@
             flex: 1;
         }
         
+        .executive-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
         .executive-stats {
             flex: 1;
             display: grid;
@@ -109,15 +290,20 @@
         
         .stat-card {
             background: var(--light);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .stat-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
         
         .stat-number {
@@ -142,9 +328,16 @@
         .goal-card {
             background: var(--light);
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
         
         .goal-icon {
@@ -153,27 +346,44 @@
             color: var(--secondary);
         }
         
+        .goal-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
         /* Performance Metrics */
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
         }
         
         .metric-card {
             background: var(--light);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             text-align: center;
             border-top: 4px solid var(--secondary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
         
         .metric-value {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 1rem;
+            color: var(--text);
         }
         
         /* Comparison Section */
@@ -186,15 +396,22 @@
         .comparison-card {
             background: var(--light);
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
         
         .comparison-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 1.5rem;
             text-align: center;
             color: var(--primary);
+            font-weight: 600;
         }
         
         .comparison-item {
@@ -215,22 +432,25 @@
         }
         
         .callout {
-            background: var(--accent);
+            background: var(--gradient-3);
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            margin-top: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin-top: 1.5rem;
             text-align: center;
             font-weight: 600;
         }
         
         /* Funnel Visualization */
         .funnel {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
+            position: relative;
+        }
+        
+        .funnel-container {
+            position: relative;
+            margin: 2rem 0;
         }
         
         .funnel-stage {
@@ -238,143 +458,408 @@
             padding: 1.5rem;
             margin: 0.5rem 0;
             background: var(--light);
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             text-align: center;
             position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .funnel-stage:not(:last-child):after {
-            content: '';
+        .funnel-stage:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .funnel-stage-1 {
+            width: 100%;
+        }
+        
+        .funnel-stage-2 {
+            width: 90%;
+            margin-left: 5%;
+        }
+        
+        .funnel-stage-3 {
+            width: 80%;
+            margin-left: 10%;
+        }
+        
+        .funnel-stage-4 {
+            width: 70%;
+            margin-left: 15%;
+        }
+        
+        .funnel-stage-5 {
+            width: 60%;
+            margin-left: 20%;
+        }
+        
+        .funnel-stage-6 {
+            width: 50%;
+            margin-left: 25%;
+        }
+        
+        .funnel-connector {
             position: absolute;
-            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid var(--light);
+            width: 2px;
+            height: 20px;
+            background-color: var(--primary);
+            z-index: 1;
         }
         
         .stage-number {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
         
+        .stage-description {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stage-details {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+        
+        /* Demographics Analysis */
+        .demographics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .demographic-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .demographic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .demographic-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .demographic-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .demographic-label {
+            font-weight: 500;
+        }
+        
+        .demographic-value {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
         /* Success Factors */
         .success-factors {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
         
         .factor-card {
             background: var(--light);
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        
+        .factor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
         
         .factor-number {
             display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
             color: white;
             border-radius: 50%;
-            line-height: 40px;
-            margin-bottom: 1rem;
+            line-height: 50px;
+            margin-bottom: 1.5rem;
             font-weight: 700;
+            font-size: 1.5rem;
         }
         
-        /* CTA Section */
-        .cta-section {
+        .factor-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        
+        /* CTA and Footer Section */
+        .cta-footer-section {
+            background-color: var(--light);
+            padding: 80px 0;
             text-align: center;
-            padding: 60px 0;
+            border-top: 1px solid var(--gray);
         }
         
         .cta-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
             color: var(--primary);
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .cta-button {
             display: inline-block;
-            background: var(--secondary);
+            background: var(--gradient-2);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 4px;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            margin-top: 2rem;
-            transition: background 0.3s ease;
+            margin: 1rem 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: var(--shadow);
         }
         
         .cta-button:hover {
-            background: #219653;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            background: var(--gold);
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+        
+        .footer-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 2rem 0 0.5rem;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        .footer-note {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.6;
+            margin-top: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-style: italic;
         }
         
         /* Responsive Adjustments */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
+            .main-title {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            
             .executive-summary {
                 flex-direction: column;
             }
             
+            .header-stats {
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 768px) {
             .main-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .subtitle {
                 font-size: 1.1rem;
             }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .executive-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .funnel-stage-1, .funnel-stage-2, .funnel-stage-3, 
+            .funnel-stage-4, .funnel-stage-5, .funnel-stage-6 {
+                width: 100%;
+                margin-left: 0;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header {
+                padding: 80px 0 60px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .main-title {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .campaign-goals, .success-factors {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .header-stat {
+                min-width: auto;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Header Section -->
     <header class="header">
+        <div class="header-decoration decoration-1"></div>
+        <div class="header-decoration decoration-2"></div>
         <div class="container">
-            <div class="header-icon">
-                <i class="fas fa-chart-line"></i>
+            <div class="header-content">
+                <div class="header-badge animate-on-scroll">CASE STUDY</div>
+                <div class="header-icon animate-on-scroll">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h1 class="main-title animate-on-scroll">Property Agent Recruitment Campaign</h1>
+                <p class="subtitle animate-on-scroll">Generating 20+ Qualified Property Agents with Only $67 USD Budget in 6 Days</p>
+                
+                <div class="header-stats animate-on-scroll">
+                    <div class="header-stat">
+                        <div class="header-stat-number">199</div>
+                        <div class="header-stat-label">Form Submissions</div>
+                    </div>
+                    <div class="header-stat">
+                        <div class="header-stat-number">160</div>
+                        <div class="header-stat-label">WhatsApp Joins</div>
+                    </div>
+                    <div class="header-stat">
+                        <div class="header-stat-number">20+</div>
+                        <div class="header-stat-label">Signed Agents</div>
+                    </div>
+                </div>
+                
+                <div class="header-cta animate-on-scroll">
+                    <a href="#results" class="header-button">View Results</a>
+                </div>
             </div>
-            <h1 class="main-title">Case Study: Property Developer Indonesia</h1>
-            <p class="subtitle">Generating 100+ Qualified Agent Leads with Only $67 USD Budget in 6 Days</p>
         </div>
     </header>
 
     <!-- Executive Summary -->
-    <section class="section section-light">
+    <section id="results" class="section section-light">
         <div class="container">
-            <h2 class="section-title">Executive Summary</h2>
-            <div class="executive-summary">
+            <h2 class="section-title animate-on-scroll">Executive Summary</h2>
+            <p class="section-subtitle animate-on-scroll">How a minimal budget campaign achieved exceptional results in property agent recruitment</p>
+            <div class="executive-summary animate-on-scroll">
                 <div class="executive-text">
-                    <p>With a minimal budget of only $67 USD (1M IDR), our Meta Ads campaign successfully reached over 11,000 potential candidates and generated hundreds of qualified agent leads. Precision targeting achieved CTRs up to 15.9% in specific segments, significantly outperforming industry benchmarks.</p>
-                    <p>The campaign focused on recruiting sales agents for property units, utilizing a strategic funnel from ad engagement to WhatsApp group nurturing for optimal conversion.</p>
+                    <p>With a minimal budget of only $67 USD, our Meta Ads campaign successfully recruited over 20 qualified property agents in just 6 days. The campaign utilized a strategic webinar approach with the theme "How to Generate Income from Property" to attract potential candidates.</p>
+                    <p>The campaign achieved an impressive 80.4% conversion rate from form submissions to WhatsApp group joins, with over 10% of those ultimately signing cooperation agreements to become official property agents.</p>
                 </div>
                 <div class="executive-stats">
                     <div class="stat-card">
-                        <div class="stat-number">11,102</div>
-                        <div class="stat-label">People Reached</div>
+                        <div class="stat-number">199</div>
+                        <div class="stat-label">Form Submissions</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">4.11%</div>
-                        <div class="stat-label">Overall CTR</div>
+                        <div class="stat-number">160</div>
+                        <div class="stat-label">WhatsApp Joins</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Qualified Leads</div>
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Signed Agents</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">$0.055</div>
-                        <div class="stat-label">Cost Per Click</div>
+                        <div class="stat-number">10%+</div>
+                        <div class="stat-label">Final Conversion Rate</div>
                     </div>
                 </div>
             </div>
@@ -384,64 +869,192 @@
     <!-- Campaign Goals & Strategy -->
     <section class="section section-gray">
         <div class="container">
-            <h2 class="section-title">Campaign Goals & Strategy</h2>
+            <h2 class="section-title animate-on-scroll">Campaign Goals & Strategy</h2>
+            <p class="section-subtitle animate-on-scroll">Strategic approach to property agent recruitment</p>
             <div class="campaign-goals">
-                <div class="goal-card">
+                <div class="goal-card animate-on-scroll">
                     <div class="goal-icon">
                         <i class="fas fa-bullseye"></i>
                     </div>
                     <h3>Project Name</h3>
-                    <p>Agent Recruitment Drive Q1 2025</p>
+                    <p>Property Agent Recruitment Q1 2025</p>
                 </div>
-                <div class="goal-card">
+                <div class="goal-card animate-on-scroll">
                     <div class="goal-icon">
                         <i class="fas fa-trophy"></i>
                     </div>
                     <h3>Primary Goal</h3>
-                    <p>Lead Generation for Agent Recruitment</p>
+                    <p>Recruit Qualified Property Agents</p>
                 </div>
-                <div class="goal-card">
+                <div class="goal-card animate-on-scroll">
                     <div class="goal-icon">
                         <i class="fas fa-chess-knight"></i>
                     </div>
                     <h3>Strategy</h3>
-                    <p>Multi-ad Creative with Detailed Demographic Targeting</p>
+                    <p>Webinar + Leads Campaign on Meta Ads</p>
                 </div>
-                <div class="goal-card">
+                <div class="goal-card animate-on-scroll">
                     <div class="goal-icon">
                         <i class="fas fa-chart-bar"></i>
                     </div>
-                    <h3>Data Points</h3>
-                    <p>6 Days Duration<br>$67 USD Budget<br>1 Campaign, 1 Ad Set, 3 Ads<br>Meta Ads Platform</p>
+                    <h3>Key Metrics</h3>
+                    <p>6 Days Duration<br>$67 USD Budget<br>Meta Ads Platform</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Journey Process -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Lead Journey Process</h2>
+            <p class="section-subtitle animate-on-scroll">From initial contact to signed cooperation agreement</p>
+            <div class="funnel animate-on-scroll">
+                <div class="funnel-container">
+                    <div class="funnel-stage funnel-stage-1">
+                        <div class="stage-number">11,102</div>
+                        <div class="stage-description">Facebook Ad Reach</div>
+                        <div class="stage-details">Targeted ads shown to potential property agents</div>
+                    </div>
+                    <div class="funnel-connector"></div>
+                    <div class="funnel-stage funnel-stage-2">
+                        <div class="stage-number">1,093</div>
+                        <div class="stage-description">Ad Clicks (4.11% CTR)</div>
+                        <div class="stage-details">Users clicked on the ad to learn more</div>
+                    </div>
+                    <div class="funnel-connector"></div>
+                    <div class="funnel-stage funnel-stage-3">
+                        <div class="stage-number">199</div>
+                        <div class="stage-description">Form Submissions</div>
+                        <div class="stage-details">Users registered for the webinar</div>
+                    </div>
+                    <div class="funnel-connector"></div>
+                    <div class="funnel-stage funnel-stage-4">
+                        <div class="stage-number">160</div>
+                        <div class="stage-description">WhatsApp Group Joins</div>
+                        <div class="stage-details">80.4% conversion rate from form to WhatsApp</div>
+                    </div>
+                    <div class="funnel-connector"></div>
+                    <div class="funnel-stage funnel-stage-5">
+                        <div class="stage-number">20+</div>
+                        <div class="stage-description">Application Submissions</div>
+                        <div class="stage-details">Users completed applications and uploaded ID</div>
+                    </div>
+                    <div class="funnel-connector"></div>
+                    <div class="funnel-stage funnel-stage-6">
+                        <div class="stage-number">20+</div>
+                        <div class="stage-description">Signed Cooperation Agreements</div>
+                        <div class="stage-details">Official property agents ready to sell</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Key Performance Metrics -->
-    <section class="section section-light">
+    <section class="section section-gray">
         <div class="container">
-            <h2 class="section-title">Key Performance Metrics</h2>
+            <h2 class="section-title animate-on-scroll">Key Performance Metrics</h2>
+            <p class="section-subtitle animate-on-scroll">Measuring success through data-driven insights</p>
             <div class="metrics-grid">
-                <div class="metric-card">
+                <div class="metric-card animate-on-scroll">
                     <div class="metric-value">11,102</div>
-                    <div class="metric-label">Reach</div>
+                    <div class="metric-label">Total Reach</div>
                 </div>
-                <div class="metric-card">
+                <div class="metric-card animate-on-scroll">
                     <div class="metric-value">26,615</div>
-                    <div class="metric-label">Impressions</div>
+                    <div class="metric-label">Total Impressions</div>
                 </div>
-                <div class="metric-card">
+                <div class="metric-card animate-on-scroll">
                     <div class="metric-value">4.11%</div>
-                    <div class="metric-label">CTR (All)</div>
+                    <div class="metric-label">Overall CTR</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value">$0.055</div>
-                    <div class="metric-label">CPC (All)</div>
-                </div>
-                <div class="metric-card">
+                <div class="metric-card animate-on-scroll">
                     <div class="metric-value">2.4x</div>
                     <div class="metric-label">Frequency</div>
+                </div>
+                <div class="metric-card animate-on-scroll">
+                    <div class="metric-value">199</div>
+                    <div class="metric-label">Form Submissions</div>
+                </div>
+                <div class="metric-card animate-on-scroll">
+                    <div class="metric-value">80.4%</div>
+                    <div class="metric-label">Form to WhatsApp Conversion</div>
+                </div>
+                <div class="metric-card animate-on-scroll">
+                    <div class="metric-value">10%+</div>
+                    <div class="metric-label">WhatsApp to Agent Conversion</div>
+                </div>
+                <div class="metric-card animate-on-scroll">
+                    <div class="metric-value">$3.30</div>
+                    <div class="metric-label">Cost Per Agent</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demographics Analysis -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Demographics Analysis</h2>
+            <p class="section-subtitle animate-on-scroll">Understanding which segments performed best</p>
+            <div class="demographics">
+                <div class="demographic-card animate-on-scroll">
+                    <h3 class="demographic-title">Age Performance</h3>
+                    <div class="demographic-item">
+                        <span class="demographic-label">35-44 years</span>
+                        <span class="demographic-value">Highest Engagement</span>
+                    </div>
+                    <div class="demographic-item">
+                        <span class="demographic-label">45-54 years</span>
+                        <span class="demographic-value">Second Best</span>
+                    </div>
+                    <div class="demographic-item">
+                        <span class="demographic-label">25-34 years</span>
+                        <span class="demographic-value">Moderate Performance</span>
+                    </div>
+                    <div class="demographic-item">
+                        <span class="demographic-label">55+ years</span>
+                        <span class="demographic-value">Lower Engagement</span>
+                    </div>
+                </div>
+                <div class="demographic-card animate-on-scroll">
+                    <h3 class="demographic-title">Gender Performance</h3>
+                    <div class="demographic-item">
+                        <span class="demographic-label">Male</span>
+                        <span class="demographic-value">75% of Conversions</span>
+                    </div>
+                    <div class="demographic-item">
+                        <span class="demographic-label">Female</span>
+                        <span class="demographic-value">25% of Conversions</span>
+                    </div>
+                    <div class="demographic-item">
+                        <span class="demographic-label">Best CTR</span>
+                        <span class="demographic-value">Male 35-44 (3.34%)</span>
+                    </div>
+                    <div class="demographic-item">
+                        <span class="demographic-label">Lowest CPC</span>
+                        <span class="demographic-value">Male 55-64 ($0.044)</span>
+                    </div>
+                </div>
+                <div class="demographic-card animate-on-scroll">
+                    <h3 class="demographic-title">Ad Performance</h3>
+                    <div class="demographic-item">
+                        <span class="demographic-label">Ad 1</span>
+                        <span class="demographic-value">Best Overall Performance</span>
+                    </div>
+                    <div class="demographic-item">
+                        <span class="demographic-label">Ad 2</span>
+                        <span class="demographic-value">Moderate Performance</span>
+                    </div>
+                    <div class="demographic-item">
+                        <span class="demographic-label">Ad 3</span>
+                        <span class="demographic-value">Lower Performance</span>
+                    </div>
+                    <div class="demographic-item">
+                        <span class="demographic-label">Best CTR</span>
+                        <span class="demographic-value">Ad 1 (4.67%)</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -450,9 +1063,10 @@
     <!-- Industry Comparison -->
     <section class="section section-gray">
         <div class="container">
-            <h2 class="section-title">Performance vs Industry Benchmarks</h2>
+            <h2 class="section-title animate-on-scroll">Performance vs Industry Benchmarks</h2>
+            <p class="section-subtitle animate-on-scroll">How our campaign compares to industry standards</p>
             <div class="comparison">
-                <div class="comparison-card">
+                <div class="comparison-card animate-on-scroll">
                     <h3 class="comparison-title">CPC (Cost Per Click)</h3>
                     <div class="comparison-item">
                         <span>Our Result:</span>
@@ -464,7 +1078,7 @@
                     </div>
                     <div class="callout">45-67% MORE EFFICIENT than industry benchmarks</div>
                 </div>
-                <div class="comparison-card">
+                <div class="comparison-card animate-on-scroll">
                     <h3 class="comparison-title">CTR (Click-Through Rate)</h3>
                     <div class="comparison-item">
                         <span>Our Result:</span>
@@ -476,161 +1090,111 @@
                     </div>
                     <div class="callout">64% HIGHER than industry average</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sales Funnel -->
-    <section class="section section-light">
-        <div class="container">
-            <h2 class="section-title">Customer Journey & Conversion Funnel</h2>
-            <div class="funnel">
-                <div class="funnel-stage">
-                    <div class="stage-number">11,102</div>
-                    <div class="stage-description">Awareness - Audience Reached</div>
-                </div>
-                <div class="funnel-stage">
-                    <div class="stage-number">~1,093</div>
-                    <div class="stage-description">Consideration - Estimated Clicks</div>
-                </div>
-                <div class="funnel-stage">
-                    <div class="stage-number">100+</div>
-                    <div class="stage-description">Conversion - Form Registrations</div>
-                </div>
-                <div class="funnel-stage">
-                    <div class="stage-number">WhatsApp Group</div>
-                    <div class="stage-description">Nurturing - Agent Onboarding</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final Results & ROI -->
-    <section class="section section-gray">
-        <div class="container">
-            <h2 class="section-title">Final Results & ROI</h2>
-            <div class="executive-summary">
-                <div class="executive-text">
-                    <p>The campaign delivered exceptional results with a minimal investment, proving that strategic targeting and compelling creatives can generate high-quality leads even with budget constraints.</p>
-                    <p>With a cost of approximately $0.60 per qualified lead, the campaign demonstrated 3x higher efficiency than initial targets and established a scalable model for future recruitment drives.</p>
-                </div>
-                <div class="executive-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Total Leads</div>
+                <div class="comparison-card animate-on-scroll">
+                    <h3 class="comparison-title">Lead Conversion Rate</h3>
+                    <div class="comparison-item">
+                        <span>Our Result:</span>
+                        <span class="our-result">18.2%</span>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">$67</div>
-                        <div class="stat-label">Total Investment</div>
+                    <div class="comparison-item">
+                        <span>Industry Average:</span>
+                        <span class="industry-avg">5-10%</span>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">$0.60</div>
-                        <div class="stat-label">Cost Per Lead</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">1000%+</div>
-                        <div class="stat-label">Potential ROI</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Target Audience Analysis -->
-    <section class="section section-light">
-        <div class="container">
-            <h2 class="section-title">Target Audience Analysis</h2>
-            <div class="campaign-goals">
-                <div class="goal-card">
-                    <div class="goal-icon">
-                        <i class="fas fa-user-friends"></i>
-                    </div>
-                    <h3>Best Demographics</h3>
-                    <p>Men aged 35-54 years</p>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Geographic Focus</h3>
-                    <p>Indonesia (Urban Areas)</p>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Behavioral Traits</h3>
-                    <p>Interested in property business opportunities & sales careers</p>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Optimization Tactics</h3>
-                    <p>• Focus on men 35-54<br>• A/B testing 3 creatives<br>• Dayparting for optimal timing</p>
+                    <div class="callout">82-264% HIGHER than industry average</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Success Factors -->
-    <section class="section section-gray">
+    <section class="section section-light">
         <div class="container">
-            <h2 class="section-title">Key Success Factors</h2>
+            <h2 class="section-title animate-on-scroll">Key Success Factors</h2>
+            <p class="section-subtitle animate-on-scroll">What made this campaign successful</p>
             <div class="success-factors">
-                <div class="factor-card">
+                <div class="factor-card animate-on-scroll">
                     <div class="factor-number">1</div>
-                    <h3>Precision Targeting</h3>
-                    <p>Measurable demographic segmentation by age and gender</p>
+                    <h3>Compelling Webinar Topic</h3>
+                    <p>"How to Generate Income from Property" attracted high-quality candidates interested in property sales opportunities</p>
                 </div>
-                <div class="factor-card">
+                <div class="factor-card animate-on-scroll">
                     <div class="factor-number">2</div>
-                    <h3>Creative Variation</h3>
-                    <p>3 different ads for performance testing and optimization</p>
+                    <h3>Efficient Onboarding Process</h3>
+                    <p>Seamless transition from form submission to WhatsApp group nurturing created a smooth candidate experience</p>
                 </div>
-                <div class="factor-card">
+                <div class="factor-card animate-on-scroll">
                     <div class="factor-number">3</div>
-                    <h3>Budget Efficiency</h3>
-                    <p>Optimal allocation with daily caps and strategic pacing</p>
+                    <h3>Optimized Budget Allocation</h3>
+                    <p>Maximum results with minimal budget through precise targeting and strategic ad placement</p>
                 </div>
-                <div class="factor-card">
+                <div class="factor-card animate-on-scroll">
                     <div class="factor-number">4</div>
-                    <h3>Integrated Funnel</h3>
-                    <p>Seamless transition from form to WhatsApp nurturing</p>
+                    <h3>Platform Integration</h3>
+                    <p>Meta Ads for lead generation combined with WhatsApp for effective nurturing and conversion</p>
+                </div>
+                <div class="factor-card animate-on-scroll">
+                    <div class="factor-number">5</div>
+                    <h3>Targeted Demographics</h3>
+                    <p>Focused on males aged 35-54 who showed highest engagement and conversion rates</p>
+                </div>
+                <div class="factor-card animate-on-scroll">
+                    <div class="factor-number">6</div>
+                    <h3>Clear Call-to-Action</h3>
+                    <p>Direct path from ad to form to WhatsApp to application minimized drop-off points</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section section-light">
+    <!-- Combined CTA and Footer Section -->
+    <section id="contact" class="cta-footer-section">
         <div class="container">
-            <h2 class="cta-title">Ready to Transform Your Recruitment Strategy?</h2>
-            <p>Let us help you achieve similar results with data-driven Meta Ads campaigns tailored to your business goals.</p>
-            <a href="#contact" class="cta-button">Schedule Your Strategy Consultation</a>
-            <p style="margin-top: 1rem; font-style: italic;">Digital Marketing Team - Growth Marketing Specialists</p>
+            <h2 class="cta-title animate-on-scroll">Ready to Transform Your Recruitment Strategy?</h2>
+            <p class="cta-subtitle animate-on-scroll">Let us help you achieve similar results with data-driven Meta Ads campaigns tailored to your business goals.</p>
+            
+            <div class="animate-on-scroll">
+        
+                <a href="#contact" class="cta-button">Contact Me Today</a>
+            </div>
+            
+            <div class="footer-name animate-on-scroll">Prama Danawira</div>
+            <p class="footer-title animate-on-scroll">B2C Funnel & Meta Ads Strategist</p>
+            
+          
+            
+            <p class="footer-note animate-on-scroll">Note: All data based on campaign performance from November 5 - 12, 2025. Results may vary based on market conditions, property type, and budget allocation. Currency converted from Indonesian Rupiah (IDR) to US Dollars (USD) at a rate of 1 USD = 15,000 IDR.</p>
         </div>
     </section>
 
     <script>
-        // Simple animation for metric cards on scroll
+        // Simple animation for elements on scroll
         document.addEventListener('DOMContentLoaded', function() {
-            const metricCards = document.querySelectorAll('.metric-card, .stat-card');
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('animated');
                     }
                 });
             }, { threshold: 0.1 });
             
-            metricCards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
