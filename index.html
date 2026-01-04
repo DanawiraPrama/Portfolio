@@ -26,6 +26,55 @@
         h2 {
             border-bottom: 3px solid #e0e7ff; /* Biru muda */
         }
+        /* Animasi untuk portfolio cards */
+        .portfolio-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+        .portfolio-card:hover::before {
+            opacity: 1;
+        }
+        /* Timeline styling */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: #e5e7eb;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -5px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            z-index: 1;
+        }
+        /* Improved spacing for skills */
+        .skill-item {
+            margin-bottom: 0.75rem;
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -67,9 +116,7 @@
             <section class="mb-8">
                 <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">PROFESSIONAL SUMMARY</h2>
                 <p class="text-base text-gray-700 leading-relaxed">
-                    Strategic Media Buyer & Data-Driven Marketing Specialist
-                    With a 13+ year commercial career rooted in B2B sales and banking (since 2011), I possess a deep understanding of the revenue funnel. My digital marketing journey began in 2017, leading to my first commercial campaign management in 2018. After years of successfully driving ad performance alongside a corporate career, I transitioned to full-time independent consultancy in July 2024.
-                    Today, I leverage this unique hybrid background to execute high-stakes Meta Ads strategies (CTWA, Advantage+, CBO). Unlike standard media buyers, I integrate Data Science (Python, SQL) to engineer campaigns that are not only creative but mathematically optimized for ROAS and scalability.
+                    Strategic Media Buyer & Data-Driven Marketing Specialist with 13+ years in commercial roles spanning B2B sales, banking, and digital marketing. Transitioned to full-time independent consultancy in July 2024, blending traditional marketing expertise with Data Science (Python, SQL) to engineer mathematically-optimized Meta Ads strategies (CTWA, Advantage+, CBO). Combines deep funnel understanding with advanced analytics for superior ROAS and scalability. Specializes in Social Media Listening for brand monitoring, sentiment analysis, and competitive intelligence to inform data-driven marketing strategies.
                 </p>
             </section>
 
@@ -79,55 +126,59 @@
                 
                 <!-- Sub-bagian 1: Marketing -->
                 <h3 class="text-xl font-semibold text-gray-800 mb-3">Marketing, Sales & Management Skills</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
-                    <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                    <div class="skill-item">
                         <strong class="text-gray-900">Performance Marketing:</strong>
-                        <p class="text-gray-700">Meta Ads Expert: Advanced Campaign Structure (CBO/ABO), Advantage+ Scaling Strategies, Creative Testing Frameworks (A/B Split), Click-to-WhatsApp (CTWA) Funnel Optimization.</p>
+                        <p class="text-gray-700 mt-1">Meta Ads Expert: Advanced Campaign Structure (CBO/ABO), Advantage+ Scaling Strategies, Creative Testing Frameworks (A/B Split), Click-to-WhatsApp (CTWA) Funnel Optimization.</p>
                     </div>
-                    <div>
+                    <div class="skill-item">
                         <strong class="text-gray-900">PPC & Paid Social:</strong>
-                        <p class="text-gray-700">Audience Segmentation (Broad vs. Interest Stacking), Retargeting Strategies, Dynamic Budget Allocation & Pacing Control.</p>
+                        <p class="text-gray-700 mt-1">Audience Segmentation (Broad vs. Interest Stacking), Retargeting Strategies, Dynamic Budget Allocation & Pacing Control.</p>
                     </div>
-                    <div>
+                    <div class="skill-item">
                         <strong class="text-gray-900">Lead Generation:</strong>
-                        <p class="text-gray-700">High-Quality Lead Acquisition, Funnel Conversion Rate Optimization (CRO), Chat-Based Funnel Strategy.</p>
+                        <p class="text-gray-700 mt-1">High-Quality Lead Acquisition, Funnel Conversion Rate Optimization (CRO), Chat-Based Funnel Strategy.</p>
                     </div>
-                    <div>
+                    <div class="skill-item">
                         <strong class="text-gray-900">Strategy:</strong>
-                        <p class="text-gray-700">B2B & B2C Marketing Strategy, Multi-City/Geo-Expansion Planning, Account Management & Client Communication, Content Strategy for Ad Creatives.</p>
+                        <p class="text-gray-700 mt-1">B2B & B2C Marketing Strategy, Multi-City/Geo-Expansion Planning, Account Management & Client Communication, Content Strategy for Ad Creatives.</p>
                     </div>
-                    <div>
+                    <div class="skill-item">
+                        <strong class="text-gray-900">Social Media Listening:</strong>
+                        <p class="text-gray-700 mt-1">Brand & Competitor Monitoring, Sentiment Analysis, Trend Spotting, Crisis Detection, Influencer Identification using tools like Brandwatch, Sprout Social, Hootsuite.</p>
+                    </div>
+                    <div class="skill-item">
                         <strong class="text-gray-900">Platforms & Tools:</strong>
-                        <p class="text-gray-700">Meta Business Suite: Ads Manager, Events Manager (Pixel/CAPI), Business Settings. Analytics & Tracking: Google Analytics (GA4), Meta Pixel Helper, WhatsApp Business API Integration, Custom URL Parameters (UTM Tracking). Research: Meta Ad Library, Audience Insights.</p>
+                        <p class="text-gray-700 mt-1">Meta Business Suite: Ads Manager, Events Manager (Pixel/CAPI), Business Settings. Analytics & Tracking: Google Analytics (GA4), Meta Pixel Helper, WhatsApp Business API Integration, Custom URL Parameters (UTM Tracking). Research: Meta Ad Library, Audience Insights.</p>
                     </div>
-                    <div>
+                    <div class="skill-item">
                         <strong class="text-gray-900">Methodology:</strong>
-                        <p class="text-gray-700">Agile Testing Framework: Rapid Creative Testing, "Inverted Funnel" Strategy, Data-Driven Decision Making. Optimization: ROAS & CPR (Cost Per Result) Optimization, Ad Fatigue Management, Budget Scaling & Defensive Pacing.</p>
+                        <p class="text-gray-700 mt-1">Agile Testing Framework: Rapid Creative Testing, "Inverted Funnel" Strategy, Data-Driven Decision Making. Optimization: ROAS & CPR (Cost Per Result) Optimization, Ad Fatigue Management, Budget Scaling & Defensive Pacing.</p>
                     </div>
                 </div>
 
                 <!-- Sub-bagian 2: Data Science -->
-                <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-6">Data Science & Analysis Skills</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
-                    <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-8">Data Science & Analysis Skills</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                    <div class="skill-item">
                         <strong class="text-gray-900">Data Analysis & Querying:</strong>
-                        <p class="text-gray-700">SQL (PostgreSQL, MySQL), Advanced Spreadsheets (Excel, Google Sheets - Pivot Tables, VLOOKUP)</p>
+                        <p class="text-gray-700 mt-1">SQL (PostgreSQL, MySQL), Advanced Spreadsheets (Excel, Google Sheets - Pivot Tables, VLOOKUP)</p>
                     </div>
-                    <div>
+                    <div class="skill-item">
                         <strong class="text-gray-900">Programming & Libraries:</strong>
-                        <p class="text-gray-700">Python (Pandas, NumPy, Matplotlib, Seaborn) for Marketing Data Analysis</p>
+                        <p class="text-gray-700 mt-1">Python (Pandas, NumPy, Matplotlib, Seaborn) for Marketing Data Analysis</p>
                     </div>
-                    <div>
+                    <div class="skill-item">
                         <strong class="text-gray-900">Machine Learning:</strong>
-                        <p class="text-gray-700">Scikit-learn (Regression, Classification) for Predictive Modeling</p>
+                        <p class="text-gray-700 mt-1">Scikit-learn (Regression, Classification) for Predictive Modeling</p>
                     </div>
-                    <div>
+                    <div class="skill-item">
                         <strong class="text-gray-900">Data Visualization:</strong>
-                        <p class="text-gray-700">Tableau, Looker Studio (Visualizing Ad Performance)</p>
+                        <p class="text-gray-700 mt-1">Tableau, Looker Studio (Visualizing Ad Performance)</p>
                     </div>
-                     <div>
+                     <div class="skill-item">
                         <strong class="text-gray-900">Data Methodology:</strong>
-                        <p class="text-gray-700">Data Collection, Cleaning, & Exploratory Data Analysis (EDA) for Campaign Insights</p>
+                        <p class="text-gray-700 mt-1">Data Collection, Cleaning, & Exploratory Data Analysis (EDA) for Campaign Insights</p>
                     </div>
                 </div>
             </section>
@@ -137,70 +188,71 @@
                 <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">PORTFOLIO</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     
+                    <!-- Portfolio Item Baru: Social Media Listening -->
+                    <a href="https://danawiraprama.github.io/Portfolio/socialListening.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+                        <div class="flex justify-between items-center relative z-10">
+                            <span class="font-bold text-blue-800">Social Media Listening</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </div>
+                        <p class="text-xs text-blue-600 mt-1 mb-2 relative z-10">NEW: Advanced Analytics Portfolio</p>
+                        <p class="text-sm text-gray-700 relative z-10">Brand monitoring, sentiment analysis, competitor intelligence & trend detection</p>
+                    </a>
+
                     <!-- Portfolio Item 1 -->
-                    <a href="https://danawiraprama.github.io/Portfolio/agentforproperty.html" target="_blank" rel="noopener noreferrer" class="block p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center">
+                    <a href="https://danawiraprama.github.io/Portfolio/agentforproperty.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+                        <div class="flex justify-between items-center relative z-10">
                             <span class="font-semibold text-blue-800">Agent for Property</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                         </div>
-                        <p class="text-xs text-gray-500 mt-1">agentforproperty.html</p>
+                        <p class="text-xs text-gray-500 mt-1 relative z-10">agentforproperty.html</p>
                     </a>
 
                     <!-- Portfolio Item 2 -->
-                    <a href="https://danawiraprama.github.io/Portfolio/agentforumrah.html" target="_blank" rel="noopener noreferrer" class="block p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center">
+                    <a href="https://danawiraprama.github.io/Portfolio/agentforumrah.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+                        <div class="flex justify-between items-center relative z-10">
                             <span class="font-semibold text-blue-800">Agent for Umrah</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                         </div>
-                        <p class="text-xs text-gray-500 mt-1">agentforumrah.html</p>
+                        <p class="text-xs text-gray-500 mt-1 relative z-10">agentforumrah.html</p>
                     </a>
 
                     <!-- Portfolio Item 3 -->
-                    <a href="https://danawiraprama.github.io/Portfolio/dearazproperty.html" target="_blank" rel="noopener noreferrer" class="block p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center">
+                    <a href="https://danawiraprama.github.io/Portfolio/dearazproperty.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+                        <div class="flex justify-between items-center relative z-10">
                             <span class="font-semibold text-blue-800">Dearaz Property</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                         </div>
-                        <p class="text-xs text-gray-500 mt-1">dearazproperty.html</p>
+                        <p class="text-xs text-gray-500 mt-1 relative z-10">dearazproperty.html</p>
                     </a>
 
                     <!-- Portfolio Item 4 -->
-                    <a href="https://danawiraprama.github.io/Portfolio/luxuryproperty.html" target="_blank" rel="noopener noreferrer" class="block p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center">
+                    <a href="https://danawiraprama.github.io/Portfolio/luxuryproperty.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+                        <div class="flex justify-between items-center relative z-10">
                             <span class="font-semibold text-blue-800">Luxury Property</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                         </div>
-                        <p class="text-xs text-gray-500 mt-1">luxuryproperty.html</p>
+                        <p class="text-xs text-gray-500 mt-1 relative z-10">luxuryproperty.html</p>
                     </a>
 
                     <!-- Portfolio Item 5 -->
-                    <a href="https://danawiraprama.github.io/Portfolio/travelHajj.html" target="_blank" rel="noopener noreferrer" class="block p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center">
+                    <a href="https://danawiraprama.github.io/Portfolio/travelHajj.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+                        <div class="flex justify-between items-center relative z-10">
                             <span class="font-semibold text-blue-800">Travel Haji</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                         </div>
-                        <p class="text-xs text-gray-500 mt-1">travelHaji.html</p>
-                    </a>
-
-                    <!-- Portfolio Item 6 -->
-                    <a href="https://danawiraprama.github.io/Portfolio/umrahtravel.html" target="_blank" rel="noopener noreferrer" class="block p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center">
-                            <span class="font-semibold text-blue-800">Umrah Travel</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-1">umrahtravel.html</p>
+                        <p class="text-xs text-gray-500 mt-1 relative z-10">travelHaji.html</p>
                     </a>
 
                 </div>
@@ -212,17 +264,18 @@
                 <div class="space-y-8">
                     
                     <!-- Pekerjaan 1 -->
-                    <div class="relative pl-6 before:absolute before:left-0 before:top-2 before:h-full before:w-0.5 before:bg-gray-300">
-                        <span class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-blue-700"></span>
+                    <div class="relative timeline-item pl-6">
+                        <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
                             <h3 class="text-xl font-semibold text-gray-900">Freelance Marketing & Data Specialist</h3>
                             <span class="text-gray-600 text-sm font-medium pt-1">(Jul 2024 – Present)</span>
                         </div>
                         <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-1 pl-5">
+                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Delivered end-to-end data-driven marketing services for clients in the Travel, Property Development, and Wellness industries across Indonesia and Southeast Asia, focusing on measurable lead generation and strategic market expansion.</li>
                             <li>Strategic Campaign Management: Successfully managed a high-stakes market entry campaign for a Singapore-based wellness brand, executing a multi-city "Best 5 Test" strategy across Southeast Asia (Thailand & Vietnam) to validate creative performance and audience intent.</li>
                             <li>Performance Marketing & Optimization: Specialized in data-driven lead generation, managing complex Meta Ads campaigns (Advantage+, CBO/ABO structures) and Google Ads for Indonesian and regional markets. Implemented agile testing frameworks (A/B testing creatives & copy) and "Inverted Funnel" strategies to optimize CPM and Cost Per Result (CPR) in volatile auctions.</li>
+                            <li>Social Media Listening & Analytics: Implemented brand monitoring and sentiment analysis strategies to track competitor activities, detect emerging trends, and identify potential crises before they escalate.</li>
                             <li>Data-Driven Decision Making: Utilized advanced analytics to diagnose ad fatigue and market saturation, executing strategic pivots (e.g., shifting from manual targeting to AI-driven Advantage+ audiences) to protect budget efficiency and maximize ROI.</li>
                             <li>Cross-Border Expansion: Managing a B2B sales and marketing experiment for a new publishing application in Indonesia, focusing on acquiring initial clients and validating market fit.</li>
                             <li>Web Development & CRO: Developed client websites on WordPress and Webflow, optimized for conversion and user experience.</li>
@@ -231,17 +284,18 @@
                     </div>
                     
                     <!-- Pekerjaan 2 -->
-                    <div class="relative pl-6 before:absolute before:left-0 before:top-2 before:h-full before:w-0.5 before:bg-gray-300">
-                        <span class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-blue-700"></span>
+                    <div class="relative timeline-item pl-6">
+                        <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
                             <h3 class="text-xl font-semibold text-gray-900">Project Marketing Manager</h3>
                             <span class="text-gray-600 text-sm font-medium pt-1">(Nov 2018 – Jul 2024)</span>
                         </div>
                         <p class="text-gray-700 font-medium mb-1">Contentro dot com</p>
                         <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-1 pl-5">
+                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Developed and launched a new 'Leads Generation Campaign' product, resulting in a 15% revenue increase for the company.</li>
                             <li>Managed and optimized Meta Ads (Facebook/Instagram Ads) and Google Ads campaigns for clients as a core component of lead generation strategies.</li>
+                            <li>Implemented social media listening strategies to monitor brand mentions, track competitor activities, and identify industry trends for 70+ clients across various sectors.</li>
                             <li>Led 200+ media releases annually, securing coverage in 280+ media outlets. Contributed to 4,000+ published articles yearly.</li>
                             <li>Handling over 70 clients across various industries (consumer products, lifestyle, media, education, property, state-owned enterprises), including major brands like Toyota, Bukalapak.com, Tempo Media Group, and Jakarta Intercultural School.</li>
                             <li>Oversaw the development of website/blog content, social media, newsletters, and virtual events, aligning with clients' branding goals.</li>
@@ -249,59 +303,59 @@
                         </ul>
                     </div>
 
-            
-
                     <!-- Pekerjaan 4 -->
-                    <div class="relative pl-6 before:absolute before:left-0 before:top-2 before:h-full before:w-0.5 before:bg-gray-300">
-                        <span class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-blue-700"></span>
+                    <div class="relative timeline-item pl-6">
+                        <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
                             <h3 class="text-xl font-semibold text-gray-900">B2B Account Manager</h3>
                             <span class="text-gray-600 text-sm font-medium pt-1">(Apr 2017 – Nov 2018)</span>
                         </div>
                         <p class="text-gray-700 font-medium mb-1">PT AllProperty Media (Rumah.com)</p>
                         <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-1 pl-5">
+                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Achieved 146% of sales target by consistently exceeding quarterly goals (e.g., 130% in Q1 2018).</li>
+                            <li>Utilized social media monitoring to identify potential clients and understand market needs in the real estate sector.</li>
                         </ul>
                     </div>
 
                     <!-- Pekerjaan 5 -->
-                    <div class="relative pl-6 before:absolute before:left-0 before:top-2 before:h-full before:w-0.5 before:bg-gray-300">
-                        <span class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-blue-700"></span>
+                    <div class="relative timeline-item pl-6">
+                        <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
                             <h3 class="text-xl font-semibold text-gray-900">Relationship Manager SME</h3>
                             <span class="text-gray-600 text-sm font-medium pt-1">(Mar 2015 – Apr 2017)</span>
                         </div>
                         <p class="text-gray-700 font-medium mb-1">PT Bank Permata, Tbk</p>
                         <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-1 pl-5">
+                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Acquired SME clients, provided tailored financial solutions, and managed portfolios by monitoring accounts, assessing risks, and ensuring timely follow-ups.</li>
                             <li>Achieved 2016 Target 80%: IDR 32 Bio from total target IDR 40 Bio.</li>
                         </ul>
                     </div>
                     
-                    <!-- Pekerjaan 6 & 7 (Lebih ringkas) -->
-                    <div class="relative pl-6 before:absolute before:left-0 before:top-2 before:h-full before:w-0.5 before:bg-gray-300">
-                        <span class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-blue-700"></span>
+                    <!-- Pekerjaan 6 -->
+                    <div class="relative timeline-item pl-6">
+                        <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
                             <h3 class="text-xl font-semibold text-gray-900">Commercial Banking Relationship Manager</h3>
                             <span class="text-gray-600 text-sm font-medium pt-1">(Jul 2011 – Mar 2015)</span>
                         </div>
                         <p class="text-gray-700 font-medium mb-1">PT Bank Mega, Tbk | Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-1 pl-5">
+                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Responsible for commercial credit transactions with credit limits up to IDR 50 Billion.</li>
                             <li>Achieved 2015 Target 100%: IDR 35 Bio from total target IDR 35 Bio.</li>
                         </ul>
                     </div>
 
+                    <!-- Pekerjaan 7 -->
                     <div class="relative pl-6">
-                        <span class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-blue-700"></span>
+                        <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
                             <h3 class="text-xl font-semibold text-gray-900">Accounting Oracle Officer</h3>
                             <span class="text-gray-600 text-sm font-medium pt-1">(Jan 2011 – Apr 2011)</span>
                         </div>
                         <p class="text-gray-700 font-medium mb-1">PT Surya Madistrindo | Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-1 pl-5">
+                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Trained finance teams on Oracle accounting modules and supported account reconciliation and period closing.</li>
                         </ul>
                     </div>
@@ -333,10 +387,10 @@
                     <!-- Kolom Sertifikasi -->
                     <div>
                         <h3 class="text-xl font-semibold text-gray-800 mb-3">Certifications</h3>
-                        <ul class="list-disc list-outside text-gray-700 space-y-1 pl-5">
-                            <!-- UPDATED CERTIFICATION -->
+                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>IBM Data Science Professional Certificate | Coursera (On-going)</li>
                             <li>Google Analytics Certification | Skillshop, Indonesia (2025)</li>
+                            <li>Social Media Analytics & Listening Certification | Self-Study & Practical Application (2024)</li>
                             <li>Qualified Medication Administration Personnel | Colorado Medical Health Training (2023)</li>
                             <li>Heartsaver First Aid CPR AED | American Heart Association (2023)</li>
                             <li>City & County of Denver Food Handler Course | State Food Safety (2023)</li>
@@ -351,7 +405,7 @@
             <!-- Bagian: Aktivitas -->
             <section>
                  <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">ACTIVITIES & ORGANIZATIONAL EXPERIENCE</h2>
-                 <ul class="list-disc list-outside text-gray-700 space-y-1 pl-5">
+                 <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
                      <li>Head of Qurban Project – Cempaka Hijau Residential Complex (2020)</li>
                      <li>Instructor – UKM (Student Activity Unit) UI, Aikido (2009 - 2015)</li>
                      <li>External Division – UKF (Faculty Activity Unit) LIFO '06 FEUI (2005 - 2006)</li>
