@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Intelligence Analysis | Kpop4planet Campaign Case Study</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* === CSS VARIABLES === */
+        :root {
+            /* Color Palette */
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px -10px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 60px -15px rgba(0,0,0,0.1);
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            
+            /* Spacing */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 32px;
+            --space-xl: 48px;
+            --space-xxl: 64px;
+        }
+
+        /* === RESET & BASE STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.05) 0px, transparent 50%);
+            z-index: -1;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+            font-size: 1.05rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul, ol {
+            padding-left: var(--space-lg);
+        }
+
+        li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: var(--space-xl);
+        }
+
+        /* === BUTTONS === */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xs);
+            padding: 12px 28px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        /* === HEADER / HERO === */
+        header {
+            padding: var(--space-xxl) 0;
+            background: var(--bg-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%);
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: var(--space-md);
+            line-height: 1.1;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-xl);
+            max-width: 600px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
+            margin-top: var(--space-xl);
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* === METRICS GRID === */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .metric-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-sm);
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .metric-trend {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .trend-positive {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .trend-negative {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        /* === ANALYSIS SECTIONS === */
+        .analysis-section {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-xl);
+            border: 1px solid var(--border);
+        }
+
+        .analysis-title {
+            font-size: 1.8rem;
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .analysis-title i {
+            color: var(--primary);
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border-left: 4px solid var(--primary);
+            padding: var(--space-lg);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: var(--space-lg) 0;
+        }
+
+        .insight-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: var(--space-xs);
+            color: var(--text-dark);
+        }
+
+        /* === PLATFORM ANALYSIS === */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .platform-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .platform-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .instagram-bg { background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737); }
+        .twitter-bg { background: #1DA1F2; }
+        .tiktok-bg { background: #000000; }
+        .news-bg { background: #3b82f6; }
+
+        .platform-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .platform-metric {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: var(--space-xs);
+        }
+
+        .platform-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* === SENTIMENT ANALYSIS === */
+        .sentiment-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .sentiment-chart {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+        }
+
+        .sentiment-donut {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(var(--success) 0% 100%, var(--border) 100% 100%);
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .sentiment-donut::after {
+            content: '100%';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--success);
+        }
+
+        .sentiment-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        /* === HASHTAG ANALYSIS === */
+        .hashtag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .hashtag {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(99, 102, 241, 0.08);
+            color: var(--primary);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .hashtag:hover {
+            background: rgba(99, 102, 241, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .hashtag-primary {
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            font-size: 1rem;
+            padding: 10px 20px;
+        }
+
+        /* === INFLUENCER ANALYSIS === */
+        .influencer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .influencer-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .influencer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .influencer-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .influencer-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .influencer-handle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+        }
+
+        .influencer-metric {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        /* === TIMELINE ANALYSIS === */
+        .timeline {
+            position: relative;
+            padding-left: var(--space-lg);
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--space-xl);
+            padding-left: var(--space-lg);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -9px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content {
+            background: rgba(99, 102, 241, 0.03);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        /* === RECOMMENDATIONS === */
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .recommendation-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .recommendation-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: var(--space-xl) 0;
+            margin-top: var(--space-xxl);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-md);
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-stats {
+                gap: var(--space-lg);
+            }
+            
+            .hero-stat-value {
+                font-size: 2rem;
+            }
+            
+            .metric-value {
+                font-size: 2rem;
+            }
+            
+            .analysis-section {
+                padding: var(--space-lg);
+            }
+            
+            .sentiment-container {
+                flex-direction: column;
+            }
+            
+            .sentiment-chart {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--space-sm);
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: var(--space-lg) 0;
+            }
+            
+            .metric-card {
+                padding: var(--space-md);
+            }
+            
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Hero Section -->
+    <header>
+        <div class="header-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">
+                    <i class="fas fa-chart-line"></i>
+                    Social Intelligence Analysis
+                </div>
+                
+                <h1 class="hero-title">Kpop4planet Campaign<br>Analysis 2025</h1>
+                
+                <p class="hero-description">
+                    A comprehensive case study on how K-Pop fandom was mobilized for environmental advocacy 
+                    with measurable and high-impact social media strategies.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">44</span>
+                        <span class="hero-stat-label">Total Mentions</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">281K</span>
+                        <span class="hero-stat-label">Media Reach</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">100%</span>
+                        <span class="hero-stat-label">Positive Sentiment</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">16</span>
+                        <span class="hero-stat-label">Days Analyzed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Overview Section -->
+        <section class="section">
+            <h2 class="section-title">Analysis Summary</h2>
+            <p class="section-subtitle">
+                The Kpop4planet campaign during December 6-22, 2025 demonstrates the effectiveness of fandom mobilization 
+                for environmental issues with focused communication strategies.
+            </p>
+            
+            <!-- Metrics Grid -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="metric-value">44</div>
+                    <div class="metric-label">Total Mentions</div>
+                    <span class="metric-trend trend-positive">
+                        <i class="fas fa-arrow-up"></i> 100% Growth
+                    </span>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="metric-value">2.3K</div>
+                    <div class="metric-label">Social Media Reach</div>
+                    <span class="metric-label">Niche Audience</span>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="metric-value">281K</div>
+                    <div class="metric-label">Earned Media Reach</div>
+                    <span class="metric-trend trend-positive">
+                        <i class="fas fa-chart-line"></i> 100x Multiplier
+                    </span>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">Positive Sentiment</div>
+                    <span class="metric-trend trend-positive">
+                        <i class="fas fa-check-circle"></i> Unanimous Support
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campaign Narrative -->
+        <section class="section">
+            <div class="analysis-section">
+                <h3 class="analysis-title">
+                    <i class="fas fa-bullseye"></i>
+                    Campaign Narrative: Open Letter to Hana Bank
+                </h3>
+                
+                <p>
+                    The campaign began with an <strong>open letter</strong> delivered by the Kpop4planet community 
+                    and BigBang G-Dragon fandom to Hana Bank Indonesia. The letter urged the bank to 
+                    stop financing Harita's nickel project on Obi Island, which was deemed environmentally damaging.
+                </p>
+                
+                <div class="insight-box">
+                    <div class="insight-title">Strategic Insight:</div>
+                    <p>
+                        The spike from 0 to 44 mentions during the analysis period indicates a <strong>coordinated campaign</strong>, 
+                        not organic virality. This demonstrates the organizational power of K-Pop fandom when mobilized 
+                        for social causes.
+                    </p>
+                </div>
+                
+                <p>
+                    The campaign successfully bridged two seemingly disconnected worlds: <em>Pop Culture Fandom</em> 
+                    and <em>Corporate Responsibility</em>. This unique perspective made the story compelling 
+                    for mainstream media journalists, creating a significant multiplier effect.
+                </p>
+            </div>
+        </section>
+
+        <!-- Platform Analysis -->
+        <section class="section">
+            <h2 class="section-title">Platform Distribution</h2>
+            <p class="section-subtitle">
+                Analysis of conversation distribution across various social media platforms
+            </p>
+            
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon instagram-bg">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div>
+                            <div class="platform-name">Instagram</div>
+                            <div class="platform-metric">9 Mentions</div>
+                        </div>
+                    </div>
+                    <p class="platform-desc">
+                        Primary platform for visual campaigns with hashtags #kpop4planet and #hanabank. 
+                        Visual content attracted younger users' attention.
+                    </p>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon news-bg">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div>
+                            <div class="platform-name">News Media</div>
+                            <div class="platform-metric">30 Mentions</div>
+                        </div>
+                    </div>
+                    <p class="platform-desc">
+                        Mainstream media like Greeners.co, Suara Merdeka, and Wartalampung.id 
+                        expanded campaign reach to non-K-Pop audiences.
+                    </p>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon twitter-bg">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <div>
+                            <div class="platform-name">X (Twitter)</div>
+                            <div class="platform-metric">3 Mentions</div>
+                        </div>
+                    </div>
+                    <p class="platform-desc">
+                        Conversations focused on campaign hashtags with high engagement from 
+                        environmental activist accounts and fandom.
+                    </p>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon tiktok-bg">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <div>
+                            <div class="platform-name">TikTok</div>
+                            <div class="platform-metric">2 Mentions</div>
+                        </div>
+                    </div>
+                    <p class="platform-desc">
+                        Untapped content development opportunity. Generation Z on TikTok is a 
+                        potential target for environmental campaigns.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sentiment Analysis -->
+        <section class="section">
+            <div class="analysis-section">
+                <h3 class="analysis-title">
+                    <i class="fas fa-chart-pie"></i>
+                    Sentiment Analysis: 100% Positive
+                </h3>
+                
+                <div class="sentiment-container">
+                    <div class="sentiment-chart">
+                        <div class="sentiment-donut"></div>
+                    </div>
+                    
+                    <div class="sentiment-content">
+                        <p>
+                            <strong>100% positive sentiment</strong> in a campaign involving financial 
+                            and mining issues is a rare phenomenon. Typically, such issues trigger 
+                            debate and polarization of opinions.
+                        </p>
+                        
+                        <div class="insight-box">
+                            <div class="insight-title">Interpretation:</div>
+                            <p>
+                                Consistent positive sentiment indicates an effective "<em>us versus them</em>" 
+                                narrative. The campaign successfully created solidarity among K-Pop fans 
+                                by presenting environmental issues as a shared struggle.
+                            </p>
+                        </div>
+                        
+                        <p>
+                            The absence of negative sentiment also indicates that the campaign has not 
+                            attracted opposition attention or rejection, providing space for broader 
+                            narrative expansion.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hashtag Analysis -->
+        <section class="section">
+            <h2 class="section-title">Hashtag Analysis</h2>
+            <p class="section-subtitle">
+                Dominant hashtags in conversations during the analysis period
+            </p>
+            
+            <div class="analysis-section">
+                <div class="hashtag-cloud">
+                    <span class="hashtag hashtag-primary">#kpop4planet</span>
+                    <span class="hashtag">#hanabank</span>
+                    <span class="hashtag">#gdragon</span>
+                    <span class="hashtag">#nikel</span>
+                    <span class="hashtag">#pulauobi</span>
+                    <span class="hashtag">#harita</span>
+                    <span class="hashtag">#kpop</span>
+                    <span class="hashtag">#fyp</span>
+                    <span class="hashtag">#greeners</span>
+                    <span class="hashtag">#stopcoal</span>
+                    <span class="hashtag">#kpopers</span>
+                    <span class="hashtag">#kpopcover</span>
+                    <span class="hashtag">#pendanaanbatubara</span>
+                    <span class="hashtag">#kpopfyp</span>
+                    <span class="hashtag">#fypシ</span>
+                </div>
+                
+                <div class="insight-box" style="margin-top: var(--space-lg);">
+                    <div class="insight-title">Hashtag Strategy:</div>
+                    <p>
+                        The combination of hashtags used shows a <strong>cross-audience targeting</strong> strategy:
+                        #kpop4planet and #kpop for fandom audiences, #hanabank and #harita for corporate targets,
+                        and #pulauobi and #nikel for geographical context and environmental issues.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Influencer Analysis -->
+        <section class="section">
+            <h2 class="section-title">Key Influencers</h2>
+            <p class="section-subtitle">
+                Accounts with the highest impact in spreading the campaign
+            </p>
+            
+            <div class="influencer-grid">
+                <div class="influencer-card">
+                    <div class="influencer-avatar">M</div>
+                    <div class="influencer-name">Monitorindo</div>
+                    <div class="influencer-handle">@monitorindo</div>
+                    <div class="influencer-metric">
+                        <span>Followers:</span>
+                        <span>3,734</span>
+                    </div>
+                    <div class="influencer-metric">
+                        <span>Mentions:</span>
+                        <span>2</span>
+                    </div>
+                    <div class="influencer-metric">
+                        <span>Voice Share:</span>
+                        <span>31.7%</span>
+                    </div>
+                </div>
+                
+                <div class="influencer-card">
+                    <div class="influencer-avatar">K</div>
+                    <div class="influencer-name">Kpop4planet Indonesia</div>
+                    <div class="influencer-handle">@kpop4planet.id</div>
+                    <div class="influencer-metric">
+                        <span>Followers:</span>
+                        <span>26</span>
+                    </div>
+                    <div class="influencer-metric">
+                        <span>Mentions:</span>
+                        <span>1</span>
+                    </div>
+                    <div class="influencer-metric">
+                        <span>Voice Share:</span>
+                        <span>29.7%</span>
+                    </div>
+                </div>
+                
+                <div class="influencer-card">
+                    <div class="influencer-avatar">G</div>
+                    <div class="influencer-name">Greeners.co</div>
+                    <div class="influencer-handle">@greenersco</div>
+                    <div class="influencer-metric">
+                        <span>Monthly Visits:</span>
+                        <span>44K</span>
+                    </div>
+                    <div class="influencer-metric">
+                        <span>Mentions:</span>
+                        <span>1</span>
+                    </div>
+                    <div class="influencer-metric">
+                        <span>Voice Share:</span>
+                        <span>26.3%</span>
+                    </div>
+                </div>
+                
+                <div class="influencer-card">
+                    <div class="influencer-avatar">B</div>
+                    <div class="influencer-name">Bigbanginaofo</div>
+                    <div class="influencer-handle">@bigbanginaofo</div>
+                    <div class="influencer-metric">
+                        <span>Followers:</span>
+                        <span>251</span>
+                    </div>
+                    <div class="influencer-metric">
+                        <span>Mentions:</span>
+                        <span>1</span>
+                    </div>
+                    <div class="influencer-metric">
+                        <span>Voice Share:</span>
+                        <span>1.1%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insight-box" style="margin-top: var(--space-xl);">
+                <div class="insight-title">Influencer Analysis:</div>
+                <p>
+                    <strong>Monitorindo</strong> and <strong>Kpop4planet Indonesia</strong> contributed over 60% voice share, 
+                    demonstrating their crucial role as <em>primary amplifiers</em> of the campaign. 
+                    Greeners.co as an environmental media outlet provided legitimacy and reach to non-fandom audiences.
+                </p>
+            </div>
+        </section>
+
+        <!-- Timeline Analysis -->
+        <section class="section">
+            <h2 class="section-title">Campaign Timeline</h2>
+            <p class="section-subtitle">
+                Campaign development day by day during the analysis period
+            </p>
+            
+            <div class="analysis-section">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">December 9, 2025</div>
+                        <div class="timeline-content">
+                            <strong>Open Letter Launch:</strong> Kpop4planet and BigBang fandom sent 
+                            an open letter to Hana Bank. First mentions appeared on Instagram and X.
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">December 10, 2025</div>
+                        <div class="timeline-content">
+                            <strong>Peak Media Coverage:</strong> Monitorindo and other environmental media 
+                            began covering the campaign. Mentions surged from 0 to 30+ within 24 hours.
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">December 11-14, 2025</div>
+                        <div class="timeline-content">
+                            <strong>Narrative Expansion:</strong> Campaign linked to World Animal Rights Day. 
+                            Regional media began covering with local perspectives.
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">December 18, 2025</div>
+                        <div class="timeline-content">
+                            <strong>Sustain Phase:</strong> Campaign remained active with content updates and 
+                            sustained engagement despite declining intensity.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Impact Analysis -->
+        <section class="section">
+            <div class="analysis-section">
+                <h3 class="analysis-title">
+                    <i class="fas fa-rocket"></i>
+                    "Earned Media" Multiplier Effect
+                </h3>
+                
+                <p>
+                    The most significant finding in this analysis is the disparity between 
+                    <strong>Social Media Reach (2.3K)</strong> and 
+                    <strong>Non-Social Media Reach (281K)</strong>.
+                </p>
+                
+                <div class="insight-box">
+                    <div class="insight-title">100x Multiplier Effect:</div>
+                    <p>
+                        Fans ignited the fire (Social Media), but mainstream media poured gasoline on it (News). 
+                        The 100:1 ratio demonstrates the effectiveness of <em>media relations</em> strategy that resulted 
+                        in exponential amplification.
+                    </p>
+                </div>
+                
+                <p>
+                    Major outlets like <strong>Greeners.co, Suara Merdeka, Wartalampung</strong>, and dozens of 
+                    other regional media picked up the story, providing validation and expanding reach 
+                    to broader non-K-Pop audiences.
+                </p>
+            </div>
+        </section>
+
+        <!-- Strategic Recommendations -->
+        <section class="section">
+            <h2 class="section-title">Strategic Recommendations</h2>
+            <p class="section-subtitle">
+                Roadmap to maintain momentum based on listening data
+            </p>
+            
+            <div class="recommendations-grid">
+                <div class="recommendation-card">
+                    <div class="recommendation-number">01</div>
+                    <h4>Capitalize on Media Attention</h4>
+                    <p>
+                        Prepare official press releases for follow-up stories. The "Open Letter" was the hook, 
+                        "Progress Update" is the follow-up story media wants.
+                    </p>
+                    <div class="hashtag-cloud" style="margin-top: var(--space-sm);">
+                        <span class="hashtag">#update</span>
+                        <span class="hashtag">#progress</span>
+                    </div>
+                </div>
+                
+                <div class="recommendation-card">
+                    <div class="recommendation-number">02</div>
+                    <h4>Bridge the TikTok Gap</h4>
+                    <p>
+                        Data shows 0 mentions on TikTok. Create short-form educational content 
+                        explaining "Why Nickel Mining Matters" using trending audio.
+                    </p>
+                    <div class="hashtag-cloud" style="margin-top: var(--space-sm);">
+                        <span class="hashtag">#tiktok</span>
+                        <span class="hashtag">#genz</span>
+                    </div>
+                </div>
+                
+                <div class="recommendation-card">
+                    <div class="recommendation-number">03</div>
+                    <h4>Engage Influencers Directly</h4>
+                    <p>
+                        Monitorindo and Greeners.co contributed >50% voice share. Conduct formal engagement 
+                        for interviews or exclusive content to deepen the narrative.
+                    </p>
+                    <div class="hashtag-cloud" style="margin-top: var(--space-sm);">
+                        <span class="hashtag">#collab</span>
+                        <span class="hashtag">#partnership</span>
+                    </div>
+                </div>
+                
+                <div class="recommendation-card">
+                    <div class="recommendation-number">04</div>
+                    <h4>Expand to Other Fandom Communities</h4>
+                    <p>
+                        Use the same campaign template to invite other K-Pop fandoms 
+                        (BTS, BLACKPINK, etc.) to join the environmental movement.
+                    </p>
+                    <div class="hashtag-cloud" style="margin-top: var(--space-sm);">
+                        <span class="hashtag">#bts</span>
+                        <span class="hashtag">#blackpink</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">Social Intelligence Portfolio</h4>
+                    <p style="color: #cbd5e1;">
+                        Social media data analysis for informed business strategies. 
+                        Specializing in sentiment analysis, trend prediction, and crisis management.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Methodology</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Social Listening</a></li>
+                        <li><a href="#">Sentiment Analysis</a></li>
+                        <li><a href="#">Influencer Mapping</a></li>
+                        <li><a href="#">Trend Forecasting</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> hello@socialintel.com</a></li>
+                        <li><a href="#"><i class="fas fa-globe"></i> www.socialintelligence.com</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn Portfolio</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Social Intelligence Portfolio. Case study based on Kpop4planet data from December 6-22, 2025.
+                <br>Data source: Kpop4planet monitoring report.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
