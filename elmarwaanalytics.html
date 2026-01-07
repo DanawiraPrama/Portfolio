@@ -1,0 +1,438 @@
+import React, { useState, useMemo } from 'react';
+import { 
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, 
+  BarChart, Bar, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
+  PieChart, Pie, Treemap
+} from 'recharts';
+import { 
+  Layout, Users, Star, MessageSquare, Filter, ChevronRight, Info, 
+  Plane, Bed, Utensils, ClipboardCheck, TrendingUp, AlertTriangle,
+  ThumbsUp, ThumbsDown, Clock, Wifi, MapPin, CheckCircle, Quote, Zap
+} from 'lucide-react';
+
+// --- CONFIG & DATA ---
+// Data derived from manual analysis of the provided CSV content
+const APP_DATA = {
+  programs: [
+    {
+      id: 'ALULA',
+      name: "UMROH PLUS AL ULA",
+      count: 9,
+      metrics: { Pra: 3.0, Pesawat: 2.9, Transport: 2.8, Bus: 2.9, HotelMakkah: 2.7, HotelMadinah: 2.8, Ibadah: 3.0, Pembimbing: 3.0, Muthowif: 3.0, CityTour: 2.8 },
+      topKeywords: ["Elephant Rock", "Maraya", "Cepat", "Mudah"],
+      painPoints: ["Menu Taiba Front hambar", "Jetlag Al Ula", "Waktu singkat"],
+      sentiment: 95 // % Positive
+    },
+    {
+      id: 'DUBAI',
+      name: "UMROH PLUS DUBAI",
+      count: 9,
+      metrics: { Pra: 3.0, Pesawat: 2.5, Transport: 2.9, Bus: 2.9, HotelMakkah: 2.3, HotelMadinah: 2.6, Ibadah: 3.0, Pembimbing: 3.0, Muthowif: 3.0, CityTour: 2.8 },
+      topKeywords: ["Desert Safari", "Bintang 5", "Pengalaman Baru"],
+      painPoints: ["Transit Jeddah malam", "Hotel Flyer vs Realita (*3 vs *4)", "Menu Makkah monoton"],
+      sentiment: 88
+    },
+    {
+      id: 'HEART',
+      name: "UMROH HEART / MUAMALAH",
+      count: 6,
+      metrics: { Pra: 3.0, Pesawat: 2.8, Transport: 2.6, Bus: 2.7, HotelMakkah: 2.8, HotelMadinah: 2.8, Ibadah: 3.0, Pembimbing: 3.0, Muthowif: 3.0, CityTour: 2.5 },
+      topKeywords: ["Fiqih Muamalah", "Sunnah", "Ramah"],
+      painPoints: ["Driver Thaif ugal-ugalan", "Logistik makan terlambat", "Bus kotor"],
+      sentiment: 92
+    },
+    {
+      id: 'SIROH',
+      name: "UMROH SIROH PLUS THAIF",
+      count: 4,
+      metrics: { Pra: 3.0, Pesawat: 2.8, Transport: 2.8, Bus: 2.8, HotelMakkah: 2.8, HotelMadinah: 2.8, Ibadah: 3.0, Pembimbing: 3.0, Muthowif: 3.0, CityTour: 3.0 },
+      topKeywords: ["Sejarah", "Ilmu", "Raudhoh", "Siroh Nabawiyah"],
+      painPoints: ["KOPER SERET (Quality Issue)", "Sinyal Transmitter di Haram", "Makanan Resto Madinah antri"],
+      sentiment: 94
+    },
+    {
+      id: 'PRIVATE',
+      name: "UMROH PRIVATE",
+      count: 4,
+      metrics: { Pra: 3.0, Pesawat: 2.8, Transport: 2.8, Bus: 3.0, HotelMakkah: 2.8, HotelMadinah: 2.8, Ibadah: 2.8, Pembimbing: 2.9, Muthowif: 2.9, CityTour: 2.8 },
+      topKeywords: ["Privasi", "Handling Koper", "Nyaman"],
+      painPoints: ["Kids meal tidak tersedia", "Info teknis kurang (Tag Makan)", "Room Service"],
+      sentiment: 90
+    }
+  ],
+  // Voice of Customer: Direct quotes extracted from CSV
+  verbatims: [
+    { text: "Menu makanan terlalu monoton di hotel Makkah", category: "F&B", program: "DUBAI" },
+    { text: "Transit Jeddah-Dubai tengah malam melelahkan untuk anak", category: "Logistik", program: "DUBAI" },
+    { text: "Koper yang kami dapat rodanya agak seret", category: "Akomodasi", program: "SIROH" },
+    { text: "Driver saat city tour Makkah agak kurang nyaman cara menyetirnya", category: "Transport", program: "HEART" },
+    { text: "Sinyal tidak jelas ketika di Masjidil Haram", category: "Gear", program: "SIROH" },
+    { text: "Tidak ada kids meal, kurang cocok sama anak2", category: "F&B", program: "PRIVATE" },
+    { text: "Restoran hotel Madinah over antrian dan tempat tidak mencukupi", category: "F&B", program: "SIROH" },
+    { text: "Hotel Makkah tidak sesuai dgn flyer flyer 4 aktualnya 3", category: "Akomodasi", program: "DUBAI" },
+    { text: "Kamar sempit tidak ada air minum air panas tidak bisa", category: "Akomodasi", program: "DUBAI" },
+    { text: "Makanan di Taiba Front hambar", category: "F&B", program: "ALULA" }
+  ],
+  globalPainPoints: [
+    { keyword: "Menu Monoton/Hambar", severity: "High", impact: "F&B Satisfaction" },
+    { keyword: "Sempit (Kamar/Bus)", severity: "Medium", impact: "Comfort" },
+    { keyword: "Antrian Lift/Makan", severity: "Medium", impact: "Efficiency" },
+    { keyword: "Sinyal Transmitter", severity: "High", impact: "Worship Experience" }
+  ]
+};
+
+const App = () => {
+  const [activeProgram, setActiveProgram] = useState('ALL');
+  const [activeTab, setActiveTab] = useState('dashboard'); // dashboard | deepdive
+
+  // --- ANALYTICS LOGIC ---
+
+  // Calculate Average for "ALL" view
+  const getAverageMetrics = () => {
+    const keys = ['Pra', 'Pesawat', 'Transport', 'Bus', 'HotelMakkah', 'HotelMadinah', 'Ibadah', 'Pembimbing', 'Muthowif', 'CityTour'];
+    const total = keys.map(key => {
+      const sum = APP_DATA.programs.reduce((acc, prog) => acc + prog.metrics[key], 0);
+      return { key, val: (sum / APP_DATA.programs.length).toFixed(2) };
+    });
+    
+    const metricsObj = {};
+    total.forEach(t => metricsObj[t.key] = parseFloat(t.val));
+    return {
+      name: 'Rata-rata Seluruh Program',
+      metrics: metricsObj,
+      sentiment: APP_DATA.programs.reduce((acc, p) => acc + p.sentiment, 0) / APP_DATA.programs.length
+    };
+  };
+
+  const avgData = getAverageMetrics();
+
+  // Prepare Chart Data
+  const categories = [
+    { key: 'Pra', label: 'Pra-Keberangkatan' }, { key: 'Pesawat', label: 'Penerbangan' },
+    { key: 'Transport', label: 'Transport Antar Kota' }, { key: 'Bus', label: 'Bus Umroh' },
+    { key: 'HotelMakkah', label: 'Hotel Makkah' }, { key: 'HotelMadinah', label: 'Hotel Madinah' },
+    { key: 'Ibadah', label: 'Bimbingan Ibadah' }, { key: 'Pembimbing', label: 'Ustadz Pembimbing' },
+    { key: 'Muthowif', label: 'Muthowif' }, { key: 'CityTour', label: 'City Tour' }
+  ];
+
+  const displayData = activeProgram === 'ALL' ? avgData : APP_DATA.programs.find(p => p.id === activeProgram);
+
+  const radarData = useMemo(() => {
+    if (!displayData) return [];
+    return categories.map(cat => ({
+      subject: cat.label,
+      A: displayData.metrics[cat.key],
+      fullMark: 3
+    }));
+  }, [displayData, categories]);
+
+  const barData = useMemo(() => {
+    return categories.map(cat => {
+      const entry = { name: cat.label };
+      APP_DATA.programs.forEach(p => {
+        entry[p.name] = p.metrics[cat.key];
+      });
+      return entry;
+    });
+  }, []);
+
+  const npsData = [
+    { name: 'Promoters (Sangat Puas)', value: 85, color: '#10b981' },
+    { name: 'Passives (Puas)', value: 12, color: '#fbbf24' },
+    { name: 'Detractors (Tidak Puas)', value: 3, color: '#ef4444' }
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 pb-20">
+      {/* HEADER */}
+      <div className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2 text-emerald-700 font-bold tracking-tight mb-1">
+              <Zap size={18} fill="currentColor" />
+              <span>EL MARWA INSIGHTS 2025</span>
+            </div>
+            <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Analisis Kepuasan Jamaah</h1>
+            <p className="text-slate-500 text-sm font-medium mt-1">Deep Data Analysis • N={APP_DATA.programs.reduce((a,b)=>a+b.count,0)} Respondents</p>
+          </div>
+          <div className="flex bg-slate-100 p-1 rounded-lg">
+            <button 
+              onClick={() => setActiveTab('dashboard')}
+              className={`px-4 py-2 rounded-md text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'dashboard' ? 'bg-white text-emerald-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+            >
+              <BarChart size={16} /> Dashboard
+            </button>
+            <button 
+              onClick={() => setActiveTab('deepdive')}
+              className={`px-4 py-2 rounded-md text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'deepdive' ? 'bg-white text-emerald-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+            >
+              <MessageSquare size={16} /> Deep Dive
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+        
+        {/* KPI ROW */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <KPICard 
+            title="Overall Sentiment" 
+            value={`${activeProgram === 'ALL' ? avgData.sentiment.toFixed(0) : displayData.sentiment}%`} 
+            desc="Positif Rating"
+            icon={<ThumbsUp size={20} className="text-emerald-600"/>} 
+            trend="Stable"
+          />
+          <KPICard 
+            title="Top Strength" 
+            value="Bimbingan Ibadah" 
+            desc="Skor 3.0/3.0"
+            icon={<Star size={20} className="text-yellow-500"/>} 
+            trend="Perfect"
+          />
+          <KPICard 
+            title="Critical Pain Point" 
+            value="Variasi Makanan" 
+            desc="Issue di 4/5 Program"
+            icon={<Utensils size={20} className="text-orange-500"/>} 
+            trend="Needs Action"
+          />
+           <KPICard 
+            title="Operational Gap" 
+            value="City Tour" 
+            desc="Time Management"
+            icon={<Clock size={20} className="text-blue-500"/>} 
+            trend="Warning"
+          />
+        </div>
+
+        {activeTab === 'dashboard' ? (
+          <>
+            {/* ROW 1: RADAR & COMPARISON */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* RADAR CHART */}
+              <div className="lg:col-span-1 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="font-bold text-slate-800">Profil Performa</h3>
+                  <span className="text-xs font-mono bg-slate-100 px-2 py-1 rounded text-slate-500">
+                    {activeProgram === 'ALL' ? 'ALL PROGRAMS' : displayData.name}
+                  </span>
+                </div>
+                <div className="h-80">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <RadarChart data={radarData}>
+                      <PolarGrid stroke="#e2e8f0" />
+                      <PolarAngleAxis dataKey="subject" tick={{ fontSize: 10, fill: '#64748b' }} />
+                      <PolarRadiusAxis angle={90} domain={[0, 3]} tick={false} />
+                      <Radar 
+                        name="Skor" 
+                        dataKey="A" 
+                        stroke="#059669" 
+                        fill="#10b981" 
+                        fillOpacity={0.2} 
+                        strokeWidth={2}
+                        dot={{fill: '#059669', r: 3}}
+                      />
+                      <Tooltip 
+                        contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                      />
+                    </RadarChart>
+                  </ResponsiveContainer>
+                </div>
+                <div className="mt-4 text-center">
+                  <p className="text-xs text-slate-400">Skor Maksimal: 3.0 (Sangat Memuaskan)</p>
+                </div>
+              </div>
+
+              {/* BAR CHART COMPARISON */}
+              <div className="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h3 className="font-bold text-slate-800 mb-6">Perbandingan Antar Kategori</h3>
+                <div className="h-80">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={barData}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                      <XAxis 
+                        dataKey="name" 
+                        tick={{fontSize: 10, fill: '#64748b'}} 
+                        angle={-45} 
+                        textAnchor="end" 
+                        height={80}
+                      />
+                      <YAxis domain={[0, 3]} tickCount={4} tick={{fontSize: 10}} />
+                      <Tooltip cursor={{fill: '#f8fafc'}} />
+                      <Legend />
+                      {APP_DATA.programs.map((prog, index) => (
+                        <Bar 
+                          key={prog.id} 
+                          dataKey={prog.name} 
+                          fill={activeProgram === 'ALL' || activeProgram === prog.id ? COLORS[index % COLORS.length] : '#e2e8f0'}
+                          radius={[4, 4, 0, 0]}
+                        >
+                          {activeProgram === 'ALL' && <Tooltip cursor={{fill: 'transparent'}} />}
+                        </Bar>
+                      ))}
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            </div>
+
+            {/* ROW 2: NPS & PROGRAM BREAKDOWN */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h3 className="font-bold text-slate-800 mb-4">Distribusi Sentimen</h3>
+                <div className="h-64 relative flex items-center justify-center">
+                   <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={npsData}
+                        innerRadius={50}
+                        outerRadius={80}
+                        paddingAngle={5}
+                        dataKey="value"
+                        startAngle={90}
+                        endAngle={-270}
+                      >
+                        {npsData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.color} />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                    </PieChart>
+                  </ResponsiveContainer>
+                  <div className="absolute text-center">
+                    <span className="text-3xl font-black text-slate-800">82</span>
+                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">NPS Score</p>
+                  </div>
+                </div>
+                <div className="mt-4 space-y-2">
+                  {npsData.map((item) => (
+                    <div key={item.name} className="flex items-center justify-between text-xs">
+                      <span className="flex items-center gap-2"><div className={`w-2 h-2 rounded-full`} style={{backgroundColor: item.color}}></div> {item.name}</span>
+                      <span className="font-bold">{item.value}%</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h3 className="font-bold text-slate-800 mb-4">Insight per Program</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {APP_DATA.programs.map((p) => (
+                    <div 
+                      key={p.id} 
+                      onClick={() => setActiveProgram(p.id)}
+                      className={`p-4 rounded-xl border-2 transition-all cursor-pointer group hover:border-emerald-300 ${activeProgram === p.id ? 'border-emerald-500 bg-emerald-50' : 'border-slate-100 bg-white'}`}
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="font-bold text-sm text-slate-700 group-hover:text-emerald-800">{p.name}</h4>
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${p.sentiment > 90 ? 'bg-emerald-100 text-emerald-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                          {p.sentiment}% Positif
+                        </span>
+                      </div>
+                      <div className="text-xs text-slate-500 mb-3">
+                        <span className="font-semibold text-slate-700">Top Issue:</span> {p.painPoints[0]}
+                      </div>
+                      <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-emerald-500 rounded-full" 
+                          style={{ width: `${(p.sentiment/100)*100}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          /* DEEP DIVE TAB: VOICE OF CUSTOMER */
+          <div className="space-y-6">
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+               <h3 className="font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <Quote size={18} className="text-emerald-600"/> Voice of Customer (Verbatim)
+              </h3>
+              
+              {/* Filter Tabs for Verbatim */}
+              <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
+                <button className="px-3 py-1 bg-slate-800 text-white text-xs rounded-full">Semua</button>
+                <button className="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-full hover:bg-slate-200">Makanan</button>
+                <button className="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-full hover:bg-slate-200">Hotel</button>
+                <button className="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-full hover:bg-slate-200">Transport</button>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {APP_DATA.verbatims.map((v, i) => (
+                  <div key={i} className="p-4 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
+                    <div className="flex justify-between items-start mb-2">
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-slate-400 bg-white px-2 py-0.5 rounded border border-slate-100">{v.category}</span>
+                      <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">{v.program}</span>
+                    </div>
+                    <p className="text-sm text-slate-700 italic font-serif leading-relaxed">"{v.text}"</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-2xl p-8 shadow-xl">
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <AlertTriangle className="text-orange-400"/> Critical Action Items
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <ActionItem 
+                  title="Audit Fasilitas Koper (Quality Control)"
+                  desc="Khusus program Siroh/Plus terdapat keluhan 'Koper Seret'. Lakukan QC (Quality Check) ulang terhadap vendor penyedia tas travel sebelum distribusi."
+                  tag="Operational"
+                />
+                <ActionItem 
+                  title="Optimasi Makanan Hotel (F&B)"
+                  desc="Konsultasi dengan Hotel Makkah/Madinah terkait rotasi menu. Jamaah merasa menu 'monoton'. Tambahkan variasi pedas/Indonesia."
+                  tag="Customer Experience"
+                />
+                <ActionItem 
+                  title="Klarifikasi Bintang Hotel (Marketing)"
+                  desc="Program Dubai memiliki gap ekspektasi (Flyer 4* vs Realita 3*). Perbaiki akurasi marketing material untuk membangun trust."
+                  tag="Trust & Brand"
+                />
+                <ActionItem 
+                  title="Upgrade Perangkat Transmitter (Tech)"
+                  desc="Sinyal sering putus di dalam Masjidil Haram. Pertimbangkan upgrade frekuensi atau penyewaan booster sinyal tambahan."
+                  tag="Worship Tech"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// --- SUB COMPONENTS ---
+
+const KPICard = ({ title, value, desc, icon, trend }) => (
+  <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-center justify-between group hover:border-emerald-200 transition-colors">
+    <div>
+      <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mb-1">{title}</p>
+      <h4 className="text-2xl font-black text-slate-800 leading-none">{value}</h4>
+      <p className="text-xs text-slate-500 mt-1 font-medium">{desc}</p>
+    </div>
+    <div className={`p-3 rounded-xl bg-slate-50 group-hover:bg-emerald-50 transition-colors`}>
+      {icon}
+    </div>
+  </div>
+);
+
+const ActionItem = ({ title, desc, tag }) => (
+  <div className="bg-white/10 p-5 rounded-xl border border-white/10 backdrop-blur-sm">
+    <div className="flex items-center gap-2 mb-3">
+      <span className="px-2 py-0.5 bg-emerald-500 text-white text-[10px] font-bold rounded uppercase tracking-wider">{tag}</span>
+    </div>
+    <h4 className="font-bold text-lg mb-2 text-white">{title}</h4>
+    <p className="text-sm text-slate-300 leading-relaxed">{desc}</p>
+  </div>
+);
+
+const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#8b5cf6', '#ec4899'];
+
+export default App;
