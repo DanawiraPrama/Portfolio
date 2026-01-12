@@ -75,9 +75,16 @@
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-800 relative">
 
-    <div class="container mx-auto max-w-4xl p-6 md:p-10 bg-white my-10 rounded-xl shadow-xl">
+    <div class="absolute top-4 right-4 md:top-6 md:right-10 z-50">
+        <button id="langToggle" class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-full shadow-sm hover:bg-gray-50 hover:shadow-md transition-all text-sm font-semibold text-blue-900">
+            <span id="flagIcon">🇮🇩</span> 
+            <span id="btnText">Bahasa Indonesia</span>
+        </button>
+    </div>
+
+    <div class="container mx-auto max-w-4xl p-6 md:p-10 bg-white my-10 rounded-xl shadow-xl mt-16 md:mt-10">
 
         <header class="text-center border-b-2 border-gray-200 pb-6 mb-8">
             
@@ -86,6 +93,7 @@
                      alt="Prama Danawira" 
                      class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg bg-gray-200">
             </div>
+
             <h1 class="text-4xl md:text-5xl font-bold text-blue-900">PRAMA DANAWIRA</h1>
             <div class="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-4 text-gray-600 text-sm md:text-base">
                 <span class="flex items-center">
@@ -112,48 +120,72 @@
 
         <main>
             <section class="mb-8">
-                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">PROFESSIONAL SUMMARY</h2>
-                <p class="text-base text-gray-700 leading-relaxed">
-                    Strategic Media Buyer & Data-Driven Marketing Specialist with 13+ years in commercial roles spanning B2B sales, banking, and digital marketing. Transitioned to full-time independent consultancy in July 2024, blending traditional marketing expertise with Data Science (Python, SQL) to engineer mathematically-optimized Meta Ads strategies (CTWA, Advantage+, CBO). Combines deep funnel understanding with advanced analytics for superior ROAS and scalability. Specializes in Social Media Listening for brand monitoring, sentiment analysis, and competitive intelligence to inform data-driven marketing strategies.
-                </p>
+                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">
+                    <span class="lang-en">PROFESSIONAL SUMMARY</span>
+                    <span class="lang-id hidden">RINGKASAN PROFESIONAL</span>
+                </h2>
+                <div class="text-base text-gray-700 leading-relaxed">
+                    <p class="lang-en">
+                        Strategic Media Buyer & Data-Driven Marketing Specialist with 13+ years in commercial roles spanning B2B sales, banking, and digital marketing. Transitioned to full-time independent consultancy in July 2024, blending traditional marketing expertise with Data Science (Python, SQL) to engineer mathematically-optimized Meta Ads strategies (CTWA, Advantage+, CBO). Combines deep funnel understanding with advanced analytics for superior ROAS and scalability. Specializes in Social Media Listening for brand monitoring, sentiment analysis, and competitive intelligence to inform data-driven marketing strategies.
+                    </p>
+                    <p class="lang-id hidden">
+                        Media Buyer Strategis & Spesialis Pemasaran Berbasis Data dengan pengalaman lebih dari 13 tahun dalam peran komersial mencakup penjualan B2B, perbankan, dan pemasaran digital. Beralih menjadi konsultan independen penuh waktu pada Juli 2024, memadukan keahlian pemasaran tradisional dengan Data Science (Python, SQL) untuk merancang strategi Meta Ads yang teroptimasi secara matematis (CTWA, Advantage+, CBO). Menggabungkan pemahaman mendalam tentang funnel dengan analitik tingkat lanjut untuk ROAS dan skalabilitas yang superior. Spesialis dalam Social Media Listening untuk pemantauan merek, analisis sentimen, dan intelijen kompetitif guna menginformasikan strategi pemasaran berbasis data.
+                    </p>
+                </div>
             </section>
 
             <section class="mb-8">
-                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">CORE SKILLS</h2>
+                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">
+                    <span class="lang-en">CORE SKILLS</span>
+                    <span class="lang-id hidden">KEAHLIAN INTI</span>
+                </h2>
                 
-                <h3 class="text-xl font-semibold text-gray-800 mb-3">Marketing, Sales & Management Skills</h3>
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                    <span class="lang-en">Marketing, Sales & Management Skills</span>
+                    <span class="lang-id hidden">Keahlian Pemasaran, Penjualan & Manajemen</span>
+                </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                     <div class="skill-item">
                         <strong class="text-gray-900">Performance Marketing:</strong>
-                        <p class="text-gray-700 mt-1">Meta Ads Expert: Advanced Campaign Structure (CBO/ABO), Advantage+ Scaling Strategies, Creative Testing Frameworks (A/B Split), Click-to-WhatsApp (CTWA) Funnel Optimization.</p>
+                        <p class="lang-en text-gray-700 mt-1">Meta Ads Expert: Advanced Campaign Structure (CBO/ABO), Advantage+ Scaling Strategies, Creative Testing Frameworks (A/B Split), Click-to-WhatsApp (CTWA) Funnel Optimization.</p>
+                        <p class="lang-id hidden text-gray-700 mt-1">Ahli Meta Ads: Struktur Kampanye Lanjutan (CBO/ABO), Strategi Scaling Advantage+, Kerangka Pengujian Kreatif (A/B Split), Optimalisasi Funnel Click-to-WhatsApp (CTWA).</p>
                     </div>
                     <div class="skill-item">
                         <strong class="text-gray-900">PPC & Paid Social:</strong>
-                        <p class="text-gray-700 mt-1">Audience Segmentation (Broad vs. Interest Stacking), Retargeting Strategies, Dynamic Budget Allocation & Pacing Control.</p>
+                        <p class="lang-en text-gray-700 mt-1">Audience Segmentation (Broad vs. Interest Stacking), Retargeting Strategies, Dynamic Budget Allocation & Pacing Control.</p>
+                        <p class="lang-id hidden text-gray-700 mt-1">Segmentasi Audiens (Broad vs. Interest Stacking), Strategi Retargeting, Alokasi Anggaran Dinamis & Kontrol Pacing.</p>
                     </div>
                     <div class="skill-item">
                         <strong class="text-gray-900">Lead Generation:</strong>
-                        <p class="text-gray-700 mt-1">High-Quality Lead Acquisition, Funnel Conversion Rate Optimization (CRO), Chat-Based Funnel Strategy.</p>
+                        <p class="lang-en text-gray-700 mt-1">High-Quality Lead Acquisition, Funnel Conversion Rate Optimization (CRO), Chat-Based Funnel Strategy.</p>
+                        <p class="lang-id hidden text-gray-700 mt-1">Akuisisi Prospek Berkualitas Tinggi, Optimalisasi Tingkat Konversi Funnel (CRO), Strategi Funnel Berbasis Chat.</p>
                     </div>
                     <div class="skill-item">
                         <strong class="text-gray-900">Strategy:</strong>
-                        <p class="text-gray-700 mt-1">B2B & B2C Marketing Strategy, Multi-City/Geo-Expansion Planning, Account Management & Client Communication, Content Strategy for Ad Creatives.</p>
+                        <p class="lang-en text-gray-700 mt-1">B2B & B2C Marketing Strategy, Multi-City/Geo-Expansion Planning, Account Management & Client Communication, Content Strategy for Ad Creatives.</p>
+                        <p class="lang-id hidden text-gray-700 mt-1">Strategi Pemasaran B2B & B2C, Perencanaan Ekspansi Multi-Kota/Geo, Manajemen Akun & Komunikasi Klien, Strategi Konten untuk Materi Iklan.</p>
                     </div>
                     <div class="skill-item">
                         <strong class="text-gray-900">Social Media Listening:</strong>
-                        <p class="text-gray-700 mt-1">Brand & Competitor Monitoring, Sentiment Analysis, Trend Spotting, Crisis Detection, Influencer Identification using tools like Brandwatch, Sprout Social, Hootsuite.</p>
+                        <p class="lang-en text-gray-700 mt-1">Brand & Competitor Monitoring, Sentiment Analysis, Trend Spotting, Crisis Detection, Influencer Identification using tools like Brandwatch, Sprout Social, Hootsuite.</p>
+                        <p class="lang-id hidden text-gray-700 mt-1">Pemantauan Merek & Kompetitor, Analisis Sentimen, Deteksi Tren, Deteksi Krisis, Identifikasi Influencer menggunakan alat seperti Brandwatch, Sprout Social, Hootsuite.</p>
                     </div>
                     <div class="skill-item">
                         <strong class="text-gray-900">Platforms & Tools:</strong>
-                        <p class="text-gray-700 mt-1">Meta Business Suite: Ads Manager, Events Manager (Pixel/CAPI), Business Settings. Analytics & Tracking: Google Analytics (GA4), Meta Pixel Helper, WhatsApp Business API Integration, Custom URL Parameters (UTM Tracking). Research: Meta Ad Library, Audience Insights.</p>
+                        <p class="lang-en text-gray-700 mt-1">Meta Business Suite: Ads Manager, Events Manager (Pixel/CAPI), Business Settings. Analytics & Tracking: Google Analytics (GA4), Meta Pixel Helper, WhatsApp Business API Integration, Custom URL Parameters (UTM Tracking). Research: Meta Ad Library, Audience Insights.</p>
+                        <p class="lang-id hidden text-gray-700 mt-1">Meta Business Suite: Ads Manager, Events Manager (Pixel/CAPI). Analytics: Google Analytics (GA4), Meta Pixel Helper, Integrasi WhatsApp Business API, Parameter URL Khusus (UTM). Riset: Meta Ad Library, Audience Insights.</p>
                     </div>
                     <div class="skill-item">
                         <strong class="text-gray-900">Methodology:</strong>
-                        <p class="text-gray-700 mt-1">Agile Testing Framework: Rapid Creative Testing, "Inverted Funnel" Strategy, Data-Driven Decision Making. Optimization: ROAS & CPR (Cost Per Result) Optimization, Ad Fatigue Management, Budget Scaling & Defensive Pacing.</p>
+                        <p class="lang-en text-gray-700 mt-1">Agile Testing Framework: Rapid Creative Testing, "Inverted Funnel" Strategy, Data-Driven Decision Making. Optimization: ROAS & CPR (Cost Per Result) Optimization, Ad Fatigue Management, Budget Scaling & Defensive Pacing.</p>
+                        <p class="lang-id hidden text-gray-700 mt-1">Framework Pengujian Agile: Pengujian Kreatif Cepat, Strategi "Inverted Funnel", Pengambilan Keputusan Berbasis Data. Optimalisasi: ROAS & CPR, Manajemen Ad Fatigue, Skala Anggaran & Defensive Pacing.</p>
                     </div>
                 </div>
 
-                <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-8">Data Science & Analysis Skills</h3>
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-8">
+                    <span class="lang-en">Data Science & Analysis Skills</span>
+                    <span class="lang-id hidden">Keahlian Data Science & Analisis</span>
+                </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                     <div class="skill-item">
                         <strong class="text-gray-900">Data Analysis & Querying:</strong>
@@ -161,19 +193,23 @@
                     </div>
                     <div class="skill-item">
                         <strong class="text-gray-900">Programming & Libraries:</strong>
-                        <p class="text-gray-700 mt-1">Python (Pandas, NumPy, Matplotlib, Seaborn) for Marketing Data Analysis</p>
+                        <p class="lang-en text-gray-700 mt-1">Python (Pandas, NumPy, Matplotlib, Seaborn) for Marketing Data Analysis</p>
+                        <p class="lang-id hidden text-gray-700 mt-1">Python (Pandas, NumPy, Matplotlib, Seaborn) untuk Analisis Data Pemasaran</p>
                     </div>
                     <div class="skill-item">
                         <strong class="text-gray-900">Machine Learning:</strong>
-                        <p class="text-gray-700 mt-1">Scikit-learn (Regression, Classification) for Predictive Modeling</p>
+                        <p class="lang-en text-gray-700 mt-1">Scikit-learn (Regression, Classification) for Predictive Modeling</p>
+                        <p class="lang-id hidden text-gray-700 mt-1">Scikit-learn (Regresi, Klasifikasi) untuk Pemodelan Prediktif</p>
                     </div>
                     <div class="skill-item">
                         <strong class="text-gray-900">Data Visualization:</strong>
-                        <p class="text-gray-700 mt-1">Tableau, Looker Studio (Visualizing Ad Performance)</p>
+                        <p class="lang-en text-gray-700 mt-1">Tableau, Looker Studio (Visualizing Ad Performance)</p>
+                        <p class="lang-id hidden text-gray-700 mt-1">Tableau, Looker Studio (Visualisasi Performa Iklan)</p>
                     </div>
                      <div class="skill-item">
                         <strong class="text-gray-900">Data Methodology:</strong>
-                        <p class="text-gray-700 mt-1">Data Collection, Cleaning, & Exploratory Data Analysis (EDA) for Campaign Insights</p>
+                        <p class="lang-en text-gray-700 mt-1">Data Collection, Cleaning, & Exploratory Data Analysis (EDA) for Campaign Insights</p>
+                        <p class="lang-id hidden text-gray-700 mt-1">Pengumpulan Data, Pembersihan, & Analisis Data Eksploratif (EDA) untuk Wawasan Kampanye</p>
                     </div>
                 </div>
             </section>
@@ -190,7 +226,8 @@
                             </svg>
                         </div>
                         <p class="text-xs text-blue-600 mt-1 mb-2 relative z-10">NEW: Advanced Analytics Portfolio</p>
-                        <p class="text-sm text-gray-700 relative z-10">Brand monitoring, sentiment analysis, competitor intelligence & trend detection</p>
+                        <p class="lang-en text-sm text-gray-700 relative z-10">Brand monitoring, sentiment analysis, competitor intelligence & trend detection</p>
+                        <p class="lang-id hidden text-sm text-gray-700 relative z-10">Pemantauan merek, analisis sentimen, intelijen kompetitor & deteksi tren</p>
                     </a>
 
                     <a href="https://danawiraprama.github.io/Portfolio/agentforproperty.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
@@ -247,17 +284,24 @@
             </section>
 
             <section class="mb-8">
-                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">WORK EXPERIENCE</h2>
+                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">
+                    <span class="lang-en">WORK EXPERIENCE</span>
+                    <span class="lang-id hidden">PENGALAMAN KERJA</span>
+                </h2>
                 <div class="space-y-8">
                     
                     <div class="relative timeline-item pl-6">
                         <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
                             <h3 class="text-xl font-semibold text-gray-900">Freelance Marketing & Data Specialist</h3>
-                            <span class="text-gray-600 text-sm font-medium pt-1">(Jul 2024 – Present)</span>
+                            <span class="text-gray-600 text-sm font-medium pt-1">
+                                <span class="lang-en">(Jul 2024 – Present)</span>
+                                <span class="lang-id hidden">(Jul 2024 – Sekarang)</span>
+                            </span>
                         </div>
                         <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
+                        
+                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Delivered end-to-end data-driven marketing services for clients in the Travel, Property Development, and Wellness industries across Indonesia and Southeast Asia, focusing on measurable lead generation and strategic market expansion.</li>
                             <li>Strategic Campaign Management: Successfully managed a high-stakes market entry campaign for a Singapore-based wellness brand, executing a multi-city "Best 5 Test" strategy across Southeast Asia (Thailand & Vietnam) to validate creative performance and audience intent.</li>
                             <li>Performance Marketing & Optimization: Specialized in data-driven lead generation, managing complex Meta Ads campaigns (Advantage+, CBO/ABO structures) and Google Ads for Indonesian and regional markets. Implemented agile testing frameworks (A/B testing creatives & copy) and "Inverted Funnel" strategies to optimize CPM and Cost Per Result (CPR) in volatile auctions.</li>
@@ -266,6 +310,17 @@
                             <li>Cross-Border Expansion: Managing a B2B sales and marketing experiment for a new publishing application in Indonesia, focusing on acquiring initial clients and validating market fit.</li>
                             <li>Web Development & CRO: Developed client websites on WordPress and Webflow, optimized for conversion and user experience.</li>
                             <li>Content Strategy: Wrote compelling SEO-optimized copy to drive organic traffic and improve search engine rankings for Indonesian property and travel keywords.</li>
+                        </ul>
+
+                        <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
+                            <li>Menyediakan layanan pemasaran berbasis data end-to-end untuk klien di industri Travel, Pengembangan Properti, dan Kesehatan di Indonesia serta Asia Tenggara, dengan fokus pada perolehan prospek yang terukur dan ekspansi pasar strategis.</li>
+                            <li>Manajemen Kampanye Strategis: Berhasil mengelola kampanye market entry berisiko tinggi untuk merek kesehatan berbasis Singapura, mengeksekusi strategi multi-kota "Best 5 Test" di seluruh Asia Tenggara (Thailand & Vietnam) untuk memvalidasi performa kreatif dan minat audiens.</li>
+                            <li>Pemasaran Kinerja & Optimalisasi: Spesialisasi dalam perolehan prospek berbasis data, mengelola kampanye Meta Ads yang kompleks (struktur Advantage+, CBO/ABO) dan Google Ads untuk pasar Indonesia dan regional. Menerapkan kerangka pengujian agile (A/B testing kreatif & copy) dan strategi "Inverted Funnel" untuk mengoptimalkan CPM dan Cost Per Result (CPR) di lelang yang fluktuatif.</li>
+                            <li>Social Media Listening & Analitik: Menerapkan strategi pemantauan merek dan analisis sentimen untuk melacak aktivitas kompetitor, mendeteksi tren yang muncul, dan mengidentifikasi potensi krisis sebelum membesar.</li>
+                            <li>Pengambilan Keputusan Berbasis Data: Menggunakan analitik canggih untuk mendiagnosis kelelahan iklan (ad fatigue) dan saturasi pasar, mengeksekusi pivot strategis (misalnya, beralih dari penargetan manual ke audiens Advantage+ berbasis AI) untuk melindungi efisiensi anggaran dan memaksimalkan ROI.</li>
+                            <li>Ekspansi Lintas Batas: Mengelola eksperimen penjualan dan pemasaran B2B untuk aplikasi penerbitan baru di Indonesia, berfokus pada akuisisi klien awal dan validasi market fit.</li>
+                            <li>Pengembangan Web & CRO: Mengembangkan situs web klien di WordPress dan Webflow, dioptimalkan untuk konversi dan pengalaman pengguna.</li>
+                            <li>Strategi Konten: Menulis copy SEO-optimized yang menarik untuk mendorong lalu lintas organik dan meningkatkan peringkat mesin pencari untuk kata kunci properti dan travel Indonesia.</li>
                         </ul>
                     </div>
                     
@@ -277,7 +332,8 @@
                         </div>
                         <p class="text-gray-700 font-medium mb-1">Contentro dot com</p>
                         <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
+                        
+                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Developed and launched a new 'Leads Generation Campaign' product, resulting in a 15% revenue increase for the company.</li>
                             <li>Managed and optimized Meta Ads (Facebook/Instagram Ads) and Google Ads campaigns for clients as a core component of lead generation strategies.</li>
                             <li>Implemented social media listening strategies to monitor brand mentions, track competitor activities, and identify industry trends for 70+ clients across various sectors.</li>
@@ -285,6 +341,16 @@
                             <li>Handling over 70 clients across various industries (consumer products, lifestyle, media, education, property, state-owned enterprises), including major brands like Toyota, Bukalapak.com, Tempo Media Group, and Jakarta Intercultural School.</li>
                             <li>Oversaw the development of website/blog content, social media, newsletters, and virtual events, aligning with clients' branding goals.</li>
                             <li>Evaluated campaign success, monitored audience trends, and optimized strategies to maximize media exposure and business growth.</li>
+                        </ul>
+
+                        <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
+                            <li>Mengembangkan dan meluncurkan produk baru 'Kampanye Lead Generation', menghasilkan peningkatan pendapatan perusahaan sebesar 15%.</li>
+                            <li>Mengelola dan mengoptimalkan kampanye Meta Ads (Facebook/Instagram Ads) dan Google Ads untuk klien sebagai komponen inti dari strategi perolehan prospek.</li>
+                            <li>Menerapkan strategi social media listening untuk memantau penyebutan merek, melacak aktivitas kompetitor, dan mengidentifikasi tren industri untuk 70+ klien di berbagai sektor.</li>
+                            <li>Memimpin 200+ rilis media setiap tahun, mendapatkan liputan di 280+ outlet media. Berkontribusi pada 4.000+ artikel yang diterbitkan setiap tahun.</li>
+                            <li>Menangani lebih dari 70 klien di berbagai industri (produk konsumen, gaya hidup, media, pendidikan, properti, BUMN), termasuk merek besar seperti Toyota, Bukalapak.com, Tempo Media Group, dan Jakarta Intercultural School.</li>
+                            <li>Mengawasi pengembangan konten situs web/blog, media sosial, buletin, dan acara virtual, menyelaraskan dengan tujuan branding klien.</li>
+                            <li>Mengevaluasi keberhasilan kampanye, memantau tren audiens, dan mengoptimalkan strategi untuk memaksimalkan eksposur media dan pertumbuhan bisnis.</li>
                         </ul>
                     </div>
 
@@ -296,9 +362,14 @@
                         </div>
                         <p class="text-gray-700 font-medium mb-1">PT AllProperty Media (Rumah.com)</p>
                         <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
+                        
+                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Achieved 146% of sales target by consistently exceeding quarterly goals (e.g., 130% in Q1 2018).</li>
                             <li>Utilized social media monitoring to identify potential clients and understand market needs in the real estate sector.</li>
+                        </ul>
+                         <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
+                            <li>Mencapai 146% dari target penjualan dengan secara konsisten melampaui tujuan kuartalan (misalnya, 130% pada Q1 2018).</li>
+                            <li>Memanfaatkan pemantauan media sosial untuk mengidentifikasi klien potensial dan memahami kebutuhan pasar di sektor real estat.</li>
                         </ul>
                     </div>
 
@@ -310,9 +381,14 @@
                         </div>
                         <p class="text-gray-700 font-medium mb-1">PT Bank Permata, Tbk</p>
                         <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
+                        
+                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Acquired SME clients, provided tailored financial solutions, and managed portfolios by monitoring accounts, assessing risks, and ensuring timely follow-ups.</li>
                             <li>Achieved 2016 Target 80%: IDR 32 Bio from total target IDR 40 Bio.</li>
+                        </ul>
+                        <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
+                            <li>Mengakuisisi klien UKM, menyediakan solusi keuangan yang disesuaikan, dan mengelola portofolio dengan memantau akun, menilai risiko, dan memastikan tindak lanjut yang tepat waktu.</li>
+                            <li>Mencapai Target 2016 80%: IDR 32 Miliar dari total target IDR 40 Miliar.</li>
                         </ul>
                     </div>
                     
@@ -323,9 +399,14 @@
                             <span class="text-gray-600 text-sm font-medium pt-1">(Jul 2011 – Mar 2015)</span>
                         </div>
                         <p class="text-gray-700 font-medium mb-1">PT Bank Mega, Tbk | Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
+                        
+                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Responsible for commercial credit transactions with credit limits up to IDR 50 Billion.</li>
                             <li>Achieved 2015 Target 100%: IDR 35 Bio from total target IDR 35 Bio.</li>
+                        </ul>
+                        <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
+                            <li>Bertanggung jawab atas transaksi kredit komersial dengan batas kredit hingga IDR 50 Miliar.</li>
+                            <li>Mencapai Target 2015 100%: IDR 35 Miliar dari total target IDR 35 Miliar.</li>
                         </ul>
                     </div>
 
@@ -336,27 +417,43 @@
                             <span class="text-gray-600 text-sm font-medium pt-1">(Jan 2011 – Apr 2011)</span>
                         </div>
                         <p class="text-gray-700 font-medium mb-1">PT Surya Madistrindo | Jakarta, Indonesia</p>
-                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
+                        
+                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>Trained finance teams on Oracle accounting modules and supported account reconciliation and period closing.</li>
+                        </ul>
+                         <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
+                            <li>Melatih tim keuangan pada modul akuntansi Oracle dan mendukung rekonsiliasi akun serta penutupan periode.</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
             <section class="mb-8">
-                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">EDUCATION & CERTIFICATIONS</h2>
+                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">
+                    <span class="lang-en">EDUCATION & CERTIFICATIONS</span>
+                    <span class="lang-id hidden">PENDIDIKAN & SERTIFIKASI</span>
+                </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Education</h3>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                            <span class="lang-en">Education</span>
+                            <span class="lang-id hidden">Pendidikan</span>
+                        </h3>
                         <div class="space-y-4">
                             <div>
-                                <p class="font-semibold text-gray-900">Bachelor's Degree (Economics Marketing Management)</p>
+                                <p class="font-semibold text-gray-900">
+                                    <span class="lang-en">Bachelor's Degree (Economics Marketing Management)</span>
+                                    <span class="lang-id hidden">Sarjana (S1) - Manajemen Pemasaran Ekonomi</span>
+                                </p>
                                 <p class="text-gray-700">University of Indonesia (2007 – 2010)</p>
                                 <p class="text-sm text-gray-600">Grade: GPA 3.32</p>
                             </div>
                             <div>
-                                <p class="font-semibold text-gray-900">Diploma Degree (Economics Accounting)</p>
+                                <p class="font-semibold text-gray-900">
+                                    <span class="lang-en">Diploma Degree (Economics Accounting)</span>
+                                    <span class="lang-id hidden">Diploma (D3) - Akuntansi Ekonomi</span>
+                                </p>
                                 <p class="text-gray-700">University of Indonesia (2003 – 2007)</p>
                                 <p class="text-sm text-gray-600">Grade: GPA 2.74</p>
                             </div>
@@ -364,7 +461,10 @@
                     </div>
 
                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Certifications</h3>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                            <span class="lang-en">Certifications</span>
+                            <span class="lang-id hidden">Sertifikasi</span>
+                        </h3>
                         <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
                             <li>IBM Data Science Professional Certificate | Coursera (On-going)</li>
                             <li>Google Analytics Certification | Skillshop, Indonesia (2025)</li>
@@ -381,7 +481,10 @@
             </section>
             
             <section>
-                 <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">ACTIVITIES & ORGANIZATIONAL EXPERIENCE</h2>
+                 <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">
+                     <span class="lang-en">ACTIVITIES & ORGANIZATIONAL EXPERIENCE</span>
+                     <span class="lang-id hidden">AKTIVITAS & PENGALAMAN ORGANISASI</span>
+                 </h2>
                  <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
                       <li>Head of Qurban Project – Cempaka Hijau Residential Complex (2020)</li>
                       <li>Instructor – UKM (Student Activity Unit) UI, Aikido (2009 - 2015)</li>
@@ -391,5 +494,43 @@
             </section>
         </main>
 
-    </div></body>
+    </div><script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('langToggle');
+            const btnText = document.getElementById('btnText');
+            const flagIcon = document.getElementById('flagIcon');
+            
+            // Mengambil semua elemen dengan class lang-en dan lang-id
+            const enElements = document.querySelectorAll('.lang-en');
+            const idElements = document.querySelectorAll('.lang-id');
+            
+            // Set bahasa default
+            let currentLang = 'en';
+
+            toggleBtn.addEventListener('click', () => {
+                if (currentLang === 'en') {
+                    // Switch to Indonesia
+                    enElements.forEach(el => el.classList.add('hidden'));
+                    idElements.forEach(el => el.classList.remove('hidden'));
+                    
+                    // Update tombol untuk menawarkan kembali ke Inggris
+                    btnText.textContent = 'English';
+                    flagIcon.textContent = '🇺🇸'; // Bendera US/UK sebagai representasi English
+                    
+                    currentLang = 'id';
+                } else {
+                    // Switch to English
+                    idElements.forEach(el => el.classList.add('hidden'));
+                    enElements.forEach(el => el.classList.remove('hidden'));
+                    
+                    // Update tombol untuk menawarkan Bahasa Indonesia
+                    btnText.textContent = 'Bahasa Indonesia';
+                    flagIcon.textContent = '🇮🇩';
+                    
+                    currentLang = 'en';
+                }
+            });
+        });
+    </script>
+</body>
 </html>
