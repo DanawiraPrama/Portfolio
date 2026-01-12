@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume - Prama Danawira</title>
-    <!-- Memuat Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Memuat font Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Menggunakan font Inter sebagai default */
@@ -79,14 +77,17 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- Kontainer utama dengan bayangan dan sudut membulat -->
     <div class="container mx-auto max-w-4xl p-6 md:p-10 bg-white my-10 rounded-xl shadow-xl">
 
-        <!-- Header: Nama dan Info Kontak -->
         <header class="text-center border-b-2 border-gray-200 pb-6 mb-8">
+            
+            <div class="flex justify-center mb-6">
+                <img src="images/foto resume prama.png" 
+                     alt="Prama Danawira" 
+                     class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg bg-gray-200">
+            </div>
             <h1 class="text-4xl md:text-5xl font-bold text-blue-900">PRAMA DANAWIRA</h1>
             <div class="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-4 text-gray-600 text-sm md:text-base">
-                <!-- Lokasi -->
                 <span class="flex items-center">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -94,14 +95,12 @@
                     </svg>
                     Jakarta, Indonesia
                 </span>
-                <!-- Telepon -->
                 <span class="flex items-center">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" />
                     </svg>
                     <a href="tel:+6281284942940" class="hover:text-blue-700 hover:underline">+6281284942940</a>
                 </span>
-                <!-- Email -->
                 <span class="flex items-center">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -112,7 +111,6 @@
         </header>
 
         <main>
-            <!-- Bagian: Ringkasan Profesional -->
             <section class="mb-8">
                 <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">PROFESSIONAL SUMMARY</h2>
                 <p class="text-base text-gray-700 leading-relaxed">
@@ -120,11 +118,9 @@
                 </p>
             </section>
 
-            <!-- Bagian: Keahlian Inti -->
             <section class="mb-8">
                 <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">CORE SKILLS</h2>
                 
-                <!-- Sub-bagian 1: Marketing -->
                 <h3 class="text-xl font-semibold text-gray-800 mb-3">Marketing, Sales & Management Skills</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                     <div class="skill-item">
@@ -157,7 +153,6 @@
                     </div>
                 </div>
 
-                <!-- Sub-bagian 2: Data Science -->
                 <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-8">Data Science & Analysis Skills</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                     <div class="skill-item">
@@ -183,12 +178,10 @@
                 </div>
             </section>
 
-            <!-- Bagian: Portfolio -->
             <section class="mb-8">
                 <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">PORTFOLIO</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     
-                    <!-- Portfolio Item Baru: Social Media Listening -->
                     <a href="https://danawiraprama.github.io/Portfolio/socialListening.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
                         <div class="flex justify-between items-center relative z-10">
                             <span class="font-bold text-blue-800">Social Media Listening</span>
@@ -200,7 +193,6 @@
                         <p class="text-sm text-gray-700 relative z-10">Brand monitoring, sentiment analysis, competitor intelligence & trend detection</p>
                     </a>
 
-                    <!-- Portfolio Item 1 -->
                     <a href="https://danawiraprama.github.io/Portfolio/agentforproperty.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
                         <div class="flex justify-between items-center relative z-10">
                             <span class="font-semibold text-blue-800">Agent for Property</span>
@@ -211,7 +203,6 @@
                         <p class="text-xs text-gray-500 mt-1 relative z-10">agentforproperty.html</p>
                     </a>
 
-                    <!-- Portfolio Item 2 -->
                     <a href="https://danawiraprama.github.io/Portfolio/agentforumrah.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
                         <div class="flex justify-between items-center relative z-10">
                             <span class="font-semibold text-blue-800">Agent for Umrah</span>
@@ -222,7 +213,6 @@
                         <p class="text-xs text-gray-500 mt-1 relative z-10">agentforumrah.html</p>
                     </a>
 
-                    <!-- Portfolio Item 3 -->
                     <a href="https://danawiraprama.github.io/Portfolio/dearazproperty.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
                         <div class="flex justify-between items-center relative z-10">
                             <span class="font-semibold text-blue-800">Dearaz Property</span>
@@ -233,7 +223,6 @@
                         <p class="text-xs text-gray-500 mt-1 relative z-10">dearazproperty.html</p>
                     </a>
 
-                    <!-- Portfolio Item 4 -->
                     <a href="https://danawiraprama.github.io/Portfolio/luxuryproperty.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
                         <div class="flex justify-between items-center relative z-10">
                             <span class="font-semibold text-blue-800">Luxury Property</span>
@@ -244,7 +233,6 @@
                         <p class="text-xs text-gray-500 mt-1 relative z-10">luxuryproperty.html</p>
                     </a>
 
-                    <!-- Portfolio Item 5 -->
                     <a href="https://danawiraprama.github.io/Portfolio/travelHajj.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
                         <div class="flex justify-between items-center relative z-10">
                             <span class="font-semibold text-blue-800">Travel Haji</span>
@@ -258,12 +246,10 @@
                 </div>
             </section>
 
-            <!-- Bagian: Pengalaman Kerja -->
             <section class="mb-8">
                 <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">WORK EXPERIENCE</h2>
                 <div class="space-y-8">
                     
-                    <!-- Pekerjaan 1 -->
                     <div class="relative timeline-item pl-6">
                         <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
@@ -283,7 +269,6 @@
                         </ul>
                     </div>
                     
-                    <!-- Pekerjaan 2 -->
                     <div class="relative timeline-item pl-6">
                         <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
@@ -303,7 +288,6 @@
                         </ul>
                     </div>
 
-                    <!-- Pekerjaan 4 -->
                     <div class="relative timeline-item pl-6">
                         <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
@@ -318,7 +302,6 @@
                         </ul>
                     </div>
 
-                    <!-- Pekerjaan 5 -->
                     <div class="relative timeline-item pl-6">
                         <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
@@ -333,7 +316,6 @@
                         </ul>
                     </div>
                     
-                    <!-- Pekerjaan 6 -->
                     <div class="relative timeline-item pl-6">
                         <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
@@ -347,7 +329,6 @@
                         </ul>
                     </div>
 
-                    <!-- Pekerjaan 7 -->
                     <div class="relative pl-6">
                         <span class="timeline-dot"></span>
                         <div class="flex flex-col sm:flex-row justify-between">
@@ -362,12 +343,10 @@
                 </div>
             </section>
 
-            <!-- Bagian: Edukasi & Sertifikasi -->
             <section class="mb-8">
                 <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">EDUCATION & CERTIFICATIONS</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
-                    <!-- Kolom Edukasi -->
                     <div>
                         <h3 class="text-xl font-semibold text-gray-800 mb-3">Education</h3>
                         <div class="space-y-4">
@@ -384,7 +363,6 @@
                         </div>
                     </div>
 
-                    <!-- Kolom Sertifikasi -->
                     <div>
                         <h3 class="text-xl font-semibold text-gray-800 mb-3">Certifications</h3>
                         <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
@@ -402,19 +380,16 @@
                 </div>
             </section>
             
-            <!-- Bagian: Aktivitas -->
             <section>
                  <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">ACTIVITIES & ORGANIZATIONAL EXPERIENCE</h2>
                  <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
-                     <li>Head of Qurban Project – Cempaka Hijau Residential Complex (2020)</li>
-                     <li>Instructor – UKM (Student Activity Unit) UI, Aikido (2009 - 2015)</li>
-                     <li>External Division – UKF (Faculty Activity Unit) LIFO '06 FEUI (2005 - 2006)</li>
-                     <li>General Secretary – Ikatan Remaja Cempaka Hijau (2003 - 2004)</li>
+                      <li>Head of Qurban Project – Cempaka Hijau Residential Complex (2020)</li>
+                      <li>Instructor – UKM (Student Activity Unit) UI, Aikido (2009 - 2015)</li>
+                      <li>External Division – UKF (Faculty Activity Unit) LIFO '06 FEUI (2005 - 2006)</li>
+                      <li>General Secretary – Ikatan Remaja Cempaka Hijau (2003 - 2004)</li>
                  </ul>
             </section>
         </main>
 
-    </div><!-- Akhir dari kontainer utama -->
-
-</body>
+    </div></body>
 </html>
