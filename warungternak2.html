@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warung Ternak Aqiqah - Layanan Aqiqah Sesuai Sunnah dengan Live Video Call</title>
+  <meta name="description" content="Layanan Aqiqah digital terintegrasi sesuai Sunnah dengan fitur Live Video Call penyembelihan. Transparansi total, proses syar'i, dan distribusi amanah.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage: {
+              50: '#f4f7f5',
+              100: '#e4ebe6',
+              200: '#c9d9cd',
+              300: '#a3bfab',
+              400: '#77a082',
+              500: '#568262',
+              600: '#43674d',
+              700: '#385340',
+              800: '#2f4437',
+              900: '#27382e',
+              950: '#131d17',
+            },
+            forest: {
+              500: '#2d5a3d',
+              600: '#234a31',
+              700: '#1a3a25',
+              800: '#132a1c',
+              900: '#0a1a0f',
+            },
+            emerald: {
+              400: '#34d399',
+              500: '#10b981',
+            },
+            amber: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            },
+            cream: '#FBFBF7',
+            warmwhite: '#FDFCFA',
+          },
+          fontFamily: {
+            display: ['DM Serif Display', 'serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            'hero-pattern': 'linear-gradient(135deg, #f4f7f5 0%, #e4ebe6 50%, #f4f7f5 100%)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #FBFBF7;
+      --fg: #1a2e1f;
+      --muted: #5b7363;
+      --accent: #43674d;
+      --card: #ffffff;
+      --border: #e4ebe6;
+      --sage-dark: #2f4437;
+      --forest: #2d5a3d;
+    }
+
+    * { box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .font-display { font-family: 'DM Serif Display', serif; }
+
+    /* Hero Background */
+    .hero-bg {
+      background: 
+        radial-gradient(ellipse 100% 80% at 70% 0%, rgba(77, 160, 130, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 60% at 20% 100%, rgba(45, 90, 61, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #FBFBF7 0%, #f4f7f5 100%);
+    }
+
+    /* Floating Orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      animation: float-orb 20s infinite ease-in-out;
+    }
+
+    @keyframes float-orb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    /* Grain Texture */
+    .grain::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+    }
+
+    /* Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Stagger Delays */
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-500 { transition-delay: 500ms; }
+    .delay-600 { transition-delay: 600ms; }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #43674d 0%, #2d5a3d 100%);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 4px 20px rgba(67, 103, 77, 0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(67, 103, 77, 0.4);
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:active {
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #43674d;
+      padding: 1rem 2rem;
+      border-radius: 14px;
+      font-weight: 600;
+      border: 2px solid #c9d9cd;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: #43674d;
+      background: rgba(67, 103, 77, 0.05);
+    }
+
+    /* Card Styles */
+    .card {
+      background: var(--card);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      border-color: rgba(67, 103, 77, 0.3);
+    }
+
+    /* Image Placeholder */
+    .img-placeholder {
+      background: linear-gradient(135deg, #e4ebe6 0%, #c9d9cd 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .img-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    }
+
+    /* Price Card Featured */
+    .price-featured {
+      background: linear-gradient(180deg, #43674d 0%, #2d5a3d 100%);
+      color: white;
+      transform: scale(1.05);
+      z-index: 10;
+    }
+
+    .price-featured:hover {
+      transform: scale(1.05) translateY(-8px);
+    }
+
+    /* Quote Mark */
+    .quote-mark {
+      font-family: 'DM Serif Display', serif;
+      font-size: 8rem;
+      line-height: 0;
+      color: rgba(67, 103, 77, 0.15);
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+    }
+
+    /* Video Mockup Glow */
+    .video-glow {
+      box-shadow: 
+        0 0 0 1px rgba(67, 103, 77, 0.1),
+        0 20px 50px rgba(0, 0, 0, 0.15),
+        0 0 100px rgba(67, 103, 77, 0.1);
+    }
+
+    /* Marquee */
+    .marquee-container {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-content {
+      display: inline-flex;
+      animation: marquee 40s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Pulse Ring */
+    .pulse-ring {
+      animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Counter Animation */
+    .counter {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Focus States */
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid #43674d;
+      outline-offset: 3px;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f4f7f5;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #c9d9cd;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a3bfab;
+    }
+
+    /* Decorative Lines */
+    .deco-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9d9cd, transparent);
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Orbs Background -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="orb w-[600px] h-[600px] bg-sage-300/20 -top-48 -right-48" style="animation-delay: 0s;"></div>
+    <div class="orb w-[400px] h-[400px] bg-forest-500/10 bottom-20 -left-48" style="animation-delay: -7s;"></div>
+    <div class="orb w-[300px] h-[300px] bg-sage-400/15 top-1/2 right-1/4" style="animation-delay: -14s;"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-xl border-b border-sage-100/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-18 py-3">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-sage-500 to-forest-600 flex items-center justify-center shadow-lg shadow-sage-500/20 group-hover:shadow-sage-500/30 transition-shadow">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <div class="hidden sm:block">
+            <span class="font-display text-xl text-sage-800">Warung Ternak</span>
+            <span class="block text-xs text-sage-500 -mt-1">Aqiqah</span>
+          </div>
+        </a>
+        
+        <!-- Desktop Nav -->
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="#problem" class="text-sage-600 hover:text-sage-900 transition-colors text-sm font-medium">Mengapa Kami</a>
+          <a href="#solution" class="text-sage-600 hover:text-sage-900 transition-colors text-sm font-medium">Solusi</a>
+          <a href="#process" class="text-sage-600 hover:text-sage-900 transition-colors text-sm font-medium">Proses</a>
+          <a href="#packages" class="text-sage-600 hover:text-sage-900 transition-colors text-sm font-medium">Paket</a>
+          <a href="#testimonials" class="text-sage-600 hover:text-sage-900 transition-colors text-sm font-medium">Testimoni</a>
+        </div>
+
+        <!-- CTA -->
+        <div class="flex items-center gap-3">
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="btn-primary text-sm py-2.5 px-5 flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span class="hidden sm:inline">Konsultasi Gratis</span>
+            <span class="sm:hidden">Chat</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-bg min-h-screen relative pt-24 pb-16 grain overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Content -->
+        <div class="lg:col-span-6 text-center lg:text-left">
+          <!-- Badge -->
+          <div class="reveal inline-flex items-center gap-2 bg-sage-100/80 text-sage-700 px-4 py-2 rounded-full text-sm font-medium mb-8 border border-sage-200/50">
+            <span class="w-2 h-2 bg-emerald-500 rounded-full pulse-ring"></span>
+            <span>Sesuai Manhaj Salaf</span>
+            <span class="mx-1">|</span>
+            <span>Terpercaya Sejak 2019</span>
+          </div>
+          
+          <!-- Headline -->
+          <h1 class="reveal delay-100 font-display text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl text-sage-900 leading-[1.1] mb-6">
+            Saksikan <span class="text-sage-600">Langsung</span> Detik Pertama Ibadah Aqiqah Anak Anda
+          </h1>
+          
+          <!-- Subheadline -->
+          <p class="reveal delay-200 text-lg sm:text-xl text-sage-600 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <strong class="text-sage-700">Bukan sekadar katering.</strong> Kami hadir sebagai mitra ibadah Anda dengan fitur Live Video Call saat penyembelihan, proses syar'i, dan distribusi amanah yang transparan.
+          </p>
+          
+          <!-- CTA Buttons -->
+          <div class="reveal delay-300 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
+            <a href="https://wa.me/6281234567890?text=Assalamualaikum,%20saya%20ingin%20konsultasi%20tentang%20layanan%20aqiqah" target="_blank" rel="noopener" class="btn-primary inline-flex items-center justify-center gap-3 text-base px-8 py-4">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Konsultasi via WhatsApp
+            </a>
+            <a href="#process" class="btn-secondary inline-flex items-center justify-center gap-2 text-base px-8 py-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              Lihat Cara Kerja
+            </a>
+          </div>
+          
+          <!-- Trust Indicators -->
+          <div class="reveal delay-400 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
+            <div class="text-center lg:text-left">
+              <p class="text-2xl sm:text-3xl font-bold text-sage-700 counter" data-target="2847">0</p>
+              <p class="text-xs sm:text-sm text-sage-500">Aqiqah Terlaksana</p>
+            </div>
+            <div class="text-center lg:text-left">
+              <p class="text-2xl sm:text-3xl font-bold text-sage-700">99%</p>
+              <p class="text-xs sm:text-sm text-sage-500">Kepuasan Klien</p>
+            </div>
+            <div class="text-center lg:text-left">
+              <p class="text-2xl sm:text-3xl font-bold text-sage-700">50+</p>
+              <p class="text-xs sm:text-sm text-sage-500">Panti Partner</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Content - Hero Image -->
+        <div class="lg:col-span-6 relative">
+          <div class="reveal-right delay-200 relative">
+            <!-- Main Image Container -->
+            <div class="relative rounded-3xl overflow-hidden video-glow">
+              <!-- Hero Image Placeholder -->
+              <div class="img-placeholder aspect-[4/3] sm:aspect-[16/10]">
+                <img src="images/sheep.jpg" alt="Keluarga bahagia dengan bayi" class="w-full h-full object-cover">
+              </div>
+              
+              <!-- Overlay Content -->
+              <div class="absolute inset-0 bg-gradient-to-t from-sage-900/80 via-transparent to-transparent"></div>
+              
+              <!-- Live Badge -->
+              <div class="absolute top-4 left-4 flex items-center gap-2 bg-red-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                LIVE VIDEO CALL
+              </div>
+              
+              <!-- Info Overlay -->
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
+                  <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-sage-100 flex items-center justify-center flex-shrink-0">
+                      <svg class="w-6 h-6 text-sage-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="font-semibold text-sage-900">Saksikan Prosesi Langsung</p>
+                      <p class="text-sm text-sage-500">Transparansi penuh dari awal hingga akhir</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Floating Cards -->
+            <div class="absolute -bottom-4 -left-4 lg:-left-8 bg-white rounded-2xl shadow-2xl p-4 border border-sage-100 hidden sm:flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+              <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
+                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-sage-900">Akad Wakalah Sah</p>
+                <p class="text-xs text-sage-500">Sesuai Syariat Islam</p>
+              </div>
+            </div>
+            
+            <div class="absolute -top-4 -right-4 lg:-right-8 bg-white rounded-2xl shadow-2xl p-4 border border-sage-100 hidden md:block">
+              <div class="flex items-center gap-3">
+                <div class="flex -space-x-2">
+                  <div class="w-8 h-8 rounded-full bg-sage-200 border-2 border-white flex items-center justify-center text-xs font-bold text-sage-600">A</div>
+                  <div class="w-8 h-8 rounded-full bg-amber-200 border-2 border-white flex items-center justify-center text-xs font-bold text-amber-600">F</div>
+                  <div class="w-8 h-8 rounded-full bg-sage-300 border-2 border-white flex items-center justify-center text-xs font-bold text-sage-700">U</div>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-sage-900">+2.847 Keluarga</p>
+                  <p class="text-xs text-sage-500">Sudah Mempercayai</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-sage-400 animate-bounce">
+      <span class="text-xs mb-2">Scroll untuk lanjut</span>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Social Proof Marquee -->
+  <section class="py-6 bg-sage-700 relative overflow-hidden">
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <div class="flex items-center gap-12 px-6">
+          <span class="text-white/80 text-sm font-medium flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Terpercaya Sejak 2019
+          </span>
+          <span class="text-white/80 text-sm font-medium">|</span>
+          <span class="text-white/80 text-sm font-medium flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Sesuai Manhaj Salaf
+          </span>
+          <span class="text-white/80 text-sm font-medium">|</span>
+          <span class="text-white/80 text-sm font-medium flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            Live Video Call
+          </span>
+          <span class="text-white/80 text-sm font-medium">|</span>
+          <span class="text-white/80 text-sm font-medium flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+            Melayani Jabodetabek
+          </span>
+          <span class="text-white/80 text-sm font-medium">|</span>
+          <span class="text-white/80 text-sm font-medium flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            2.847+ Aqiqah Terlaksana
+          </span>
+          <span class="text-white/80 text-sm font-medium">|</span>
+        </div>
+        <div class="flex items-center gap-12 px-6">
+          <span class="text-white/80 text-sm font-medium flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Terpercaya Sejak 2019
+          </span>
+          <span class="text-white/80 text-sm font-medium">|</span>
+          <span class="text-white/80 text-sm font-medium flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Sesuai Manhaj Salaf
+          </span>
+          <span class="text-white/80 text-sm font-medium">|</span>
+          <span class="text-white/80 text-sm font-medium flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            Live Video Call
+          </span>
+          <span class="text-white/80 text-sm font-medium">|</span>
+          <span class="text-white/80 text-sm font-medium flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+            Melayani Jabodetabek
+          </span>
+          <span class="text-white/80 text-sm font-medium">|</span>
+          <span class="text-white/80 text-sm font-medium flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            2.847+ Aqiqah Terlaksana
+          </span>
+          <span class="text-white/80 text-sm font-medium">|</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section id="problem" class="py-20 lg:py-32 bg-white relative grain">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16 lg:mb-24">
+        <p class="reveal text-sage-500 font-medium mb-4 text-sm tracking-wider uppercase">Kisah Nyata</p>
+        <h2 class="reveal delay-100 font-display text-3xl sm:text-4xl lg:text-5xl text-sage-900 mb-6 leading-tight">
+          Ragu dengan Proses Aqiqah Jarak Jauh?
+        </h2>
+        <p class="reveal delay-200 text-lg text-sage-600 max-w-2xl mx-auto">
+          Anda tidak sendirian. Kegelisahan ini wajar dirasakan oleh setiap orang tua yang ingin terbaik untuk buah hatinya.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Story Content -->
+        <div class="reveal-left">
+          <div class="relative">
+            <span class="font-display text-6xl text-sage-200 absolute -top-8 -left-4">"</span>
+            <p class="text-xl sm:text-2xl text-sage-800 mb-8 leading-relaxed relative z-10 pl-8">
+              Ingat momen pertama saat menggendongnya?
+            </p>
+          </div>
+          
+          <p class="text-lg text-sage-600 mb-6 leading-relaxed">
+            Dunia rasanya berhenti sejenak. Syukur luar biasa atas amanah indah yang Allah titipkan. Sebagai orang tua, Anda ingin memberikan yang terbaik, termasuk menunaikan haknya: <strong class="text-sage-800">Aqiqah.</strong>
+          </p>
+          
+          <p class="text-lg text-sage-600 mb-8 leading-relaxed">
+            Namun di tengah kesibukan dan jarak, muncul kegelisahan yang terus mengganjal...
+          </p>
+          
+          <!-- Pain Points -->
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-5 bg-red-50 rounded-2xl border border-red-100 group hover:bg-red-100/50 transition-colors">
+              <div class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center flex-shrink-0 group-hover:bg-red-200 transition-colors">
+                <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-sage-800">"Apakah hewannya benar-benar sehat dan cukup umur?"</p>
+                <p class="text-sm text-sage-500 mt-1">Takut dapat hewan sakit atau belum musinnah</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-5 bg-amber-50 rounded-2xl border border-amber-100 group hover:bg-amber-100/50 transition-colors">
+              <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-200 transition-colors">
+                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-sage-800">"Bagaimana saya yakin disembelih atas nama anak saya?"</p>
+                <p class="text-sm text-sage-500 mt-1">Tidak ada jaminan tanpa menyaksikan langsung</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-5 bg-orange-50 rounded-2xl border border-orange-100 group hover:bg-orange-100/50 transition-colors">
+              <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center flex-shrink-0 group-hover:bg-orange-200 transition-colors">
+                <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-sage-800">"Repot memasak dan membagikan ke panti asuhan sendiri"</p>
+                <p class="text-sm text-sage-500 mt-1">Butuh waktu dan tenaga yang tidak sedikit</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8 p-6 bg-sage-50 rounded-2xl border border-sage-100">
+            <p class="text-sage-700 italic">
+              "Kita semua ingin ibadah ini <strong>sah</strong>, bukan sekadar mengganti status 'sudah bayar'. Karena aqiqah adalah <strong>sekali seumur hidup</strong>."
+            </p>
+          </div>
+        </div>
+        
+        <!-- Image Grid -->
+        <div class="reveal-right">
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Main Image -->
+            <div class="col-span-2 rounded-3xl overflow-hidden shadow-xl">
+              <div class="img-placeholder aspect-[16/9]">
+                <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&h=450&fit=crop&auto=format" alt="Orang tua dan bayi" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <!-- Small Images -->
+            <div class="rounded-2xl overflow-hidden shadow-lg">
+              <div class="img-placeholder aspect-square">
+                <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=400&h=400&fit=crop&auto=format" alt="Domba sehat" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-lg">
+              <div class="img-placeholder aspect-square">
+                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=400&h=400&fit=crop&auto=format" alt="Panti asuhan" class="w-full h-full object-cover">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Quote Card -->
+          <div class="mt-6 bg-gradient-to-br from-sage-700 to-forest-700 rounded-2xl p-6 text-white shadow-xl">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-lg font-medium mb-2">Setiap anak tergadaikan dengan aqiqahnya</p>
+                <p class="text-white/70 text-sm">- HR. Abu Dawud & Tirmidzi</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section id="solution" class="py-20 lg:py-32 bg-gradient-to-b from-sage-50 to-cream relative overflow-hidden grain">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16 lg:mb-24">
+        <p class="reveal text-sage-500 font-medium mb-4 text-sm tracking-wider uppercase">Solusi Kami</p>
+        <h2 class="reveal delay-100 font-display text-3xl sm:text-4xl lg:text-5xl text-sage-900 mb-6 leading-tight">
+          Hadirkan Ketenangan di Setiap Sembelihan
+        </h2>
+        <p class="reveal delay-200 text-lg text-sage-600 max-w-2xl mx-auto">
+          Kami hadir bukan hanya sebagai penyedia jasa katering. Kami adalah <strong class="text-sage-700">mitra ibadah</strong> Anda.
+        </p>
+      </div>
+
+      <!-- Main Feature Card -->
+      <div class="reveal-scale mb-16 lg:mb-24">
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-sage-100">
+          <div class="grid lg:grid-cols-2">
+            <!-- Content -->
+            <div class="p-8 lg:p-12 xl:p-16 order-2 lg:order-1">
+              <div class="inline-flex items-center gap-2 bg-sage-100 text-sage-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+                Fitur Unggulan
+              </div>
+              
+              <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl text-sage-900 mb-6 leading-tight">
+                Live Video Call Penyembelihan
+              </h3>
+              
+              <p class="text-lg text-sage-600 mb-8 leading-relaxed">
+                Dengan teknologi Live Video Call, jarak bukan lagi penghalang. Anda berada di kantor atau di rumah, namun <strong class="text-sage-700">hati dan mata Anda hadir</strong> menyaksikan darah sembelihan dialirkan sesuai tuntunan Rasulullah.
+              </p>
+              
+              <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                <div class="flex items-start gap-3 p-4 bg-sage-50 rounded-xl">
+                  <div class="w-8 h-8 rounded-lg bg-sage-200 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-sage-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-medium text-sage-800 text-sm">Transparansi Penuh</p>
+                    <p class="text-xs text-sage-500">Saksikan dari awal hingga akhir</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-3 p-4 bg-sage-50 rounded-xl">
+                  <div class="w-8 h-8 rounded-lg bg-sage-200 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-sage-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-medium text-sage-800 text-sm">Dual Wakalah Sah</p>
+                    <p class="text-xs text-sage-500">Akad jual beli & penyembelihan syar'i</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-3 p-4 bg-sage-50 rounded-xl">
+                  <div class="w-8 h-8 rounded-lg bg-sage-200 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-sage-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-medium text-sage-800 text-sm">Nama Disebutkan</p>
+                    <p class="text-xs text-sage-500">Saat Bismillah & penyembelihan</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-3 p-4 bg-sage-50 rounded-xl">
+                  <div class="w-8 h-8 rounded-lg bg-sage-200 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-sage-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-medium text-sage-800 text-sm">Terhindar dari Gharar</p>
+                    <p class="text-xs text-sage-500">Ketidakjelasan teratasi</p>
+                  </div>
+                </div>
+              </div>
+              
+              <a href="https://wa.me/6281234567890?text=Assalamualaikum,%20saya%20ingin%20bertanya%20tentang%20fitur%20Live%20Video%20Call" target="_blank" class="btn-primary inline-flex items-center gap-2">
+                Tanya Lebih Lanjut
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+            </div>
+            
+            <!-- Image -->
+            <div class="order-1 lg:order-2">
+              <div class="img-placeholder h-64 lg:h-full min-h-[400px] relative">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop&auto=format" alt="Video call aqiqah" class="w-full h-full object-cover">
+                <!-- Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent lg:from-transparent lg:via-transparent lg:to-transparent"></div>
+                <!-- Live Indicator -->
+                <div class="absolute top-4 right-4 flex items-center gap-2 bg-red-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg animate-pulse">
+                  <span class="w-2 h-2 bg-white rounded-full"></span>
+                  LIVE
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="reveal delay-100 card p-6 lg:p-8 text-center">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sage-500 to-forest-600 mx-auto mb-5 flex items-center justify-center shadow-lg">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h4 class="font-display text-xl text-sage-900 mb-3">Sesuai Kaidah Salafi</h4>
+          <p class="text-sage-500 text-sm leading-relaxed">Hewan musinnah, sehat, tidak cacat. Penyembelih Muslim paham sunnah.</p>
+        </div>
+        
+        <div class="reveal delay-200 card p-6 lg:p-8 text-center">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sage-500 to-forest-600 mx-auto mb-5 flex items-center justify-center shadow-lg">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <h4 class="font-display text-xl text-sage-900 mb-3">Transparansi Total</h4>
+          <p class="text-sage-500 text-sm leading-relaxed">Bukan sekadar video setelah kejadian. Anda terlibat langsung saat prosesi.</p>
+        </div>
+        
+        <div class="reveal delay-300 card p-6 lg:p-8 text-center">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sage-500 to-forest-600 mx-auto mb-5 flex items-center justify-center shadow-lg">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h4 class="font-display text-xl text-sage-900 mb-3">Distribusi Tepat Sasaran</h4>
+          <p class="text-sage-500 text-sm leading-relaxed">Partner 50+ panti asuhan terverifikasi. Keberkahan sampai yang membutuhkan.</p>
+        </div>
+        
+        <div class="reveal delay-400 card p-6 lg:p-8 text-center">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sage-500 to-forest-600 mx-auto mb-5 flex items-center justify-center shadow-lg">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h4 class="font-display text-xl text-sage-900 mb-3">Masakan Kelas Resto</h4>
+          <p class="text-sage-500 text-sm leading-relaxed">Menu variatif, diolah higienis, dijamin enak & anti prengus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" class="py-20 lg:py-32 bg-white relative grain">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16 lg:mb-24">
+        <p class="reveal text-sage-500 font-medium mb-4 text-sm tracking-wider uppercase">Cara Kerja</p>
+        <h2 class="reveal delay-100 font-display text-3xl sm:text-4xl lg:text-5xl text-sage-900 mb-6 leading-tight">
+          3 Langkah Sederhana Menunaikan Sunnah
+        </h2>
+        <p class="reveal delay-200 text-lg text-sage-600 max-w-2xl mx-auto">
+          Proses mudah yang menghormati waktu Anda sambil menjaga kesucian ibadah
+        </p>
+      </div>
+
+      <div class="relative">
+        <!-- Connection Line -->
+        <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-sage-200 to-transparent -translate-y-1/2"></div>
+        
+        <div class="grid md:grid-cols-3 gap-8 lg:gap-12 relative z-10">
+          <!-- Step 1 -->
+          <div class="reveal delay-100">
+            <div class="card p-8 lg:p-10 text-center h-full">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-sage-500 to-forest-600 mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold shadow-xl relative">
+                1
+                <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-emerald-400 rounded-full flex items-center justify-center">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+              </div>
+              
+              <h3 class="font-display text-xl lg:text-2xl text-sage-900 mb-4">Pilih Hewan Terbaik</h3>
+              
+              <p class="text-sage-600 mb-6">
+                Pilih kambing jantan/betina terbaik sesuai kriteria <strong>Musinnah</strong> (cukup umur) dan sehat tanpa cacat.
+              </p>
+              
+              <div class="rounded-2xl overflow-hidden mb-4">
+                <div class="img-placeholder aspect-video">
+                  <img src="https://images.unsplash.com/photo-1484557985045-edf25e08da73?w=400&h=225&fit=crop&auto=format" alt="Pilih domba" class="w-full h-full object-cover">
+                </div>
+              </div>
+              
+              <div class="bg-sage-50 rounded-xl p-4 text-sm text-sage-600">
+                <strong class="text-sage-700">Akad Wakalah</strong> yang sah secara syar'i kami lakukan bersama Anda.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="reveal delay-200">
+            <div class="card p-8 lg:p-10 text-center h-full border-2 border-sage-300 relative">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-semibold px-4 py-1 rounded-full">
+                LANGKAH KRUSIAL
+              </div>
+              
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-forest-600 to-forest-800 mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold shadow-xl relative">
+                2
+                <div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-ping"></div>
+                <div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full"></div>
+              </div>
+              
+              <h3 class="font-display text-xl lg:text-2xl text-sage-900 mb-4">Penyembelihan Live</h3>
+              
+              <p class="text-sage-600 mb-6">
+                Di hari ke-7 (atau waktu yang disepakati), admin kami akan menghubungi Anda untuk menyaksikan prosesi.
+              </p>
+              
+              <div class="rounded-2xl overflow-hidden mb-4 relative">
+                <div class="img-placeholder aspect-video">
+                  <img src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?w=400&h=225&fit=crop&auto=format" alt="Video call" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute top-2 right-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
+                  LIVE
+                </div>
+              </div>
+              
+              <div class="bg-red-50 rounded-xl p-4 text-sm text-sage-600">
+                <strong class="text-red-700">Dengar nama anak Anda</strong> disebut dalam Bismillah saat penyembelihan.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="reveal delay-300">
+            <div class="card p-8 lg:p-10 text-center h-full">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold shadow-xl relative">
+                3
+                <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-emerald-400 rounded-full flex items-center justify-center">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+              </div>
+              
+              <h3 class="font-display text-xl lg:text-2xl text-sage-900 mb-4">Olahan & Distribusi</h3>
+              
+              <p class="text-sage-600 mb-6">
+                Tim katering kami mengolah daging menjadi sajian lezat kualitas restoran, dikirim atau disalurkan.
+              </p>
+              
+              <div class="rounded-2xl overflow-hidden mb-4">
+                <div class="img-placeholder aspect-video">
+                  <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=225&fit=crop&auto=format" alt="Makanan" class="w-full h-full object-cover">
+                </div>
+              </div>
+              
+              <div class="bg-amber-50 rounded-xl p-4 text-sm text-sage-600">
+                <strong class="text-amber-700">Laporan dokumentasi lengkap</strong> dikirim ke WhatsApp Anda.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional CTA -->
+      <div class="reveal mt-16 lg:mt-24 bg-gradient-to-r from-sage-700 via-forest-700 to-sage-700 rounded-3xl p-8 lg:p-12 text-white text-center relative overflow-hidden">
+        <!-- Decorative -->
+        <div class="absolute top-0 left-0 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-60 h-60 bg-white/5 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10">
+          <div class="flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-16">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+              </div>
+              <div class="text-left">
+                <p class="font-semibold text-lg">Dikirim ke Rumah</p>
+                <p class="text-white/70 text-sm">Atau alamat yang Anda tentukan</p>
+              </div>
+            </div>
+            
+            <div class="hidden md:block w-px h-16 bg-white/20"></div>
+            
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+              </div>
+              <div class="text-left">
+                <p class="font-semibold text-lg">Disalurkan ke Panti</p>
+                <p class="text-white/70 text-sm">Dengan laporan dokumentasi</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages Section -->
+  <section id="packages" class="py-20 lg:py-32 bg-gradient-to-b from-cream to-sage-50 relative grain">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <p class="reveal text-sage-500 font-medium mb-4 text-sm tracking-wider uppercase">Pilihan Paket</p>
+        <h2 class="reveal delay-100 font-display text-3xl sm:text-4xl lg:text-5xl text-sage-900 mb-6 leading-tight">
+          Pilih Paket Keberkahan untuk Si Kecil
+        </h2>
+        <p class="reveal delay-200 text-lg text-sage-600 max-w-2xl mx-auto">
+          Semua paket sudah termasuk <strong>Live Video Call</strong>, sertifikat, dokumentasi lengkap, dan gratis ongkir (syarat berlaku)
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        
+        <!-- Paket Shafa -->
+        <div class="reveal delay-100">
+          <div class="card p-8 h-full flex flex-col">
+            <div class="mb-6">
+              <span class="text-xs font-semibold text-sage-500 tracking-wider uppercase">Tipe Hemat</span>
+              <h3 class="font-display text-2xl text-sage-900 mt-1">Paket Shafa</h3>
+            </div>
+            
+            <div class="mb-6">
+              <span class="text-4xl font-bold text-sage-800">Rp 2.300.000</span>
+            </div>
+            
+            <div class="mb-6 rounded-2xl overflow-hidden">
+              <div class="img-placeholder aspect-video">
+                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=400&h=225&fit=crop&auto=format" alt="Paket Shafa" class="w-full h-full object-cover">
+              </div>
+            </div>
+            
+            <div class="flex-grow">
+              <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-3 text-sage-700">
+                  <div class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-sage-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span>1 Domba Betina Berkualitas</span>
+                </li>
+                <li class="flex items-center gap-3 text-sage-700">
+                  <div class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-sage-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span>50 Bento Box Premium</span>
+                </li>
+                <li class="flex items-center gap-3 text-sage-700">
+                  <div class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-sage-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span>Live Video Call</span>
+                </li>
+                <li class="flex items-center gap-3 text-sage-700">
+                  <div class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-sage-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span>Sertifikat & Dokumentasi</span>
+                </li>
+              </ul>
+            </div>
+            
+            <a href="https://wa.me/6281234567890?text=Assalamualaikum,%20saya%20tertarik%20dengan%20Paket%20Shafa%20Rp%202.300.000" target="_blank" class="block w-full text-center py-4 px-6 rounded-xl border-2 border-sage-300 text-sage-700 font-semibold hover:bg-sage-50 hover:border-sage-400 transition-all">
+              Pilih Paket Ini
+            </a>
+          </div>
+        </div>
+        
+        <!-- Paket Marwa (Featured) -->
+        <div class="reveal delay-200">
+          <div class="card price-featured p-8 h-full flex flex-col relative">
+            <!-- Popular Badge -->
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-bold px-6 py-2 rounded-full shadow-lg">
+              PALING POPULER
+            </div>
+            
+            <div class="mb-6 mt-4">
+              <span class="text-xs font-semibold text-white/70 tracking-wider uppercase">Tipe Standar</span>
+              <h3 class="font-display text-2xl text-white mt-1">Paket Marwa</h3>
+            </div>
+            
+            <div class="mb-6">
+              <span class="text-4xl font-bold text-white">Rp 2.700.000</span>
+            </div>
+            
+            <div class="mb-6 rounded-2xl overflow-hidden">
+              <div class="img-placeholder aspect-video">
+                <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=400&h=225&fit=crop&auto=format" alt="Paket Marwa" class="w-full h-full object-cover">
+              </div>
+            </div>
+            
+            <div class="flex-grow">
+              <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-3 text-white/90">
+                  <div class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span><strong>1 Domba Jantan Premium</strong></span>
+                </li>
+                <li class="flex items-center gap-3 text-white/90">
+                  <div class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span>50 Bento Box Premium</span>
+                </li>
+                <li class="flex items-center gap-3 text-white/90">
+                  <div class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span>Live Video Call</span>
+                </li>
+                <li class="flex items-center gap-3 text-white/90">
+                  <div class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span>Sertifikat & Dokumentasi</span>
+                </li>
+                <li class="flex items-center gap-3 text-white/90">
+                  <div class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span>Menu Pilihan Spesial</span>
+                </li>
+              </ul>
+            </div>
+            
+            <a href="https://wa.me/6281234567890?text=Assalamualaikum,%20saya%20tertarik%20dengan%20Paket%20Marwa%20Rp%202.700.000" target="_blank" class="block w-full text-center py-4 px-6 rounded-xl bg-white text-sage-800 font-semibold hover:bg-sage-50 transition-all shadow-lg">
+              Pilih Paket Ini
+            </a>
+          </div>
+        </div>
+        
+        <!-- Paket Platinum -->
+        <div class="reveal delay-300">
+          <div class="card p-8 h-full flex flex-col">
+            <div class="mb-6">
+              <span class="text-xs font-semibold text-amber-600 tracking-wider uppercase">Tipe Double</span>
+              <h3 class="font-display text-2xl text-sage-900 mt-1">Paket Platinum</h3>
+              <p class="text-sm text-sage-500 mt-1">Untuk Anak Laki-laki</p>
+            </div>
+            
+            <div class="mb-6">
+              <span class="text-4xl font-bold text-sage-800">Rp 5.350.000</span>
+            </div>
+            
+            <div class="mb-6 rounded-2xl overflow-hidden">
+              <div class="img-placeholder aspect-video">
+                <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&h=225&fit=crop&auto=format" alt="Paket Platinum" class="w-full h-full object-cover">
+              </div>
+            </div>
+            
+            <div class="flex-grow">
+              <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-3 text-sage-700">
+                  <div class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-sage-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span><strong>2 Domba Jantan Premium</strong></span>
+                </li>
+                <li class="flex items-center gap-3 text-sage-700">
+                  <div class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-sage-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span>100 Bento Box Premium</span>
+                </li>
+                <li class="flex items-center gap-3 text-sage-700">
+                  <div class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-sage-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span>Live Video Call</span>
+                </li>
+                <li class="flex items-center gap-3 text-sage-700">
+                  <div class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-sage-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span>Sertifikat & Dokumentasi</span>
+                </li>
+              </ul>
+            </div>
+            
+            <a href="https://wa.me/6281234567890?text=Assalamualaikum,%20saya%20tertarik%20dengan%20Paket%20Platinum%20Rp%205.350.000" target="_blank" class="block w-full text-center py-4 px-6 rounded-xl border-2 border-sage-300 text-sage-700 font-semibold hover:bg-sage-50 hover:border-sage-400 transition-all">
+              Pilih Paket Ini
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Preview -->
+      <div class="reveal mt-16 lg:mt-24">
+        <div class="text-center mb-8">
+          <h3 class="font-display text-2xl lg:text-3xl text-sage-900 mb-3">Menu Kelas Restoran</h3>
+          <p class="text-sage-600">Diolah dengan cinta, dijamin lezat dan anti prengus</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+          <div class="card p-4 text-center">
+            <div class="rounded-xl overflow-hidden mb-3">
+              <div class="img-placeholder aspect-square">
+                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=200&h=200&fit=crop&auto=format" alt="Nasi Kebuli" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <p class="font-medium text-sage-800">Nasi Kebuli</p>
+            <p class="text-xs text-sage-500">Premium</p>
+          </div>
+          
+          <div class="card p-4 text-center">
+            <div class="rounded-xl overflow-hidden mb-3">
+              <div class="img-placeholder aspect-square">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=200&h=200&fit=crop&auto=format" alt="Sate Kambing" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <p class="font-medium text-sage-800">Sate Kambing</p>
+            <p class="text-xs text-sage-500">Bumbu Khas</p>
+          </div>
+          
+          <div class="card p-4 text-center">
+            <div class="rounded-xl overflow-hidden mb-3">
+              <div class="img-placeholder aspect-square">
+                <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=200&h=200&fit=crop&auto=format" alt="Gulai" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <p class="font-medium text-sage-800">Gulai</p>
+            <p class="text-xs text-sage-500">Rempah Pilihan</p>
+          </div>
+          
+          <div class="card p-4 text-center">
+            <div class="rounded-xl overflow-hidden mb-3">
+              <div class="img-placeholder aspect-square">
+                <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=200&h=200&fit=crop&auto=format" alt="Nasi Briyani" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <p class="font-medium text-sage-800">Nasi Briyani</p>
+            <p class="text-xs text-sage-500">Aroma Khas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-20 lg:py-32 bg-white relative grain overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <p class="reveal text-sage-500 font-medium mb-4 text-sm tracking-wider uppercase">Testimoni</p>
+        <h2 class="reveal delay-100 font-display text-3xl sm:text-4xl lg:text-5xl text-sage-900 mb-6 leading-tight">
+          Mereka yang Telah Menemukan Ketenangan
+        </h2>
+        <p class="reveal delay-200 text-lg text-sage-600 max-w-2xl mx-auto">
+          Dengarkan pengalaman nyata dari para orang tua yang sudah mempercayakan ibadah aqiqah bersama kami
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        
+        <!-- Testimonial 1 -->
+        <div class="reveal delay-100 card p-8 relative">
+          <span class="quote-mark">"</span>
+          <div class="relative z-10">
+            <div class="flex items-center gap-1 mb-4">
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="text-sage-700 mb-6 leading-relaxed">
+              Alhamdulillah, awalnya ragu dengan aqiqah online. Tapi setelah lihat langsung lewat video call, dengar nama anak saya disebut saat penyembelihan, rasanya <strong>tenang banget</strong>. Laporan pembagian ke panti juga lengkap.
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-sage-200 flex items-center justify-center">
+                <span class="text-sage-700 font-bold">AR</span>
+              </div>
+              <div>
+                <p class="font-semibold text-sage-900">Abu Raihan</p>
+                <p class="text-sm text-sage-500">Jakarta Selatan</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="reveal delay-200 card p-8 relative">
+          <span class="quote-mark">"</span>
+          <div class="relative z-10">
+            <div class="flex items-center gap-1 mb-4">
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="text-sage-700 mb-6 leading-relaxed">
+              Prosesnya sangat profesional. Dari pemilihan hewan sampai distribusi, semuanya transparan. <strong>Makanannya juga enak</strong>, tidak ada bau prengus sama sekali. Recommended banget untuk yang cari layanan aqiqah terpercaya!
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center">
+                <span class="text-amber-700 font-bold">FH</span>
+              </div>
+              <div>
+                <p class="font-semibold text-sage-900">Fatimah Hajar</p>
+                <p class="text-sm text-sage-500">Bogor</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="reveal delay-300 card p-8 relative md:col-span-2 lg:col-span-1">
+          <span class="quote-mark">"</span>
+          <div class="relative z-10">
+            <div class="flex items-center gap-1 mb-4">
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="text-sage-700 mb-6 leading-relaxed">
+              Sebagai orang tua yang sibuk bekerja, layanan ini sangat membantu. Bisa saksikan prosesi dari kantor, dan hasil masakannya dikirim ke rumah mertua. <strong>Praktis dan berkah!</strong>
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-sage-300 flex items-center justify-center">
+                <span class="text-sage-800 font-bold">UA</span>
+              </div>
+              <div>
+                <p class="font-semibold text-sage-900">Ummi Aisyah</p>
+                <p class="text-sm text-sage-500">Tangerang</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="reveal mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+        <div class="text-center p-6 lg:p-8 bg-sage-50 rounded-2xl">
+          <p class="text-3xl lg:text-4xl font-bold text-sage-700 counter" data-target="2847">0</p>
+          <p class="text-sage-500 mt-1 text-sm lg:text-base">Aqiqah Terlaksana</p>
+        </div>
+        <div class="text-center p-6 lg:p-8 bg-sage-50 rounded-2xl">
+          <p class="text-3xl lg:text-4xl font-bold text-sage-700">99%</p>
+          <p class="text-sage-500 mt-1 text-sm lg:text-base">Kepuasan Klien</p>
+        </div>
+        <div class="text-center p-6 lg:p-8 bg-sage-50 rounded-2xl">
+          <p class="text-3xl lg:text-4xl font-bold text-sage-700 counter" data-target="52">0</p>
+          <p class="text-sage-500 mt-1 text-sm lg:text-base">Panti Asuhan Partner</p>
+        </div>
+        <div class="text-center p-6 lg:p-8 bg-sage-50 rounded-2xl">
+          <p class="text-3xl lg:text-4xl font-bold text-sage-700">5+</p>
+          <p class="text-sage-500 mt-1 text-sm lg:text-base">Tahun Pengalaman</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 lg:py-32 bg-gradient-to-b from-sage-50 to-cream relative grain">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <p class="reveal text-sage-500 font-medium mb-4 text-sm tracking-wider uppercase">FAQ</p>
+        <h2 class="reveal delay-100 font-display text-3xl sm:text-4xl lg:text-5xl text-sage-900 mb-6 leading-tight">
+          Pertanyaan yang Sering Ditanyakan
+        </h2>
+      </div>
+
+      <div class="space-y-4" id="faq-container">
+        <!-- FAQ items will be rendered here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="py-20 lg:py-32 bg-gradient-to-br from-sage-800 via-forest-800 to-sage-900 relative overflow-hidden grain">
+    <!-- Decorative -->
+    <div class="absolute top-0 left-0 w-full h-full">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-sage-600/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-forest-600/20 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="reveal">
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+          Jangan Tunda Hak Si Kecil Lebih Lama Lagi
+        </h2>
+        <p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+          Setiap anak tergadaikan dengan aqiqahnya. Lepaskan "gadaian" itu dengan cara yang paling <strong class="text-white">syar'i</strong> dan <strong class="text-white">transparan</strong>.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <a href="https://wa.me/6281234567890?text=Assalamualaikum,%20saya%20ingin%20konsultasi%20tentang%20layanan%20aqiqah%20untuk%20anak%20saya" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 bg-white text-sage-800 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-sage-50 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Konsultasi via WhatsApp
+          </a>
+        </div>
+        
+        <!-- Urgency -->
+        <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span>
+            <span class="text-white/90 text-sm">Slot penyembelihan harian terbatas</span>
+          </div>
+          <span class="text-white/50">|</span>
+          <span class="text-white/70 text-sm">Respon cepat dalam 5 menit</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-sage-900 text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        
+        <!-- Brand -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-sage-500 to-forest-600 flex items-center justify-center">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="font-display text-xl">Warung Ternak Aqiqah</span>
+              <span class="block text-xs text-sage-400 -mt-1">Mitra Ibadah Anda</span>
+            </div>
+          </div>
+          <p class="text-sage-300 mb-6 max-w-md leading-relaxed">
+            Layanan Aqiqah digital terintegrasi yang berbasis di Indonesia dengan prinsip Sunnah (Manhaj Salaf). Transparansi total untuk ibadah yang sempurna.
+          </p>
+          
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 bg-sage-800 px-4 py-2 rounded-full border border-sage-700">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <span class="text-sage-200 text-sm font-medium">Sesuai Manhaj Salaf</span>
+          </div>
+        </div>
+        
+        <!-- Links -->
+        <div>
+          <h4 class="font-semibold mb-4 text-sage-100">Layanan</h4>
+          <ul class="space-y-3">
+            <li><a href="#packages" class="text-sage-400 hover:text-white transition-colors text-sm">Paket Aqiqah</a></li>
+            <li><a href="#process" class="text-sage-400 hover:text-white transition-colors text-sm">Cara Kerja</a></li>
+            <li><a href="#testimonials" class="text-sage-400 hover:text-white transition-colors text-sm">Testimoni</a></li>
+            <li><a href="#contact" class="text-sage-400 hover:text-white transition-colors text-sm">Konsultasi</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div>
+          <h4 class="font-semibold mb-4 text-sage-100">Kontak Kami</h4>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-sage-400">
+              <svg class="w-5 h-5 flex-shrink-0 text-sage-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              <span class="text-sm">+62 812-3456-7890</span>
+            </li>
+            <li class="flex items-center gap-3 text-sage-400">
+              <svg class="w-5 h-5 flex-shrink-0 text-sage-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span class="text-sm">@warungternakaqiqah</span>
+            </li>
+            <li class="flex items-start gap-3 text-sage-400">
+              <svg class="w-5 h-5 flex-shrink-0 text-sage-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span class="text-sm">Jabodetabek, Indonesia</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Bottom -->
+      <div class="deco-line mb-8"></div>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sage-500 text-sm">
+          2024 Warung Ternak Aqiqah. Semua hak dilindungi.
+        </p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="text-sage-500 hover:text-white transition-colors text-sm">Syarat & Ketentuan</a>
+          <a href="#" class="text-sage-500 hover:text-white transition-colors text-sm">Kebijakan Privasi</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ Data
+    const faqData = [
+      {
+        question: "Apakah layanan ini benar-benar sesuai syariat Islam?",
+        answer: "Alhamdulillah, kami menerapkan standar syariat yang ketat. Hewan dipastikan musinnah (cukup umur), sehat, dan tidak cacat. Penyembelih adalah Muslim yang memahami adab penyembelihan sesuai sunnah. Kami juga menggunakan sistem Dual Wakalah yang sah secara syar'i untuk memastikan akad jual beli dan penyembelihan sah."
+      },
+      {
+        question: "Bagaimana cara kerja Live Video Call?",
+        answer: "Setelah Anda memilih paket dan jadwal penyembelihan, tim kami akan menghubungi Anda via WhatsApp. Saat waktu penyembelihan tiba, kami akan melakukan video call langsung dari lokasi. Anda bisa menyaksikan hewan, mendengar nama anak disebut dalam doa, dan melihat prosesi penyembelihan hingga selesai."
+      },
+      {
+        question: "Bagaimana jika saya tidak bisa hadir saat video call?",
+        answer: "Tidak masalah! Kami akan merekam prosesi lengkap dan mengirimkan videonya kepada Anda. Namun, kami sangat menyarankan untuk hadir langsung via video call agar Anda bisa mendengar nama anak disebutkan langsung saat penyembelihan - ini yang membuat layanan kami istimewa."
+      },
+      {
+        question: "Ke mana makanan aqiqah didistribusikan?",
+        answer: "Anda punya dua pilihan: (1) Dikirim langsung ke rumah Anda atau alamat yang ditentukan, atau (2) Disalurkan ke panti asuhan dan kaum dhuafa melalui jaringan partner kami yang sudah terverifikasi. Untuk opsi penyaluran, kami akan mengirimkan laporan dokumentasi lengkap."
+      },
+      {
+        question: "Berapa lama proses dari pemesanan hingga selesai?",
+        answer: "Umumnya proses memakan waktu 1-3 hari setelah pemesanan, tergantung ketersediaan hewan dan jadwal yang Anda inginkan. Untuk aqiqah hari ke-7, kami sarankan order minimal H-3 agar persiapan lebih matang."
+      },
+      {
+        question: "Apakah bisa request menu atau porsi khusus?",
+        answer: "Tentu bisa! Silakan diskusikan kebutuhan khusus Anda saat konsultasi. Kami fleksibel untuk menyesuaikan menu, jumlah porsi, atau kebutuhan khusus lainnya dengan penyesuaian harga yang transparan."
+      }
+    ];
+
+    // Initialize everything after DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // Render FAQ
+      const faqContainer = document.getElementById('faq-container');
+      if (faqContainer) {
+        faqData.forEach((item, index) => {
+          const faqItem = document.createElement('div');
+          faqItem.className = 'reveal card overflow-hidden';
+          faqItem.style.transitionDelay = `${(index + 1) * 100}ms`;
+          faqItem.innerHTML = `
+            <button class="faq-toggle w-full text-left p-6 flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-500 focus-visible:ring-inset" aria-expanded="false">
+              <span class="font-semibold text-sage-900">${item.question}</span>
+              <div class="w-8 h-8 rounded-full bg-sage-100 flex items-center justify-center flex-shrink-0 transition-transform duration-300 faq-icon">
+                <svg class="w-4 h-4 text-sage-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 pb-6">
+              <p class="text-sage-600 leading-relaxed">${item.answer}</p>
+            </div>
+          `;
+          faqContainer.appendChild(faqItem);
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-toggle').forEach(toggle => {
+          toggle.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const icon = this.querySelector('.faq-icon');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-toggle').forEach(otherToggle => {
+              if (otherToggle !== this) {
+                otherToggle.setAttribute('aria-expanded', 'false');
+                otherToggle.nextElementSibling.classList.add('hidden');
+                otherToggle.querySelector('.faq-icon').classList.remove('rotate-180');
+              }
+            });
+            
+            // Toggle current
+            this.setAttribute('aria-expanded', !isExpanded);
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+          });
+        });
+      }
+
+      // Scroll Reveal
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+        revealObserver.observe(el);
+      });
+
+      // Counter Animation
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const counter = entry.target;
+            const target = parseInt(counter.getAttribute('data-target'));
+            if (target && !counter.classList.contains('counted')) {
+              counter.classList.add('counted');
+              animateCounter(counter, target);
+            }
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.counter').forEach(counter => {
+        counterObserver.observe(counter);
+      });
+
+      function animateCounter(element, target) {
+        let current = 0;
+        const duration = 2000;
+        const step = target / (duration / 16);
+        
+        function update() {
+          current += step;
+          if (current < target) {
+            element.textContent = Math.floor(current).toLocaleString('id-ID');
+            requestAnimationFrame(update);
+          } else {
+            element.textContent = target.toLocaleString('id-ID');
+          }
+        }
+        
+        requestAnimationFrame(update);
+      }
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const headerOffset = 80;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Navigation scroll effect
+      const nav = document.querySelector('nav');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 100) {
+            nav.classList.add('shadow-sm');
+          } else {
+            nav.classList.remove('shadow-sm');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
