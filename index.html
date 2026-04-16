@@ -1,532 +1,569 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Prama Danawira</title>
+    <title>Prama Danawira | Strategic Media Buyer & Data Marketer</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons (Modern & Clean Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Menggunakan font Inter sebagai default */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa; /* Latar belakang abu-abu muda */
-        }
-        /* Style untuk ikon di header */
-        .icon {
-            display: inline-block;
-            width: 1.1em;
-            height: 1.1em;
-            margin-right: 0.5em;
-            vertical-align: -0.2em;
-        }
-        /* Garis bawah kustom untuk judul */
-        h2 {
-            border-bottom: 3px solid #e0e7ff; /* Biru muda */
-        }
-        /* Animasi untuk portfolio cards */
-        .portfolio-card {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 0;
-        }
-        .portfolio-card:hover::before {
-            opacity: 1;
-        }
-        /* Timeline styling */
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background-color: #e5e7eb;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: -5px;
-            top: 8px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #3b82f6;
-            z-index: 1;
-        }
-        /* Improved spacing for skills */
-        .skill-item {
-            margin-bottom: 0.75rem;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+        .gradient-text { background: linear-gradient(135deg, #1e40af, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Card Hover Effects */
+        .hover-card { transition: all 0.3s ease; }
+        .hover-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        
+        /* Timeline */
+        .timeline-line { position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background-color: #e2e8f0; }
+        
+        /* Hide ID language by default */
+        .lang-id { display: none; }
+        html[lang="id"] .lang-id { display: block; }
+        html[lang="id"] .lang-en { display: none; }
+        
+        /* Exception for inline elements */
+        html[lang="id"] span.lang-id { display: inline; }
+        html[lang="id"] span.lang-en { display: none; }
     </style>
 </head>
-<body class="text-gray-800 relative">
+<body class="text-slate-800 antialiased selection:bg-brand-200 selection:text-brand-900">
 
-    <div class="absolute top-4 right-4 md:top-6 md:right-10 z-50">
-        <button id="langToggle" class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-full shadow-sm hover:bg-gray-50 hover:shadow-md transition-all text-sm font-semibold text-blue-900">
-            <span id="flagIcon">🇮🇩</span> 
-            <span id="btnText">Bahasa Indonesia</span>
-        </button>
-    </div>
-
-    <div class="container mx-auto max-w-4xl p-6 md:p-10 bg-white my-10 rounded-xl shadow-xl mt-16 md:mt-10">
-
-        <header class="text-center border-b-2 border-gray-200 pb-6 mb-8">
+    <!-- Navigation -->
+    <nav class="glass-nav fixed w-full z-50 top-0 border-b border-slate-200 shadow-sm transition-all py-3">
+        <div class="container mx-auto px-6 max-w-6xl flex justify-between items-center">
+            <a href="#" class="font-bold text-xl tracking-tight text-brand-900">
+                Prama<span class="text-brand-500">.</span>
+            </a>
             
-            <div class="flex justify-center mb-6">
-                <img src="images/foto resume prama.png" 
-                     alt="Prama Danawira" 
-                     class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg bg-gray-200">
+            <div class="flex items-center gap-4">
+                <!-- Language Toggle -->
+                <button id="langToggle" class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-full text-sm font-medium transition-colors text-slate-700">
+                    <span id="flagIcon">🇮🇩</span> 
+                    <span id="btnText">ID</span>
+                </button>
+                <a href="#contact" class="hidden md:inline-flex bg-brand-600 hover:bg-brand-700 text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-md hover:shadow-lg">
+                    <span class="lang-en">Hire Me</span>
+                    <span class="lang-id">Rekrut Saya</span>
+                </a>
             </div>
+        </div>
+    </nav>
 
-            <h1 class="text-4xl md:text-5xl font-bold text-blue-900">PRAMA DANAWIRA</h1>
-            <div class="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-4 text-gray-600 text-sm md:text-base">
-                <span class="flex items-center">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                    </svg>
-                    Jakarta, Indonesia
-                </span>
-                <span class="flex items-center">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" />
-                    </svg>
-                    <a href="tel:+6281284942940" class="hover:text-blue-700 hover:underline">+6281284942940</a>
-                </span>
-                <span class="flex items-center">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                    </svg>
-                    <a href="mailto:prama.danawira@gmail.com" class="hover:text-blue-700 hover:underline">prama.danawira@gmail.com</a>
-                </span>
-            </div>
-        </header>
-
-        <main>
-            <section class="mb-8">
-                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">
-                    <span class="lang-en">PROFESSIONAL SUMMARY</span>
-                    <span class="lang-id hidden">RINGKASAN PROFESIONAL</span>
-                </h2>
-                <div class="text-base text-gray-700 leading-relaxed">
-                    <p class="lang-en">
-                        Strategic Media Buyer & Data-Driven Marketing Specialist with 13+ years in commercial roles spanning B2B sales, banking, and digital marketing. Transitioned to full-time independent consultancy in July 2024, blending traditional marketing expertise with Data Science (Python, SQL) to engineer mathematically-optimized Meta Ads strategies (CTWA, Advantage+, CBO). Combines deep funnel understanding with advanced analytics for superior ROAS and scalability. Specializes in Social Media Listening for brand monitoring, sentiment analysis, and competitive intelligence to inform data-driven marketing strategies.
-                    </p>
-                    <p class="lang-id hidden">
-                        Media Buyer Strategis & Spesialis Pemasaran Berbasis Data dengan pengalaman lebih dari 13 tahun dalam peran komersial mencakup penjualan B2B, perbankan, dan pemasaran digital. Beralih menjadi konsultan independen penuh waktu pada Juli 2024, memadukan keahlian pemasaran tradisional dengan Data Science (Python, SQL) untuk merancang strategi Meta Ads yang teroptimasi secara matematis (CTWA, Advantage+, CBO). Menggabungkan pemahaman mendalam tentang funnel dengan analitik tingkat lanjut untuk ROAS dan skalabilitas yang superior. Spesialis dalam Social Media Listening untuk pemantauan merek, analisis sentimen, dan intelijen kompetitif guna menginformasikan strategi pemasaran berbasis data.
-                    </p>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="container mx-auto max-w-6xl flex flex-col-reverse md:flex-row items-center gap-12">
+            <div class="w-full md:w-3/5 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-600 text-xs font-bold mb-6 border border-brand-100 tracking-wide uppercase">
+                    <i class="ph ph-chart-line-up text-lg"></i>
+                    <span class="lang-en">Available for Freelance & Consultation</span>
+                    <span class="lang-id">Tersedia untuk Freelance & Konsultasi</span>
                 </div>
-            </section>
-
-            <section class="mb-8">
-                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">
-                    <span class="lang-en">CORE SKILLS</span>
-                    <span class="lang-id hidden">KEAHLIAN INTI</span>
-                </h2>
                 
-                <h3 class="text-xl font-semibold text-gray-800 mb-3">
-                    <span class="lang-en">Marketing, Sales & Management Skills</span>
-                    <span class="lang-id hidden">Keahlian Pemasaran, Penjualan & Manajemen</span>
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                    <div class="skill-item">
-                        <strong class="text-gray-900">Performance Marketing:</strong>
-                        <p class="lang-en text-gray-700 mt-1">Meta Ads Expert: Advanced Campaign Structure (CBO/ABO), Advantage+ Scaling Strategies, Creative Testing Frameworks (A/B Split), Click-to-WhatsApp (CTWA) Funnel Optimization.</p>
-                        <p class="lang-id hidden text-gray-700 mt-1">Ahli Meta Ads: Struktur Kampanye Lanjutan (CBO/ABO), Strategi Scaling Advantage+, Kerangka Pengujian Kreatif (A/B Split), Optimalisasi Funnel Click-to-WhatsApp (CTWA).</p>
-                    </div>
-                    <div class="skill-item">
-                        <strong class="text-gray-900">PPC & Paid Social:</strong>
-                        <p class="lang-en text-gray-700 mt-1">Audience Segmentation (Broad vs. Interest Stacking), Retargeting Strategies, Dynamic Budget Allocation & Pacing Control.</p>
-                        <p class="lang-id hidden text-gray-700 mt-1">Segmentasi Audiens (Broad vs. Interest Stacking), Strategi Retargeting, Alokasi Anggaran Dinamis & Kontrol Pacing.</p>
-                    </div>
-                    <div class="skill-item">
-                        <strong class="text-gray-900">Lead Generation:</strong>
-                        <p class="lang-en text-gray-700 mt-1">High-Quality Lead Acquisition, Funnel Conversion Rate Optimization (CRO), Chat-Based Funnel Strategy.</p>
-                        <p class="lang-id hidden text-gray-700 mt-1">Akuisisi Prospek Berkualitas Tinggi, Optimalisasi Tingkat Konversi Funnel (CRO), Strategi Funnel Berbasis Chat.</p>
-                    </div>
-                    <div class="skill-item">
-                        <strong class="text-gray-900">Strategy:</strong>
-                        <p class="lang-en text-gray-700 mt-1">B2B & B2C Marketing Strategy, Multi-City/Geo-Expansion Planning, Account Management & Client Communication, Content Strategy for Ad Creatives.</p>
-                        <p class="lang-id hidden text-gray-700 mt-1">Strategi Pemasaran B2B & B2C, Perencanaan Ekspansi Multi-Kota/Geo, Manajemen Akun & Komunikasi Klien, Strategi Konten untuk Materi Iklan.</p>
-                    </div>
-                    <div class="skill-item">
-                        <strong class="text-gray-900">Social Media Listening:</strong>
-                        <p class="lang-en text-gray-700 mt-1">Brand & Competitor Monitoring, Sentiment Analysis, Trend Spotting, Crisis Detection, Influencer Identification using tools like Brandwatch, Sprout Social, Hootsuite.</p>
-                        <p class="lang-id hidden text-gray-700 mt-1">Pemantauan Merek & Kompetitor, Analisis Sentimen, Deteksi Tren, Deteksi Krisis, Identifikasi Influencer menggunakan alat seperti Brandwatch, Sprout Social, Hootsuite.</p>
-                    </div>
-                    <div class="skill-item">
-                        <strong class="text-gray-900">Platforms & Tools:</strong>
-                        <p class="lang-en text-gray-700 mt-1">Meta Business Suite: Ads Manager, Events Manager (Pixel/CAPI), Business Settings. Analytics & Tracking: Google Analytics (GA4), Meta Pixel Helper, WhatsApp Business API Integration, Custom URL Parameters (UTM Tracking). Research: Meta Ad Library, Audience Insights.</p>
-                        <p class="lang-id hidden text-gray-700 mt-1">Meta Business Suite: Ads Manager, Events Manager (Pixel/CAPI). Analytics: Google Analytics (GA4), Meta Pixel Helper, Integrasi WhatsApp Business API, Parameter URL Khusus (UTM). Riset: Meta Ad Library, Audience Insights.</p>
-                    </div>
-                    <div class="skill-item">
-                        <strong class="text-gray-900">Methodology:</strong>
-                        <p class="lang-en text-gray-700 mt-1">Agile Testing Framework: Rapid Creative Testing, "Inverted Funnel" Strategy, Data-Driven Decision Making. Optimization: ROAS & CPR (Cost Per Result) Optimization, Ad Fatigue Management, Budget Scaling & Defensive Pacing.</p>
-                        <p class="lang-id hidden text-gray-700 mt-1">Framework Pengujian Agile: Pengujian Kreatif Cepat, Strategi "Inverted Funnel", Pengambilan Keputusan Berbasis Data. Optimalisasi: ROAS & CPR, Manajemen Ad Fatigue, Skala Anggaran & Defensive Pacing.</p>
-                    </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-slate-900">
+                    <span class="lang-en">Driving Revenue through <span class="gradient-text">Data-Driven</span> Marketing.</span>
+                    <span class="lang-id">Meningkatkan Pendapatan via <span class="gradient-text">Data-Driven</span> Marketing.</span>
+                </h1>
+                
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto md:mx-0">
+                    <span class="lang-en">I am a <strong>Strategic Media Buyer</strong> blending 13+ years of commercial expertise with advanced Data Science (Python/SQL) to engineer mathematically-optimized Meta Ads strategies that scale businesses profitably.</span>
+                    <span class="lang-id">Saya adalah <strong>Media Buyer Strategis</strong> yang memadukan 13+ tahun pengalaman komersial dengan Data Science (Python/SQL) untuk merancang strategi Meta Ads yang teroptimasi secara matematis untuk menskalakan bisnis Anda.</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#portfolio" class="bg-brand-600 hover:bg-brand-700 text-white px-8 py-3.5 rounded-full font-semibold transition-all shadow-lg hover:shadow-brand-500/30 flex items-center justify-center gap-2">
+                        <i class="ph ph-briefcase text-xl"></i>
+                        <span class="lang-en">View Portfolio</span>
+                        <span class="lang-id">Lihat Portofolio</span>
+                    </a>
+                    <a href="https://wa.me/6281284942940" target="_blank" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-8 py-3.5 rounded-full font-semibold transition-all shadow-sm flex items-center justify-center gap-2">
+                        <i class="ph ph-whatsapp-logo text-xl text-green-500"></i>
+                        <span>WhatsApp Me</span>
+                    </a>
                 </div>
-
-                <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-8">
-                    <span class="lang-en">Data Science & Analysis Skills</span>
-                    <span class="lang-id hidden">Keahlian Data Science & Analisis</span>
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                    <div class="skill-item">
-                        <strong class="text-gray-900">Data Analysis & Querying:</strong>
-                        <p class="text-gray-700 mt-1">SQL (PostgreSQL, MySQL), Advanced Spreadsheets (Excel, Google Sheets - Pivot Tables, VLOOKUP)</p>
-                    </div>
-                    <div class="skill-item">
-                        <strong class="text-gray-900">Programming & Libraries:</strong>
-                        <p class="lang-en text-gray-700 mt-1">Python (Pandas, NumPy, Matplotlib, Seaborn) for Marketing Data Analysis</p>
-                        <p class="lang-id hidden text-gray-700 mt-1">Python (Pandas, NumPy, Matplotlib, Seaborn) untuk Analisis Data Pemasaran</p>
-                    </div>
-                    <div class="skill-item">
-                        <strong class="text-gray-900">Machine Learning:</strong>
-                        <p class="lang-en text-gray-700 mt-1">Scikit-learn (Regression, Classification) for Predictive Modeling</p>
-                        <p class="lang-id hidden text-gray-700 mt-1">Scikit-learn (Regresi, Klasifikasi) untuk Pemodelan Prediktif</p>
-                    </div>
-                    <div class="skill-item">
-                        <strong class="text-gray-900">Data Visualization:</strong>
-                        <p class="lang-en text-gray-700 mt-1">Tableau, Looker Studio (Visualizing Ad Performance)</p>
-                        <p class="lang-id hidden text-gray-700 mt-1">Tableau, Looker Studio (Visualisasi Performa Iklan)</p>
-                    </div>
-                     <div class="skill-item">
-                        <strong class="text-gray-900">Data Methodology:</strong>
-                        <p class="lang-en text-gray-700 mt-1">Data Collection, Cleaning, & Exploratory Data Analysis (EDA) for Campaign Insights</p>
-                        <p class="lang-id hidden text-gray-700 mt-1">Pengumpulan Data, Pembersihan, & Analisis Data Eksploratif (EDA) untuk Wawasan Kampanye</p>
-                    </div>
+                
+                <!-- Quick Contact -->
+                <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-6 text-sm text-slate-500 font-medium">
+                    <a href="mailto:prama.danawira@gmail.com" class="hover:text-brand-600 flex items-center gap-1.5"><i class="ph ph-envelope-simple text-lg"></i> prama.danawira@gmail.com</a>
+                    <span class="flex items-center gap-1.5"><i class="ph ph-map-pin text-lg"></i> Jakarta, Indonesia</span>
                 </div>
-            </section>
-
-            <section class="mb-8">
-                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">PORTFOLIO</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    
-                    <a href="https://danawiraprama.github.io/Portfolio/socialListening.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center relative z-10">
-                            <span class="font-bold text-blue-800">Social Media Listening</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </div>
-                        <p class="text-xs text-blue-600 mt-1 mb-2 relative z-10">NEW: Advanced Analytics Portfolio</p>
-                        <p class="lang-en text-sm text-gray-700 relative z-10">Brand monitoring, sentiment analysis, competitor intelligence & trend detection</p>
-                        <p class="lang-id hidden text-sm text-gray-700 relative z-10">Pemantauan merek, analisis sentimen, intelijen kompetitor & deteksi tren</p>
-                    </a>
-
-                    <a href="https://danawiraprama.github.io/Portfolio/agentforproperty.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center relative z-10">
-                            <span class="font-semibold text-blue-800">Agent for Property</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-1 relative z-10">agentforproperty.html</p>
-                    </a>
-
-                    <a href="https://danawiraprama.github.io/Portfolio/agentforumrah.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center relative z-10">
-                            <span class="font-semibold text-blue-800">Agent for Umrah</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-1 relative z-10">agentforumrah.html</p>
-                    </a>
-
-                    <a href="https://danawiraprama.github.io/Portfolio/dearazproperty.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center relative z-10">
-                            <span class="font-semibold text-blue-800">Dearaz Property</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-1 relative z-10">dearazproperty.html</p>
-                    </a>
-
-                    <a href="https://danawiraprama.github.io/Portfolio/luxuryproperty.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center relative z-10">
-                            <span class="font-semibold text-blue-800">Luxury Property</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-1 relative z-10">luxuryproperty.html</p>
-                    </a>
-
-                    <a href="https://danawiraprama.github.io/Portfolio/travelHajj.html" target="_blank" rel="noopener noreferrer" class="block portfolio-card p-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                        <div class="flex justify-between items-center relative z-10">
-                            <span class="font-semibold text-blue-800">Travel Haji</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-1 relative z-10">travelHaji.html</p>
-                    </a>
-
-                </div>
-            </section>
-
-            <section class="mb-8">
-                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">
-                    <span class="lang-en">WORK EXPERIENCE</span>
-                    <span class="lang-id hidden">PENGALAMAN KERJA</span>
-                </h2>
-                <div class="space-y-8">
-                    
-                    <div class="relative timeline-item pl-6">
-                        <span class="timeline-dot"></span>
-                        <div class="flex flex-col sm:flex-row justify-between">
-                            <h3 class="text-xl font-semibold text-gray-900">Freelance Marketing & Data Specialist</h3>
-                            <span class="text-gray-600 text-sm font-medium pt-1">
-                                <span class="lang-en">(Jul 2024 – Present)</span>
-                                <span class="lang-id hidden">(Jul 2024 – Sekarang)</span>
-                            </span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        
-                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Delivered end-to-end data-driven marketing services for clients in the Travel, Property Development, and Wellness industries across Indonesia and Southeast Asia, focusing on measurable lead generation and strategic market expansion.</li>
-                            <li>Strategic Campaign Management: Successfully managed a high-stakes market entry campaign for a Singapore-based wellness brand, executing a multi-city "Best 5 Test" strategy across Southeast Asia (Thailand & Vietnam) to validate creative performance and audience intent.</li>
-                            <li>Performance Marketing & Optimization: Specialized in data-driven lead generation, managing complex Meta Ads campaigns (Advantage+, CBO/ABO structures) and Google Ads for Indonesian and regional markets. Implemented agile testing frameworks (A/B testing creatives & copy) and "Inverted Funnel" strategies to optimize CPM and Cost Per Result (CPR) in volatile auctions.</li>
-                            <li>Social Media Listening & Analytics: Implemented brand monitoring and sentiment analysis strategies to track competitor activities, detect emerging trends, and identify potential crises before they escalate.</li>
-                            <li>Data-Driven Decision Making: Utilized advanced analytics to diagnose ad fatigue and market saturation, executing strategic pivots (e.g., shifting from manual targeting to AI-driven Advantage+ audiences) to protect budget efficiency and maximize ROI.</li>
-                            <li>Cross-Border Expansion: Managing a B2B sales and marketing experiment for a new publishing application in Indonesia, focusing on acquiring initial clients and validating market fit.</li>
-                            <li>Web Development & CRO: Developed client websites on WordPress and Webflow, optimized for conversion and user experience.</li>
-                            <li>Content Strategy: Wrote compelling SEO-optimized copy to drive organic traffic and improve search engine rankings for Indonesian property and travel keywords.</li>
-                        </ul>
-
-                        <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Menyediakan layanan pemasaran berbasis data end-to-end untuk klien di industri Travel, Pengembangan Properti, dan Kesehatan di Indonesia serta Asia Tenggara, dengan fokus pada perolehan prospek yang terukur dan ekspansi pasar strategis.</li>
-                            <li>Manajemen Kampanye Strategis: Berhasil mengelola kampanye market entry berisiko tinggi untuk merek kesehatan berbasis Singapura, mengeksekusi strategi multi-kota "Best 5 Test" di seluruh Asia Tenggara (Thailand & Vietnam) untuk memvalidasi performa kreatif dan minat audiens.</li>
-                            <li>Pemasaran Kinerja & Optimalisasi: Spesialisasi dalam perolehan prospek berbasis data, mengelola kampanye Meta Ads yang kompleks (struktur Advantage+, CBO/ABO) dan Google Ads untuk pasar Indonesia dan regional. Menerapkan kerangka pengujian agile (A/B testing kreatif & copy) dan strategi "Inverted Funnel" untuk mengoptimalkan CPM dan Cost Per Result (CPR) di lelang yang fluktuatif.</li>
-                            <li>Social Media Listening & Analitik: Menerapkan strategi pemantauan merek dan analisis sentimen untuk melacak aktivitas kompetitor, mendeteksi tren yang muncul, dan mengidentifikasi potensi krisis sebelum membesar.</li>
-                            <li>Pengambilan Keputusan Berbasis Data: Menggunakan analitik canggih untuk mendiagnosis kelelahan iklan (ad fatigue) dan saturasi pasar, mengeksekusi pivot strategis (misalnya, beralih dari penargetan manual ke audiens Advantage+ berbasis AI) untuk melindungi efisiensi anggaran dan memaksimalkan ROI.</li>
-                            <li>Ekspansi Lintas Batas: Mengelola eksperimen penjualan dan pemasaran B2B untuk aplikasi penerbitan baru di Indonesia, berfokus pada akuisisi klien awal dan validasi market fit.</li>
-                            <li>Pengembangan Web & CRO: Mengembangkan situs web klien di WordPress dan Webflow, dioptimalkan untuk konversi dan pengalaman pengguna.</li>
-                            <li>Strategi Konten: Menulis copy SEO-optimized yang menarik untuk mendorong lalu lintas organik dan meningkatkan peringkat mesin pencari untuk kata kunci properti dan travel Indonesia.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="relative timeline-item pl-6">
-                        <span class="timeline-dot"></span>
-                        <div class="flex flex-col sm:flex-row justify-between">
-                            <h3 class="text-xl font-semibold text-gray-900">Project Marketing Manager</h3>
-                            <span class="text-gray-600 text-sm font-medium pt-1">(Nov 2018 – Jul 2024)</span>
-                        </div>
-                        <p class="text-gray-700 font-medium mb-1">Contentro dot com</p>
-                        <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        
-                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Developed and launched a new 'Leads Generation Campaign' product, resulting in a 15% revenue increase for the company.</li>
-                            <li>Managed and optimized Meta Ads (Facebook/Instagram Ads) and Google Ads campaigns for clients as a core component of lead generation strategies.</li>
-                            <li>Implemented social media listening strategies to monitor brand mentions, track competitor activities, and identify industry trends for 70+ clients across various sectors.</li>
-                            <li>Led 200+ media releases annually, securing coverage in 280+ media outlets. Contributed to 4,000+ published articles yearly.</li>
-                            <li>Handling over 70 clients across various industries (consumer products, lifestyle, media, education, property, state-owned enterprises), including major brands like Toyota, Bukalapak.com, Tempo Media Group, and Jakarta Intercultural School.</li>
-                            <li>Oversaw the development of website/blog content, social media, newsletters, and virtual events, aligning with clients' branding goals.</li>
-                            <li>Evaluated campaign success, monitored audience trends, and optimized strategies to maximize media exposure and business growth.</li>
-                        </ul>
-
-                        <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Mengembangkan dan meluncurkan produk baru 'Kampanye Lead Generation', menghasilkan peningkatan pendapatan perusahaan sebesar 15%.</li>
-                            <li>Mengelola dan mengoptimalkan kampanye Meta Ads (Facebook/Instagram Ads) dan Google Ads untuk klien sebagai komponen inti dari strategi perolehan prospek.</li>
-                            <li>Menerapkan strategi social media listening untuk memantau penyebutan merek, melacak aktivitas kompetitor, dan mengidentifikasi tren industri untuk 70+ klien di berbagai sektor.</li>
-                            <li>Memimpin 200+ rilis media setiap tahun, mendapatkan liputan di 280+ outlet media. Berkontribusi pada 4.000+ artikel yang diterbitkan setiap tahun.</li>
-                            <li>Menangani lebih dari 70 klien di berbagai industri (produk konsumen, gaya hidup, media, pendidikan, properti, BUMN), termasuk merek besar seperti Toyota, Bukalapak.com, Tempo Media Group, dan Jakarta Intercultural School.</li>
-                            <li>Mengawasi pengembangan konten situs web/blog, media sosial, buletin, dan acara virtual, menyelaraskan dengan tujuan branding klien.</li>
-                            <li>Mengevaluasi keberhasilan kampanye, memantau tren audiens, dan mengoptimalkan strategi untuk memaksimalkan eksposur media dan pertumbuhan bisnis.</li>
-                        </ul>
-                    </div>
-
-                    <div class="relative timeline-item pl-6">
-                        <span class="timeline-dot"></span>
-                        <div class="flex flex-col sm:flex-row justify-between">
-                            <h3 class="text-xl font-semibold text-gray-900">B2B Account Manager</h3>
-                            <span class="text-gray-600 text-sm font-medium pt-1">(Apr 2017 – Nov 2018)</span>
-                        </div>
-                        <p class="text-gray-700 font-medium mb-1">PT AllProperty Media (Rumah.com)</p>
-                        <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        
-                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Achieved 146% of sales target by consistently exceeding quarterly goals (e.g., 130% in Q1 2018).</li>
-                            <li>Utilized social media monitoring to identify potential clients and understand market needs in the real estate sector.</li>
-                        </ul>
-                         <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Mencapai 146% dari target penjualan dengan secara konsisten melampaui tujuan kuartalan (misalnya, 130% pada Q1 2018).</li>
-                            <li>Memanfaatkan pemantauan media sosial untuk mengidentifikasi klien potensial dan memahami kebutuhan pasar di sektor real estat.</li>
-                        </ul>
-                    </div>
-
-                    <div class="relative timeline-item pl-6">
-                        <span class="timeline-dot"></span>
-                        <div class="flex flex-col sm:flex-row justify-between">
-                            <h3 class="text-xl font-semibold text-gray-900">Relationship Manager SME</h3>
-                            <span class="text-gray-600 text-sm font-medium pt-1">(Mar 2015 – Apr 2017)</span>
-                        </div>
-                        <p class="text-gray-700 font-medium mb-1">PT Bank Permata, Tbk</p>
-                        <p class="text-gray-600 text-sm mb-2">Jakarta, Indonesia</p>
-                        
-                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Acquired SME clients, provided tailored financial solutions, and managed portfolios by monitoring accounts, assessing risks, and ensuring timely follow-ups.</li>
-                            <li>Achieved 2016 Target 80%: IDR 32 Bio from total target IDR 40 Bio.</li>
-                        </ul>
-                        <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Mengakuisisi klien UKM, menyediakan solusi keuangan yang disesuaikan, dan mengelola portofolio dengan memantau akun, menilai risiko, dan memastikan tindak lanjut yang tepat waktu.</li>
-                            <li>Mencapai Target 2016 80%: IDR 32 Miliar dari total target IDR 40 Miliar.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="relative timeline-item pl-6">
-                        <span class="timeline-dot"></span>
-                        <div class="flex flex-col sm:flex-row justify-between">
-                            <h3 class="text-xl font-semibold text-gray-900">Commercial Banking Relationship Manager</h3>
-                            <span class="text-gray-600 text-sm font-medium pt-1">(Jul 2011 – Mar 2015)</span>
-                        </div>
-                        <p class="text-gray-700 font-medium mb-1">PT Bank Mega, Tbk | Jakarta, Indonesia</p>
-                        
-                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Responsible for commercial credit transactions with credit limits up to IDR 50 Billion.</li>
-                            <li>Achieved 2015 Target 100%: IDR 35 Bio from total target IDR 35 Bio.</li>
-                        </ul>
-                        <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Bertanggung jawab atas transaksi kredit komersial dengan batas kredit hingga IDR 50 Miliar.</li>
-                            <li>Mencapai Target 2015 100%: IDR 35 Miliar dari total target IDR 35 Miliar.</li>
-                        </ul>
-                    </div>
-
-                    <div class="relative pl-6">
-                        <span class="timeline-dot"></span>
-                        <div class="flex flex-col sm:flex-row justify-between">
-                            <h3 class="text-xl font-semibold text-gray-900">Accounting Oracle Officer</h3>
-                            <span class="text-gray-600 text-sm font-medium pt-1">(Jan 2011 – Apr 2011)</span>
-                        </div>
-                        <p class="text-gray-700 font-medium mb-1">PT Surya Madistrindo | Jakarta, Indonesia</p>
-                        
-                        <ul class="lang-en list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Trained finance teams on Oracle accounting modules and supported account reconciliation and period closing.</li>
-                        </ul>
-                         <ul class="lang-id hidden list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>Melatih tim keuangan pada modul akuntansi Oracle dan mendukung rekonsiliasi akun serta penutupan periode.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="mb-8">
-                <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">
-                    <span class="lang-en">EDUCATION & CERTIFICATIONS</span>
-                    <span class="lang-id hidden">PENDIDIKAN & SERTIFIKASI</span>
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">
-                            <span class="lang-en">Education</span>
-                            <span class="lang-id hidden">Pendidikan</span>
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <p class="font-semibold text-gray-900">
-                                    <span class="lang-en">Bachelor's Degree (Economics Marketing Management)</span>
-                                    <span class="lang-id hidden">Sarjana (S1) - Manajemen Pemasaran Ekonomi</span>
-                                </p>
-                                <p class="text-gray-700">University of Indonesia (2007 – 2010)</p>
-                                <p class="text-sm text-gray-600">Grade: GPA 3.32</p>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-gray-900">
-                                    <span class="lang-en">Diploma Degree (Economics Accounting)</span>
-                                    <span class="lang-id hidden">Diploma (D3) - Akuntansi Ekonomi</span>
-                                </p>
-                                <p class="text-gray-700">University of Indonesia (2003 – 2007)</p>
-                                <p class="text-sm text-gray-600">Grade: GPA 2.74</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">
-                            <span class="lang-en">Certifications</span>
-                            <span class="lang-id hidden">Sertifikasi</span>
-                        </h3>
-                        <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
-                            <li>IBM Data Science Professional Certificate | Coursera (On-going)</li>
-                            <li>Google Analytics Certification | Skillshop, Indonesia (2025)</li>
-                            <li>Social Media Analytics & Listening Certification | Self-Study & Practical Application (2024)</li>
-                            <li>Qualified Medication Administration Personnel | Colorado Medical Health Training (2023)</li>
-                            <li>Heartsaver First Aid CPR AED | American Heart Association (2023)</li>
-                            <li>City & County of Denver Food Handler Course | State Food Safety (2023)</li>
-                            <li>Emotional Intelligence | Property Guru (2017)</li>
-                            <li>Presentation Essentials | Property Guru (2017)</li>
-                            <li>Digital Marketing & Social Media Conference | Property Guru (2017)</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+            </div>
             
-            <section>
-                 <h2 class="text-2xl font-bold text-blue-800 pb-2 mb-4">
-                     <span class="lang-en">ACTIVITIES & ORGANIZATIONAL EXPERIENCE</span>
-                     <span class="lang-id hidden">AKTIVITAS & PENGALAMAN ORGANISASI</span>
-                 </h2>
-                 <ul class="list-disc list-outside text-gray-700 space-y-2 pl-5">
-                      <li>Head of Qurban Project – Cempaka Hijau Residential Complex (2020)</li>
-                      <li>Instructor – UKM (Student Activity Unit) UI, Aikido (2009 - 2015)</li>
-                      <li>External Division – UKF (Faculty Activity Unit) LIFO '06 FEUI (2005 - 2006)</li>
-                      <li>General Secretary – Ikatan Remaja Cempaka Hijau (2003 - 2004)</li>
-                 </ul>
-            </section>
-        </main>
+            <div class="w-full md:w-2/5 flex justify-center">
+                <div class="relative">
+                    <!-- Decorative blobs behind image -->
+                    <div class="absolute -inset-4 bg-gradient-to-r from-brand-400 to-indigo-400 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                    <img src="images/foto resume prama.png" onerror="this.src='https://ui-avatars.com/api/?name=Prama+Danawira&background=1e3a8a&color=fff&size=400'" alt="Prama Danawira" class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white shadow-2xl z-10">
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div><script>
+    <!-- Highlight Stats -->
+    <section class="border-y border-slate-200 bg-white py-10">
+        <div class="container mx-auto max-w-6xl px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-slate-100">
+                <div>
+                    <h3 class="text-3xl font-extrabold text-brand-600 mb-1">13+</h3>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wide">
+                        <span class="lang-en">Years Experience</span>
+                        <span class="lang-id">Tahun Pengalaman</span>
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-extrabold text-brand-600 mb-1">15%</h3>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wide">
+                        <span class="lang-en">Revenue Boost</span>
+                        <span class="lang-id">Kenaikan Pendapatan</span>
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-extrabold text-brand-600 mb-1">70+</h3>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wide">
+                        <span class="lang-en">Clients Managed</span>
+                        <span class="lang-id">Klien Ditangani</span>
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-extrabold text-brand-600 mb-1">146%</h3>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wide">
+                        <span class="lang-en">Target Achieved</span>
+                        <span class="lang-id">Target Tercapai</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Skills -->
+    <section class="py-20 px-6 bg-slate-50">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">
+                    <span class="lang-en">Technical <span class="text-brand-600">Arsenal</span></span>
+                    <span class="lang-id">Keahlian <span class="text-brand-600">Teknis</span></span>
+                </h2>
+                <p class="mt-4 text-slate-600 max-w-2xl mx-auto">
+                    <span class="lang-en">The tools and methodologies I use to turn advertising budgets into measurable ROI.</span>
+                    <span class="lang-id">Alat dan metodologi yang saya gunakan untuk mengubah anggaran iklan menjadi ROI yang terukur.</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Marketing Skills -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover-card">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center">
+                            <i class="ph ph-megaphone text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">
+                            <span class="lang-en">Performance Marketing</span>
+                            <span class="lang-id">Pemasaran Kinerja</span>
+                        </h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-sm font-semibold text-slate-700 mb-2">Meta Ads & PPC</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">CBO/ABO Structures</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Advantage+</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">A/B Testing</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Retargeting</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-slate-700 mb-2">Lead Gen & Strategy</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">CTWA Funnels</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">CRO</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Agile Testing</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-slate-700 mb-2">Social Listening Tools</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Brandwatch</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Sprout Social</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Hootsuite</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Science Skills -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover-card">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+                            <i class="ph ph-database text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">
+                            <span class="lang-en">Data Science & Analytics</span>
+                            <span class="lang-id">Data Science & Analitik</span>
+                        </h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-sm font-semibold text-slate-700 mb-2">Programming & DB</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 font-medium rounded-md text-sm">Python</span>
+                                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 font-medium rounded-md text-sm">SQL (PostgreSQL/MySQL)</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-slate-700 mb-2">Libraries & Machine Learning</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Pandas</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">NumPy</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Scikit-learn</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Matplotlib</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-slate-700 mb-2">Visualization & Tracking</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Tableau</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Looker Studio</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">GA4</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-sm">Meta Pixel/CAPI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Projects -->
+    <section id="portfolio" class="py-20 px-6 bg-white">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex justify-between items-end mb-12 border-b border-slate-200 pb-4">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900">
+                        <span class="lang-en">Featured <span class="text-brand-600">Projects</span></span>
+                        <span class="lang-id">Proyek <span class="text-brand-600">Unggulan</span></span>
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 (Highlighted) -->
+                <a href="https://danawiraprama.github.io/Portfolio/socialListening.html" target="_blank" class="group block relative rounded-2xl overflow-hidden hover-card border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-6 h-full flex flex-col">
+                    <div class="absolute top-4 right-4 bg-brand-500 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Highlight</div>
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-600 mb-4 border border-brand-100 group-hover:scale-110 transition-transform">
+                        <i class="ph ph-ear text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Social Media Listening</h3>
+                    <p class="text-sm text-slate-600 flex-grow mb-6">
+                        <span class="lang-en">Advanced analytics for brand monitoring, sentiment analysis, competitor intelligence & trend detection.</span>
+                        <span class="lang-id">Analisis lanjutan untuk pemantauan merek, analisis sentimen, intelijen kompetitor & deteksi tren.</span>
+                    </p>
+                    <div class="flex items-center text-brand-600 text-sm font-semibold group-hover:gap-2 transition-all">
+                        <span class="lang-en">View Case Study</span>
+                        <span class="lang-id">Lihat Studi Kasus</span>
+                        <i class="ph ph-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="https://danawiraprama.github.io/Portfolio/agentforproperty.html" target="_blank" class="group block rounded-2xl hover-card border border-slate-200 bg-white p-6 h-full flex flex-col">
+                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-slate-600 mb-4 group-hover:text-brand-600 transition-colors">
+                        <i class="ph ph-buildings text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Agent for Property</h3>
+                    <p class="text-sm text-slate-500 flex-grow mb-6 font-mono bg-slate-50 p-2 rounded">agentforproperty.html</p>
+                    <div class="flex items-center text-slate-500 text-sm font-semibold group-hover:text-brand-600 transition-colors">
+                        <span>Live Preview</span> <i class="ph ph-arrow-up-right ml-1"></i>
+                    </div>
+                </a>
+
+                <!-- Project 3 -->
+                <a href="https://danawiraprama.github.io/Portfolio/agentforumrah.html" target="_blank" class="group block rounded-2xl hover-card border border-slate-200 bg-white p-6 h-full flex flex-col">
+                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-slate-600 mb-4 group-hover:text-brand-600 transition-colors">
+                        <i class="ph ph-airplane-tilt text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Agent for Umrah</h3>
+                    <p class="text-sm text-slate-500 flex-grow mb-6 font-mono bg-slate-50 p-2 rounded">agentforumrah.html</p>
+                    <div class="flex items-center text-slate-500 text-sm font-semibold group-hover:text-brand-600 transition-colors">
+                        <span>Live Preview</span> <i class="ph ph-arrow-up-right ml-1"></i>
+                    </div>
+                </a>
+
+                <!-- Project 4 -->
+                <a href="https://danawiraprama.github.io/Portfolio/dearazproperty.html" target="_blank" class="group block rounded-2xl hover-card border border-slate-200 bg-white p-6 h-full flex flex-col">
+                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-slate-600 mb-4 group-hover:text-brand-600 transition-colors">
+                        <i class="ph ph-house-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Dearaz Property</h3>
+                    <p class="text-sm text-slate-500 flex-grow mb-6 font-mono bg-slate-50 p-2 rounded">dearazproperty.html</p>
+                    <div class="flex items-center text-slate-500 text-sm font-semibold group-hover:text-brand-600 transition-colors">
+                        <span>Live Preview</span> <i class="ph ph-arrow-up-right ml-1"></i>
+                    </div>
+                </a>
+
+                 <!-- Project 5 -->
+                 <a href="https://danawiraprama.github.io/Portfolio/luxuryproperty.html" target="_blank" class="group block rounded-2xl hover-card border border-slate-200 bg-white p-6 h-full flex flex-col">
+                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-slate-600 mb-4 group-hover:text-brand-600 transition-colors">
+                        <i class="ph ph-sketch-logo text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Luxury Property</h3>
+                    <p class="text-sm text-slate-500 flex-grow mb-6 font-mono bg-slate-50 p-2 rounded">luxuryproperty.html</p>
+                    <div class="flex items-center text-slate-500 text-sm font-semibold group-hover:text-brand-600 transition-colors">
+                        <span>Live Preview</span> <i class="ph ph-arrow-up-right ml-1"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Timeline -->
+    <section class="py-20 px-6 bg-slate-50">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">
+                <span class="lang-en">Professional <span class="text-brand-600">Journey</span></span>
+                <span class="lang-id">Perjalanan <span class="text-brand-600">Karier</span></span>
+            </h2>
+
+            <div class="relative">
+                <div class="timeline-line"></div>
+                
+                <!-- Experience 1 -->
+                <div class="relative pl-10 mb-12 group">
+                    <div class="absolute left-[7px] top-1.5 w-2.5 h-2.5 bg-brand-500 rounded-full border-4 border-white shadow ring-2 ring-brand-100 z-10 group-hover:scale-150 transition-transform"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Freelance Marketing & Data Specialist</h3>
+                                <p class="text-brand-600 font-medium text-sm">Independent / Jakarta</p>
+                            </div>
+                            <span class="inline-block mt-2 md:mt-0 bg-brand-50 text-brand-700 text-xs font-bold px-3 py-1 rounded-full">Jul 2024 – Present</span>
+                        </div>
+                        <ul class="lang-en text-slate-600 space-y-3 text-sm leading-relaxed">
+                            <li><strong class="text-slate-800">Strategic Market Entry:</strong> Managed a high-stakes campaign for a SG-based wellness brand using a "Best 5 Test" strategy across Thailand & Vietnam to validate audience intent.</li>
+                            <li><strong class="text-slate-800">Performance Marketing:</strong> Specialized in data-driven lead generation via Meta Ads (Advantage+, CBO/ABO) and Google Ads, utilizing an "Inverted Funnel" strategy to optimize Cost Per Result (CPR).</li>
+                            <li><strong class="text-slate-800">Data-Driven Pivots:</strong> Diagnosed ad fatigue using advanced analytics and shifted to AI-driven Advantage+ audiences to protect budget efficiency and maximize ROI.</li>
+                            <li><strong class="text-slate-800">Cross-Border Growth:</strong> Handled B2B sales/marketing experiments for a publishing app to validate market fit in Indonesia.</li>
+                        </ul>
+                        <ul class="lang-id text-slate-600 space-y-3 text-sm leading-relaxed">
+                            <li><strong class="text-slate-800">Entri Pasar Strategis:</strong> Mengelola kampanye untuk merek wellness SG menggunakan strategi "Best 5 Test" di Thailand & Vietnam untuk memvalidasi minat audiens.</li>
+                            <li><strong class="text-slate-800">Pemasaran Kinerja:</strong> Spesialisasi *lead generation* via Meta Ads (Advantage+, CBO/ABO) dan Google Ads, menggunakan strategi "Inverted Funnel" untuk optimasi Cost Per Result (CPR).</li>
+                            <li><strong class="text-slate-800">Keputusan Berbasis Data:</strong> Mendiagnosis kejenuhan iklan (ad fatigue) via analitik dan beralih ke audiens Advantage+ (AI) untuk memaksimalkan ROI.</li>
+                            <li><strong class="text-slate-800">Ekspansi Lintas Batas:</strong> Menangani eksperimen pemasaran B2B untuk aplikasi penerbitan guna memvalidasi kecocokan pasar di Indonesia.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="relative pl-10 mb-12 group">
+                    <div class="absolute left-[7px] top-1.5 w-2.5 h-2.5 bg-slate-400 rounded-full border-4 border-white shadow ring-2 ring-slate-100 z-10 group-hover:bg-brand-500 transition-colors"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Project Marketing Manager</h3>
+                                <p class="text-brand-600 font-medium text-sm">Contentro dot com / Jakarta</p>
+                            </div>
+                            <span class="inline-block mt-2 md:mt-0 bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full">Nov 2018 – Jul 2024</span>
+                        </div>
+                        <ul class="lang-en text-slate-600 space-y-3 text-sm leading-relaxed">
+                            <li><strong class="text-slate-800 text-green-600 bg-green-50 px-1 rounded">+15% Revenue:</strong> Developed and launched a new 'Leads Generation Campaign' product that directly boosted company top-line.</li>
+                            <li><strong class="text-slate-800">Massive Scale:</strong> Handled 70+ clients (Toyota, Bukalapak, Tempo Media) across B2B/B2C sectors.</li>
+                            <li><strong class="text-slate-800">Media Dominance:</strong> Led 200+ media releases annually, securing coverage in 280+ outlets and contributing to 4,000+ published articles yearly.</li>
+                            <li><strong class="text-slate-800">Social Intelligence:</strong> Implemented social listening strategies to monitor brand mentions and competitor activities.</li>
+                        </ul>
+                        <ul class="lang-id text-slate-600 space-y-3 text-sm leading-relaxed">
+                            <li><strong class="text-slate-800 text-green-600 bg-green-50 px-1 rounded">+15% Pendapatan:</strong> Mengembangkan dan meluncurkan produk 'Kampanye Lead Generation' yang langsung meningkatkan pendapatan perusahaan.</li>
+                            <li><strong class="text-slate-800">Skala Masif:</strong> Menangani 70+ klien (Toyota, Bukalapak, Tempo Media) di sektor B2B/B2C.</li>
+                            <li><strong class="text-slate-800">Dominasi Media:</strong> Memimpin 200+ rilis media per tahun, masuk di 280+ outlet media, berkontribusi pada 4.000+ artikel per tahun.</li>
+                            <li><strong class="text-slate-800">Intelijen Sosial:</strong> Menerapkan strategi *social listening* untuk memantau merek dan kompetitor.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="relative pl-10 mb-12 group">
+                    <div class="absolute left-[7px] top-1.5 w-2.5 h-2.5 bg-slate-300 rounded-full border-4 border-white shadow ring-2 ring-slate-100 z-10 group-hover:bg-brand-500 transition-colors"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">B2B Account Manager</h3>
+                                <p class="text-brand-600 font-medium text-sm">PT AllProperty Media (Rumah.com)</p>
+                            </div>
+                            <span class="inline-block mt-2 md:mt-0 bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full">Apr 2017 – Nov 2018</span>
+                        </div>
+                        <ul class="lang-en text-slate-600 space-y-2 text-sm leading-relaxed">
+                            <li><strong class="text-slate-800 text-green-600 bg-green-50 px-1 rounded">146% Quota:</strong> Achieved 146% of sales target by consistently exceeding quarterly goals.</li>
+                            <li>Utilized social media monitoring to prospect high-value clients in the real estate sector.</li>
+                        </ul>
+                        <ul class="lang-id text-slate-600 space-y-2 text-sm leading-relaxed">
+                            <li><strong class="text-slate-800 text-green-600 bg-green-50 px-1 rounded">Kuota 146%:</strong> Mencapai 146% dari target penjualan kuartalan secara konsisten.</li>
+                            <li>Menggunakan pemantauan media sosial untuk mencari prospek klien bernilai tinggi di sektor properti.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <!-- Banking Experience Summarized -->
+                 <div class="relative pl-10 group">
+                    <div class="absolute left-[7px] top-1.5 w-2.5 h-2.5 bg-slate-300 rounded-full border-4 border-white shadow ring-2 ring-slate-100 z-10"></div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <h4 class="font-semibold text-slate-800 mb-2">
+                            <span class="lang-en">Previous Corporate Banking Roles</span>
+                            <span class="lang-id">Pengalaman Perbankan Korporasi Sebelumnya</span>
+                        </h4>
+                        <div class="text-sm text-slate-600 space-y-2">
+                            <p><strong>RM SME @ PT Bank Permata, Tbk</strong> (2015-2017) <br>
+                               <span class="text-xs italic text-slate-500">Achieved 80% of IDR 40 Bio target in 2016.</span></p>
+                            <p><strong>Commercial Banking RM @ PT Bank Mega, Tbk</strong> (2011-2015) <br>
+                               <span class="text-xs italic text-slate-500">Managed IDR 50 Bio credit limits, achieved 100% target (IDR 35 Bio) in 2015.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certs -->
+    <section class="py-16 px-6 bg-white border-t border-slate-200">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Education -->
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <i class="ph ph-graduation-cap text-brand-600"></i>
+                        <span class="lang-en">Education</span>
+                        <span class="lang-id">Pendidikan</span>
+                    </h2>
+                    <div class="space-y-6 relative border-l-2 border-slate-100 pl-4 ml-2">
+                        <div class="relative">
+                            <div class="absolute -left-[21px] top-1.5 w-3 h-3 bg-brand-200 rounded-full border-2 border-white"></div>
+                            <h4 class="font-bold text-slate-800 text-lg">University of Indonesia</h4>
+                            <p class="text-brand-600 font-medium text-sm">
+                                <span class="lang-en">Bachelor's in Economics Marketing Management</span>
+                                <span class="lang-id">S1 Manajemen Pemasaran Ekonomi</span>
+                            </p>
+                            <p class="text-slate-500 text-xs mt-1">2007 – 2010 • GPA 3.32</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[21px] top-1.5 w-3 h-3 bg-slate-200 rounded-full border-2 border-white"></div>
+                            <h4 class="font-bold text-slate-800 text-lg">University of Indonesia</h4>
+                            <p class="text-slate-600 font-medium text-sm">
+                                <span class="lang-en">Diploma in Economics Accounting</span>
+                                <span class="lang-id">D3 Akuntansi Ekonomi</span>
+                            </p>
+                            <p class="text-slate-500 text-xs mt-1">2003 – 2007</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <i class="ph ph-certificate text-brand-600"></i>
+                        <span class="lang-en">Key Certifications</span>
+                        <span class="lang-id">Sertifikasi Utama</span>
+                    </h2>
+                    <ul class="space-y-3">
+                        <li class="flex gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <div class="text-brand-600 mt-0.5"><i class="ph ph-check-circle weight-fill"></i></div>
+                            <div>
+                                <p class="font-semibold text-sm text-slate-800">IBM Data Science Professional Certificate</p>
+                                <p class="text-xs text-slate-500">Coursera (On-going)</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <div class="text-brand-600 mt-0.5"><i class="ph ph-check-circle weight-fill"></i></div>
+                            <div>
+                                <p class="font-semibold text-sm text-slate-800">Google Analytics Certification</p>
+                                <p class="text-xs text-slate-500">Skillshop (2025)</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <div class="text-slate-400 mt-0.5"><i class="ph ph-check-circle"></i></div>
+                            <div>
+                                <p class="font-semibold text-sm text-slate-700">Social Media Analytics & Listening</p>
+                                <p class="text-xs text-slate-500">Self-Study (2024)</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Footer -->
+    <section id="contact" class="bg-brand-900 py-16 px-6 text-center">
+        <div class="container mx-auto max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                <span class="lang-en">Ready to Scale Your Growth?</span>
+                <span class="lang-id">Siap Menskalakan Bisnis Anda?</span>
+            </h2>
+            <p class="text-brand-100 mb-8 max-w-xl mx-auto">
+                <span class="lang-en">Let's discuss how data-driven Meta Ads and strategic marketing can boost your ROI. Available for consulting and full-time roles.</span>
+                <span class="lang-id">Mari diskusikan bagaimana Meta Ads berbasis data dan strategi pemasaran dapat meningkatkan ROI Anda.</span>
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="mailto:prama.danawira@gmail.com" class="bg-white text-brand-900 hover:bg-brand-50 px-8 py-4 rounded-full font-bold transition-colors shadow-lg flex items-center justify-center gap-2">
+                    <i class="ph ph-envelope-simple text-xl"></i> Email Me
+                </a>
+                <a href="tel:+6281284942940" class="bg-brand-800 text-white border border-brand-700 hover:bg-brand-700 px-8 py-4 rounded-full font-bold transition-colors flex items-center justify-center gap-2">
+                    <i class="ph ph-phone text-xl"></i> +62 812-8494-2940
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-400 py-8 text-center text-sm">
+        <p>&copy; 2024 Prama Danawira. Strategic Media Buyer & Data Specialist.</p>
+    </footer>
+
+    <!-- Language Toggle Script -->
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const toggleBtn = document.getElementById('langToggle');
             const btnText = document.getElementById('btnText');
             const flagIcon = document.getElementById('flagIcon');
+            const htmlTag = document.documentElement;
             
-            // Mengambil semua elemen dengan class lang-en dan lang-id
-            const enElements = document.querySelectorAll('.lang-en');
-            const idElements = document.querySelectorAll('.lang-id');
-            
-            // Set bahasa default
+            // Set default based on HTML lang attribute
             let currentLang = 'en';
-
+            
             toggleBtn.addEventListener('click', () => {
                 if (currentLang === 'en') {
-                    // Switch to Indonesia
-                    enElements.forEach(el => el.classList.add('hidden'));
-                    idElements.forEach(el => el.classList.remove('hidden'));
-                    
-                    // Update tombol untuk menawarkan kembali ke Inggris
-                    btnText.textContent = 'English';
-                    flagIcon.textContent = '🇺🇸'; // Bendera US/UK sebagai representasi English
-                    
+                    htmlTag.setAttribute('lang', 'id');
+                    btnText.textContent = 'EN';
+                    flagIcon.textContent = '🇺🇸';
                     currentLang = 'id';
                 } else {
-                    // Switch to English
-                    idElements.forEach(el => el.classList.add('hidden'));
-                    enElements.forEach(el => el.classList.remove('hidden'));
-                    
-                    // Update tombol untuk menawarkan Bahasa Indonesia
-                    btnText.textContent = 'Bahasa Indonesia';
+                    htmlTag.setAttribute('lang', 'en');
+                    btnText.textContent = 'ID';
                     flagIcon.textContent = '🇮🇩';
-                    
                     currentLang = 'en';
                 }
             });
