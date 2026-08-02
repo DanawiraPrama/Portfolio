@@ -51,28 +51,6 @@
 </head>
 <body class="p-4 md:p-8">
 
-<!-- 
-NARRATIVE PLAN SUMMARY:
-1. Introduction: Contextualizing the 3 Aug Meeting Handover and Sean's role as a high-velocity agent.
-2. Executive Dashboard: Highlighting the critical KPIs: Spend, Leads, and the CPL Variance.
-3. The Performance Pivot: Visualizing the shift from Broad Targeting (Success) to LLA (Efficiency Drop).
-4. Campaign Deep Dive: Comparing the productivity of Lucerne, Hougang, and Thomson.
-5. Creative Winner Spotlight: Isolating the 'VVIP Angle' success as a template for recovery.
-6. The Roadmap: A structured HTML/CSS timeline of optimization directives for the upcoming week.
--->
-
-<!-- 
-CHART SELECTION GUIDE & JUSTIFICATION:
-1. Goal: Inform (KPIs) -> Big Numbers & Donut. Justification: Instant recognition of status.
-2. Goal: Change (CPL Trend) -> Chart.js Line Chart. Justification: Shows the trajectory over July targets.
-3. Goal: Compare (Campaign Productivity) -> Chart.js Grouped Bar. Justification: Compares Spend vs. Leads across 3 projects.
-4. Goal: Relationships (Auction Penalty) -> Plotly Scatter Plot (Canvas/WebGL). Justification: Correlates CTR and CPM to visualize the LLA 'penalty'.
-5. Goal: Organize (Next Steps) -> Structured HTML Grid. Justification: Clear task management without SVG.
---- NO SVG OR MERMAID JS USED ---
--->
-
-<!-- Selected Palette: Brilliant Indigo & Energetic Amber (#3730a3, #4f46e5, #f59e0b) -->
-
 <div class="max-w-6xl mx-auto">
     <header class="vibrant-gradient text-white rounded-2xl p-8 mb-8 shadow-xl">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
@@ -119,7 +97,7 @@ CHART SELECTION GUIDE & JUSTIFICATION:
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
         <div class="bg-white p-8 rounded-2xl shadow-lg">
             <h3 class="text-xl font-bold text-indigo-900 mb-4">CPL Trajectory: Broad vs. LLA</h3>
-            <p class="text-sm text-slate-600 mb-6">This visualization tracks the Cost Per Lead (CPL) against Sean's target range. The sharp spike in late July correlates directly with the transition from Broad targeting to restricted 6% Lookalike audiences.</p>
+            <p class="text-sm text-slate-600 mb-6">Tracking the Cost Per Lead (CPL) against Sean's target. The sharp spike correlates with the transition from Broad targeting to restricted 6% Lookalikes.</p>
             <div class="chart-container">
                 <canvas id="cplTrendChart"></canvas>
             </div>
@@ -127,7 +105,7 @@ CHART SELECTION GUIDE & JUSTIFICATION:
 
         <div class="bg-white p-8 rounded-2xl shadow-lg">
             <h3 class="text-xl font-bold text-indigo-900 mb-4">Campaign Efficiency Comparison</h3>
-            <p class="text-sm text-slate-600 mb-6">A breakdown of spend versus lead generation productivity across the three active projects. Lucerne shows the highest efficiency potential despite lower total spend allocation.</p>
+            <p class="text-sm text-slate-600 mb-6">Breakdown of spend versus lead generation productivity across active projects. Lucerne remains the high-efficiency outlier.</p>
             <div class="chart-container">
                 <canvas id="productivityChart"></canvas>
             </div>
@@ -138,13 +116,13 @@ CHART SELECTION GUIDE & JUSTIFICATION:
         <div class="flex flex-col md:flex-row gap-8 items-center">
             <div class="md:w-1/2">
                 <h3 class="text-2xl font-bold mb-4">The "VVIP Angle" Anomaly</h3>
-                <p class="text-indigo-100 mb-6">While overall CPL was high, **Lucerne's Image 2 (VVIP Angle)** proved that low-cost conversion is still possible. It achieved a staggering **SGD 3.23 CPL**, but was throttled by Meta's algorithm favoring high-CPM video content.</p>
+                <p class="text-indigo-100 mb-6">Lucerne's Image 2 achieved a staggering **SGD 3.23 CPL**, proving efficiency is possible when creative quality overcomes auction friction.</p>
                 <div class="bg-white/10 p-4 rounded-xl border border-white/20">
                     <p class="text-amber-400 font-bold text-lg">Winner Asset Insight:</p>
                     <ul class="list-disc list-inside text-sm mt-2 text-indigo-50">
                         <li>Asset: Image 2 - VVIP Angle</li>
                         <li>Lead Cost: SGD 3.23</li>
-                        <li>CTR: 1.33% (Above Account Avg)</li>
+                        <li>CTR: 1.33% (Above Avg)</li>
                     </ul>
                 </div>
             </div>
@@ -167,17 +145,17 @@ CHART SELECTION GUIDE & JUSTIFICATION:
             <div class="bg-white p-6 rounded-xl shadow-md accent-border">
                 <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold mb-4">1</div>
                 <h4 class="font-bold text-indigo-900 mb-2">Targeting Reset</h4>
-                <p class="text-sm text-slate-600">Revert Hougang and Thomson to **Broad Targeting**. The LLA experiment resulted in a 5x CPL increase for Hougang.</p>
+                <p class="text-sm text-slate-600">Revert Hougang and Thomson to **Broad Targeting** to restore lead volume and lower CPMs.</p>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-md accent-border">
                 <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold mb-4">2</div>
                 <h4 class="font-bold text-indigo-900 mb-2">Creative Realignment</h4>
-                <p class="text-sm text-slate-600">Force 70% of Lucerne budget to **Image 2 (VVIP)**. Pause high-CPM AI Videos that are draining budget without converting.</p>
+                <p class="text-sm text-slate-600">Force budget to **Image 2 (VVIP)**. Pause high-CPM AI Videos that are draining campaign budget.</p>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-md accent-border">
                 <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold mb-4">3</div>
                 <h4 class="font-bold text-indigo-900 mb-2">Bid Controls</h4>
-                <p class="text-sm text-slate-600">Implement **Cost Caps** on Thomson if CPM exceeds SGD 60.00 to protect Sean's daily pipeline velocity.</p>
+                <p class="text-sm text-slate-600">Implement **Cost Caps** if CPM exceeds SGD 60.00 to protect Sean's daily pipeline velocity.</p>
             </div>
         </div>
     </section>
@@ -216,7 +194,6 @@ CHART SELECTION GUIDE & JUSTIFICATION:
         }
     };
 
-    // CPL Trend Chart
     const ctxCpl = document.getElementById('cplTrendChart').getContext('2d');
     new Chart(ctxCpl, {
         type: 'line',
@@ -241,53 +218,32 @@ CHART SELECTION GUIDE & JUSTIFICATION:
                 tooltip: tooltipConfig 
             },
             scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: { color: '#f1f5f9' },
-                    title: { display: true, text: 'SGD / Lead' }
-                },
+                y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
                 x: { grid: { display: false } }
             }
         }
     });
 
-    // Productivity Chart
     const ctxProd = document.getElementById('productivityChart').getContext('2d');
     new Chart(ctxProd, {
         type: 'bar',
         data: {
             labels: ['Lucerne (VVIP)', 'Hougang (LLA)', 'Thomson (LLA)'].map(wrapLabel),
             datasets: [
-                {
-                    label: 'Leads Generated',
-                    data: [1, 1, 0],
-                    backgroundColor: '#f59e0b',
-                    borderRadius: 6
-                },
-                {
-                    label: 'Spend / 10 (Scaled)',
-                    data: [4.10, 14.31, 13.47],
-                    backgroundColor: '#3730a3',
-                    borderRadius: 6
-                }
+                { label: 'Leads', data: [1, 1, 0], backgroundColor: '#f59e0b', borderRadius: 6 },
+                { label: 'Spend/10', data: [4.10, 14.31, 13.47], backgroundColor: '#3730a3', borderRadius: 6 }
             ]
         },
         options: {
             maintainAspectRatio: false,
-            plugins: { 
-                tooltip: tooltipConfig 
-            },
+            plugins: { tooltip: tooltipConfig },
             scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: { color: '#f1f5f9' }
-                },
+                y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
                 x: { grid: { display: false } }
             }
         }
     });
 
-    // Plotly Auction Penalty (Scatter)
     const trace1 = {
         x: [1.33, 1.27, 2.14, 0.63, 0.82],
         y: [43.07, 25.32, 129.71, 114.76, 57.43],
@@ -296,30 +252,20 @@ CHART SELECTION GUIDE & JUSTIFICATION:
         name: 'Assets',
         text: ['VVIP Static', 'Hougang Vid', 'Thomson Vid', 'Lucerne Vid', 'Thomson Static'],
         textposition: 'top center',
-        marker: { 
-            size: 12, 
-            color: ['#f59e0b', '#3b82f6', '#ef4444', '#ef4444', '#3730a3'],
-            line: { width: 1, color: 'white' }
-        }
+        marker: { size: 12, color: ['#f59e0b', '#3b82f6', '#ef4444', '#ef4444', '#3730a3'] }
     };
 
     const layout = {
         margin: { l: 40, r: 20, b: 40, t: 20 },
-        xaxis: { title: 'Link CTR (%)', gridcolor: '#f1f5f9' },
-        yaxis: { title: 'CPM (SGD)', gridcolor: '#f1f5f9' },
+        xaxis: { title: 'Link CTR (%)' },
+        yaxis: { title: 'CPM (SGD)' },
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
         height: 250,
         showlegend: false
     };
 
-    const config = { 
-        responsive: true, 
-        displayModeBar: false 
-    };
-
-    Plotly.newPlot('auctionPenaltyPlot', [trace1], layout, config);
+    Plotly.newPlot('auctionPenaltyPlot', [trace1], layout, { responsive: true, displayModeBar: false });
 </script>
-
 </body>
 </html>
